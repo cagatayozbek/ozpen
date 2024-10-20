@@ -1,0 +1,47 @@
+.container {
+  background-color: #262626;
+}
+.img-uretim {
+  width: 100%; /* Make the image take up the full width of its grid container */
+  /* Set the height to 40% of the viewport height */
+  object-fit: cover; /* Cover the area without distorting the aspect ratio */
+}
+.urun-container {
+  padding-top: 20%;
+
+  margin-left: 20%;
+}
+.urun-header {
+  color: white;
+  letter-spacing: 0.05em;
+  font-size: 40px;
+  font-family: raleway, sans-serif;
+}
+.urun-list {
+  color: white;
+  font-size: 16px;
+  font-family: raleway, sans-serif;
+}
+.urun-list li {
+  padding-bottom: 10px;
+}
+.urun-button {
+  background-color: #9a8178;
+  border: none;
+  font-size: 20px;
+  padding: 10px 80px;
+}
+.icon-container {
+  padding: 50px 0;
+}
+.icon-text {
+  font-size: 18px;
+  text-align: center;
+  color: white;
+  font-family: raleway, sans-serif;
+}
+.urun-subheader {
+  color: #9a8178;
+  font-family: raleway, sans-serif;
+  font-size: 30px;
+}

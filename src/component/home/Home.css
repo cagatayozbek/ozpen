@@ -1,0 +1,39 @@
+.text-line {
+  color: #b4b4b4;
+  text-align: "center";
+  font-size: 72px;
+}
+/* Home.css */
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px); /* Başlık yukarıdan gelsin */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Yerine otursun */
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    width: 0;
+    left: 0;
+  }
+  100% {
+    width: 100%;
+    left: 0;
+  }
+}
+
+/* Başlık animasyonu */
+.text-line {
+  animation: fadeIn 1s ease-out forwards; /* 1 saniye içinde animasyon tamamlanır */
+}
+
+/* Span içinde yer alan turuncu arka plan */
+.text-line span span {
+  animation: slideIn 1.2s ease-out forwards; /* 2 saniye içinde soldan sağa kayar */
+  position: absolute;
+}

@@ -1,0 +1,83 @@
+import { colors, colors1 } from "./colorArrays";
+
+const products = [
+  {
+    id: "dorado-76",
+    category: "pencere-ve-kapı-sistemleri",
+    name: "Dorado 76",
+    teknikImage: require("./assets/yeni-dorado-76png-29-01-2021-18-33-55png_12-03-2024_14-39-02.png"),
+    logo: require("./assets/yeni-dorado-76png-29-01-2021-18-33-55png_12-03-2024_14-39-02.png"),
+    technicalData: [
+      { label: "Profil Genişliği", value: "76 mm" },
+      { label: "Odacık Sayısı", value: "5" },
+      { label: "Sınıf", value: "A Class - TS EN 12608-1 + A1" },
+      { label: "Conta", value: "TPE Gri / Siyah" },
+      { label: "Conta Sayısı", value: "3" },
+      { label: "Çıta", value: "Tek tırnaklı - PCE contalı" },
+      { label: "Cam Kalınlıkları", value: "24, 30, 36, 44, 52 mm" },
+    ],
+    colors1: colors,
+    colors2: colors1,
+    description: ["/* Descriptions for ColorPickerPage here */"],
+  },
+  {
+    id: "dorado-76",
+    category: "pencere-ve-kapı-sistemleri",
+    name: "Dorado 76",
+    teknikImage: require("./assets/yenidorado76jpg_29-01-2021_18-31-47.jpg"),
+    logo: require("./assets/yeni-dorado-76png-29-01-2021-18-33-55png_12-03-2024_14-39-02.png"),
+    technicalData: [
+      { label: "Profil Genişliği", value: "76 mm" },
+      { label: "Odacık Sayısı", value: "5" },
+      { label: "Sınıf", value: "A Class - TS EN 12608-1 + A1" },
+      { label: "Conta", value: "TPE Gri / Siyah" },
+      { label: "Conta Sayısı", value: "3" },
+      { label: "Çıta", value: "Tek tırnaklı - PCE contalı" },
+      { label: "Cam Kalınlıkları", value: "24, 30, 36, 44, 52 mm" },
+    ],
+    colors1: colors,
+    colors2: colors1,
+    description: ["/* Descriptions for ColorPickerPage here */"],
+  },
+  {
+    id: "dorado-76",
+    category: "pencere-ve-kapı-sistemleri",
+    name: "Dorado 76",
+    teknikImage: require("./assets/yenidorado76jpg_29-01-2021_18-31-47.jpg"),
+    logo: require("./assets/yeni-dorado-76png-29-01-2021-18-33-55png_12-03-2024_14-39-02.png"),
+    technicalData: [
+      { label: "Profil Genişliği", value: "76 mm" },
+      { label: "Odacık Sayısı", value: "5" },
+      { label: "Sınıf", value: "A Class - TS EN 12608-1 + A1" },
+      { label: "Conta", value: "TPE Gri / Siyah" },
+      { label: "Conta Sayısı", value: "3" },
+      { label: "Çıta", value: "Tek tırnaklı - PCE contalı" },
+      { label: "Cam Kalınlıkları", value: "24, 30, 36, 44, 52 mm" },
+    ],
+    colors1: colors,
+    colors2: colors1,
+    description: ["/* Descriptions for ColorPickerPage here */"],
+  },
+  {
+    id: "dorado-76",
+    category: "pencere-ve-kapı-sistemleri",
+    name: "Dorado 76",
+    teknikImage: require("./assets/yenidorado76jpg_29-01-2021_18-31-47.jpg"),
+    logo: require("./assets/yeni-dorado-76png-29-01-2021-18-33-55png_12-03-2024_14-39-02.png"),
+    technicalData: [
+      { label: "Profil Genişliği", value: "76 mm" },
+      { label: "Odacık Sayısı", value: "5" },
+      { label: "Sınıf", value: "A Class - TS EN 12608-1 + A1" },
+      { label: "Conta", value: "TPE Gri / Siyah" },
+      { label: "Conta Sayısı", value: "3" },
+      { label: "Çıta", value: "Tek tırnaklı - PCE contalı" },
+      { label: "Cam Kalınlıkları", value: "24, 30, 36, 44, 52 mm" },
+    ],
+    colors1: colors,
+    colors2: colors1,
+    description: ["/* Descriptions for ColorPickerPage here */"],
+  },
+  // Add more products like Revotech, Safir76, etc.
+];
+
+export default products;

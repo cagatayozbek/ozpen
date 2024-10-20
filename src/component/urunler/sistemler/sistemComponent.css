@@ -1,0 +1,56 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container-fullscreen {
+  height: 90vh; /* Tüm ekranı kaplar */
+}
+
+.grid-item {
+  opacity: 0; /* Başlangıçta görünmez */
+  animation: fadeInUp 0.8s ease-out forwards; /* Animasyon süresi ve tipi */
+}
+
+.header-text {
+  font-size: 52px;
+  color: #070155;
+}
+@keyframes slideIn {
+  0% {
+    width: 0;
+    left: 0;
+  }
+  100% {
+    width: 100%;
+    left: 0;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Aşağıdan yukarı animasyon */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header-text {
+  animation: fadeIn 1s ease-out forwards; /* 1 saniye içinde animasyon tamamlanır */
+}
+
+/* Span içinde yer alan turuncu arka plan */
+.header-text span span {
+  animation: slideIn 1.2s ease-out forwards; /* 2 saniye içinde soldan sağa kayar */
+  position: absolute;
+}
+
+.text-field-row {
+  display: flex;
+  gap: 16px;
+}
