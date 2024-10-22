@@ -42,7 +42,7 @@ const Home = () => {
               }}
             />
           </Background>
-          <Header />
+
           <Container maxWidth="xl">
             <div
               style={{

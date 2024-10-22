@@ -62,7 +62,7 @@ export default function Header() {
   return (
     <>
       <AppBar
-        position="absolute"
+        position="relative"
         sx={{
           backgroundColor: isCamBalkon
             ? "rgba(255, 255, 255, 0.4)" // Transparent black background for CamBalkon page

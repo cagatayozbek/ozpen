@@ -36,7 +36,7 @@ export default function TanıtımComponent({ background, description }) {
               style={{
                 filter: "brightness(30%)",
                 height: "100vh", // Resmin yüksekliğini tam ekran yapar
-                objectFit: "cover", // Resmi kapsayıcı olarak boyutlandırır (tam ekran kaplar)
+                //objectFit: "cover", // Resmi kapsayıcı olarak boyutlandırır (tam ekran kaplar)
               }}
             />
           </Background>
