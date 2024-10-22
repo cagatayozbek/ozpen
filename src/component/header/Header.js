@@ -1,130 +1,184 @@
-import * as React from "react";
-import { Outlet, Link, useLocation } from "react-router-dom";
 import {
   AppBar,
-  Toolbar,
-  IconButton,
+  Box,
+  Button,
+  Container,
+  CssBaseline,
+  Divider,
   Drawer,
+  Fab,
+  IconButton,
   List,
   ListItem,
+  ListItemButton,
   ListItemText,
-  Box,
-  Divider,
-  Container,
+  Toolbar,
+  Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import logo from "./logo.png";
-import "./Header.css";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import React, { useState } from "react";
+import { Outlet } from "react-router-dom";
+import useScrollTrigger from "@mui/material/useScrollTrigger";
+import Fade from "@mui/material/Fade";
+import logo from "./logo.png"; // Logo dosyanız
 
-export default function Header() {
-  const [drawerOpen, setDrawerOpen] = React.useState(false);
-  const location = useLocation(); // Get the current path
+const drawerWidth = 200;
+const navItems = ["Home", "About", "Contact"];
 
-  // Check if the current path is the CamBalkon page
-  const isCamBalkon = location.pathname === "/urunler/cam-balkon-sistemleri";
+function ElevationScroll(props) {
+  const { children, window } = props;
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+    target: window ? window() : undefined,
+  });
 
-  const toggleDrawer = (open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
+  return children
+    ? React.cloneElement(children, {
+        elevation: trigger ? 4 : 0,
+      })
+    : null;
+}
+
+function ScrollTop(props) {
+  const { children, window } = props;
+  const trigger = useScrollTrigger({
+    target: window ? window() : undefined,
+    disableHysteresis: true,
+    threshold: 100,
+  });
+
+  const handleClick = (event) => {
+    const anchor = (event.target.ownerDocument || document).querySelector(
+      "#back-to-top-anchor"
+    );
+    if (anchor) {
+      anchor.scrollIntoView({
+        block: "start",
+      });
     }
-    setDrawerOpen(open);
   };
 
-  const menuItems = [
-    { text: "Home", link: "/" },
-    { text: "Kurumsal", link: "/kurumsal" },
-    { text: "Ürünler" },
-    { text: "İletişim", link: "/iletişim" },
-  ];
+  return (
+    <Fade in={trigger}>
+      <Box
+        onClick={handleClick}
+        role="presentation"
+        sx={{ position: "fixed", bottom: 16, right: 16 }}
+      >
+        {children}
+      </Box>
+    </Fade>
+  );
+}
 
-  const drawerList = () => (
-    <Box sx={{ width: 250 }}>
+export default function Header(props) {
+  const { window } = props;
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const handleDrawerToggle = () => {
+    setMobileOpen((prevState) => !prevState);
+  };
+
+  const drawer = (
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+      <Divider />
       <List>
-        {menuItems.map((item, index) => (
-          <ListItem
-            button
-            key={index}
-            component={Link}
-            to={item.link}
-            onClick={toggleDrawer(false)}
-          >
-            <ListItemText primary={item.text} />
+        {navItems.map((item) => (
+          <ListItem key={item} disablePadding>
+            <ListItemButton sx={{ textAlign: "center" }}>
+              <ListItemText primary={item} />
+            </ListItemButton>
           </ListItem>
         ))}
       </List>
-      <Divider />
     </Box>
   );
 
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
+
   return (
     <>
-      <AppBar
-        position="relative"
-        sx={{
-          backgroundColor: isCamBalkon
-            ? "rgba(255, 255, 255, 0.4)" // Transparent black background for CamBalkon page
-            : "rgba(255, 255, 255, 0)", // Default transparent background for other pages
-          boxShadow: "none", // No shadow
-          width: "100%",
-          zIndex: 1300,
-          marginTop: "20px",
-        }}
-      >
-        <Container maxWidth="lg">
-          <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-            <IconButton
-              edge="start"
-              aria-label="menu"
-              onClick={toggleDrawer(true)}
-              sx={{ display: { xs: "block", sm: "none" } }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <img src={logo} alt="Logo" className="logo" />
-            <div className="nav-links">
-              <ul>
-                {menuItems.map((item, index) => (
-                  <li key={index}>
-                    {item.text === "Ürünler" ? (
-                      <div className="dropdown">
-                        <Link to={item.link}>{item.text}</Link>
-                        <div className="dropdown-content">
-                          <Link to="/urunler/pencere-ve-kapı-sistemleri">
-                            Pencere ve Kapı Sistemleri
-                          </Link>
-                          <Link to="/urunler/surme-sistemleri">
-                            Sürme Sistemleri
-                          </Link>
-                          <Link to="/urunler/panjur-ve-kepenk-sistemleri">
-                            Panjur ve Kepenk Sistemleri
-                          </Link>
-                          <Link to="/urunler/donanım-sistemleri">
-                            Donanım Sistemleri
-                          </Link>
-                          <Link to="/urunler/cam-balkon-sistemleri">
-                            Cam Balkon Sistemleri
-                          </Link>
-                        </div>
-                      </div>
-                    ) : (
-                      <Link to={item.link}>{item.text}</Link>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Toolbar>
-        </Container>
-      </AppBar>
+      <Box sx={{ display: "flex", mb: "100px" }}>
+        <CssBaseline />
+        <ElevationScroll {...props}>
+          <AppBar component="nav" color="inherit">
+            <Container>
+              <Toolbar
+                sx={{
+                  minHeight: { xs: 80, sm: 64 }, // Mobilde yüksekliği artırdık
+                }}
+              >
+                <IconButton
+                  color="inherit"
+                  aria-label="open drawer"
+                  edge="start"
+                  onClick={handleDrawerToggle}
+                  sx={{ mr: 2, display: { sm: "none" } }}
+                >
+                  <MenuIcon />
+                </IconButton>
 
-      <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
-        {drawerList()}
-      </Drawer>
+                {/* Mobil ekranlarda logo */}
+                <Box
+                  component="img"
+                  src={logo}
+                  alt="logo"
+                  sx={{
+                    height: 50,
+                    display: { xs: "block", sm: "none" },
+                    marginLeft: "auto",
+                  }}
+                />
 
-      <div>
+                {/* Daha büyük ekranlar için logo */}
+                <Typography
+                  variant="h6"
+                  component="div"
+                  sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+                >
+                  <img src={logo} alt="logo" style={{ height: "80px" }} />
+                </Typography>
+                <Box sx={{ display: { xs: "none", sm: "block" } }}>
+                  {navItems.map((item) => (
+                    <Button key={item} sx={{ color: "#000" }}>
+                      {item}
+                    </Button>
+                  ))}
+                </Box>
+              </Toolbar>
+            </Container>
+          </AppBar>
+        </ElevationScroll>
+        <nav>
+          <Drawer
+            container={container}
+            variant="temporary"
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            ModalProps={{
+              keepMounted: true, // Mobilde performans için
+            }}
+            sx={{
+              display: { xs: "block", sm: "none" },
+              "& .MuiDrawer-paper": {
+                boxSizing: "border-box",
+                width: drawerWidth,
+              },
+            }}
+          >
+            {drawer}
+          </Drawer>
+        </nav>
+      </Box>
+
+      <ScrollTop {...props}>
+        <Fab size="small" aria-label="scroll back to top">
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </ScrollTop>
+      <div id="back-to-top-anchor">
         <Outlet />
       </div>
     </>

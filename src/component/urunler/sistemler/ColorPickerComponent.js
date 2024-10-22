@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Grid2, Typography } from "@mui/material";
 import "./sistemComponent.css";
 
-export default function ColorPickerPage({ colors, description }) {
+export default function ColorPickerPage({ colors, title }) {
   const [selectedProduct, setSelectedProduct] = useState(
     colors[0].productImage
   );
@@ -18,38 +18,18 @@ export default function ColorPickerPage({ colors, description }) {
         <Grid2 item size={{ xs: 12 }}>
           <Box sx={{ padding: "0 20px" }}>
             <Typography variant="h4" className="header-text">
-              <span style={{ position: "relative", zIndex: 1 }}>
-                <span
-                  style={{
-                    position: "absolute",
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    height: "30%",
-                    backgroundColor: "#FE5001",
-                    zIndex: -1,
-                  }}
-                ></span>
-                Donanım
-              </span>
+              {title}
             </Typography>
-
-            {description && (
-              <Typography sx={{ marginTop: "10px" }}>{description}</Typography>
-            )}
           </Box>
         </Grid2>
 
         {/* Color Options */}
-        <Grid2 container item xs={12} spacing={2}>
+        <Grid2 container item xs={12}>
           {colors.map((color, index) => (
             <Grid2
               key={index}
               item
               size={{ xs: 6, sm: 6, md: 4 }}
-              xs={6}
-              sm={6}
-              md={4}
               sx={{
                 display: "flex",
                 alignItems: "center",

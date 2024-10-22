@@ -29,13 +29,9 @@ export default function Safir76() {
         }}
       />
       <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={8}>
+        <Grid container spacing={8} sx={{ flexDirection: "column-reverse" }}>
           <Grid size={{ xs: 12, sm: 4 }} sx={{ paddingBottom: "110px" }}>
-            <img
-              src={teknik}
-              alt="teknik-görsel"
-              style={{ maxWidth: "100%" }}
-            />
+            <img src={teknik} alt="teknik-görsel" style={{ maxWidth: "80%" }} />
             <Box
               sx={{
                 paddingTop: "50px",
@@ -91,18 +87,15 @@ export default function Safir76() {
         </Grid>
       </Box>
       <Box sx={{ width: "100%", padding: "20px" }}>
-        <Grid container spacing={4}>
+        <Grid container spacing={15}>
           {/* First Color Picker Page */}
           <Grid item size={{ xs: 12, md: 6 }}>
-            <ColorPickerPage
-              colors={colors}
-              description="Winsa pvc pencere, kapı ve sürme sistemlerinizi mimari yapınıza uygun minimal tasarım hatları ve renk seçenekleri ile uyumlu özel winsa donanımları ile tamamlayın."
-            />
+            <ColorPickerPage colors={colors} title="Donanım" />
           </Grid>
 
           {/* Second Color Picker Page */}
           <Grid item size={{ xs: 12, md: 6 }}>
-            <ColorPickerPage colors={colors1} />
+            <ColorPickerPage colors={colors1} title="Renkler" />
           </Grid>
         </Grid>
       </Box>
