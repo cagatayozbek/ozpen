@@ -1,30 +1,34 @@
 import React from "react";
-import Paralax from "../../../home/Paralax";
+
 import logo from "../assets/yeni-dorado-76png-29-01-2021-18-33-55png_12-03-2024_14-39-02.png";
 import background from "./assets/dorado-bg.jpg";
 import background2 from "./assets/dorado-bg2.jpg";
-import reddot from "./assets/reddot.png";
+
 import teknik from "./assets/dorado-teknik.png";
-import TanıtımComponent from "./components/TanıtımComponent";
+import { Container } from "@mui/material";
 import TeknikComponent from "./components/TeknikComponent";
 import ColorPickerPage from "../ColorPickerComponent";
-import { colors, colors1, description } from "../colorArrays";
+
 import Form from "../Form";
 export default function Dorado76() {
   return (
-    <div>
-      <Paralax logo={logo} background={background} title={title} />
-      <TanıtımComponent background={background2} description={aciklama} />
+    <Container
+      maxWidth="lg"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        paddingBottom: "100px",
+      }}
+    >
       <TeknikComponent
-        technicalData={technicalData}
-        reddot={reddot}
-        teknik={teknik}
         logo={logo}
+        technicalData={technicalData}
+        description={aciklama}
+        background={background}
+        teknik={teknik}
       />
-      <ColorPickerPage colors={colors1} />
-      <ColorPickerPage colors={colors} description={description} />
-      <Form />
-    </div>
+      <ColorPickerPage />
+    </Container>
   );
 }
 

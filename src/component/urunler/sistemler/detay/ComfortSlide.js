@@ -1,24 +1,31 @@
 import React from "react";
-import Paralax from "../../../home/Paralax";
+
 import logo from "../assets/surme/slide1.png";
 import background2 from "./assets/comfort-plus-bg.jpg";
 import background from "./assets/comfort-plus-bg2.jpg";
 
-import TanıtımComponent from "./components/TanıtımComponent";
 import TeknikComponent from "./components/TeknikComponent";
 import ColorPickerPage from "../ColorPickerComponent";
-import { colors, colors1, description } from "../colorArrays";
 import Form from "../Form";
+import { Container } from "@mui/material";
 export default function ComfortSlide() {
   return (
-    <div>
-      <Paralax logo={logo} background={background} title={title} />
-      <TanıtımComponent background={background2} description={aciklama} />
-      <TeknikComponent technicalData={technicalData} logo={logo} />
-      <ColorPickerPage colors={colors1} />
-      <ColorPickerPage colors={colors} description={description} />
-      <Form />
-    </div>
+    <Container
+      maxWidth="lg"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        paddingBottom: "100px",
+      }}
+    >
+      <TeknikComponent
+        logo={logo}
+        technicalData={technicalData}
+        description={aciklama}
+        background={background}
+      />
+      <ColorPickerPage />
+    </Container>
   );
 }
 

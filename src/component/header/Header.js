@@ -103,7 +103,14 @@ export default function Header(props) {
       <Box sx={{ display: "flex", mb: "100px" }}>
         <CssBaseline />
         <ElevationScroll {...props}>
-          <AppBar component="nav" color="inherit">
+          <AppBar
+            component="nav"
+            color="inherit"
+            sx={{
+              boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", // Gölgeli border
+              borderBottom: "1px solid rgba(0, 0, 0, 0.12)", // İnce alt çizgi
+            }}
+          >
             <Container>
               <Toolbar
                 sx={{

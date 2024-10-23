@@ -3,11 +3,10 @@ import React from "react";
 import wImage from "../../../assets/w.png";
 import acilim from "./assets/acilim.jpg";
 import acilim2 from "./assets/acilim2.png";
-import { colors, description } from "./colorArrays";
-
 import "./sistemComponent.css";
 import ColorPickerPage from "./ColorPickerComponent";
 import Form from "./Form";
+
 export default function DonanımSistemleri() {
   return (
     <div>
@@ -30,14 +29,12 @@ export default function DonanımSistemleri() {
             backgroundRepeat: "no-repeat", // No repeat
             backgroundPosition: "center", // Center the image
             opacity: 0.5, // Adjust the opacity of the background image
-            // Keep the image behind the content
-            zIndex: -1,
+            zIndex: -1, // Keep the image behind the content
           },
         }}
       >
-        <Box sx={{ paddingX: "30px" }}>
-          <Box sx={{ paddingLeft: "100px" }}>
-            {" "}
+        <Box sx={{ paddingX: { xs: "15px", md: "30px" } }}>
+          <Box sx={{ paddingLeft: { xs: "0px", md: "100px" } }}>
             <h1 className="header-text">
               <span style={{ position: "relative", zIndex: 1 }}>
                 <span
@@ -55,14 +52,14 @@ export default function DonanımSistemleri() {
               </span>
             </h1>
           </Box>
-          <Box sx={{ paddingTop: "30px" }}>
+          <Box sx={{ paddingTop: { xs: "20px", md: "30px" } }}>
             <Grid2 container spacing={2}>
-              <Grid2 size={6} sx={{}}>
+              <Grid2 size={{ xs: 12, md: 6 }}>
                 <Typography
                   sx={{
-                    fontSize: "18px",
+                    fontSize: { xs: "16px", md: "18px" },
                     color: "#070155",
-                    paddingLeft: "100px",
+                    paddingLeft: { xs: "0px", md: "100px" },
                   }}
                 >
                   Winsa Donanım sistemleri yüksek kalite ve işlevselliği
@@ -74,24 +71,33 @@ export default function DonanımSistemleri() {
                 </Typography>
               </Grid2>
               <Grid2
-                size={6}
+                size={{ xs: 12, md: 6 }}
                 sx={{
                   display: "flex",
                   alignContent: "center",
                   justifyContent: "center",
                 }}
               >
-                <img src={acilim} alt="acılım" loading="lazy" />
+                <img
+                  src={acilim}
+                  alt="acılım"
+                  loading="lazy"
+                  style={{
+                    maxWidth: "50%",
+                    height: "auto",
+                  }}
+                />
               </Grid2>
             </Grid2>
           </Box>
         </Box>
       </Box>
+
       {/** -----------------ikinci sayfa------------------------ */}
       <Box
         sx={{
           position: "relative",
-          height: "100vh", // Yüksekliği tam ekran
+          minHeight: "100vh", // Minimum yüksekliği tam ekran
           alignContent: "center",
           backgroundColor: "rgba(0,0,0,0.7)",
           "&::before": {
@@ -101,41 +107,43 @@ export default function DonanımSistemleri() {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundImage: `url(${wImage})`, // Background image
-            backgroundSize: "cover", // Cover the whole area
-            backgroundRepeat: "no-repeat", // No repeat
-            backgroundPosition: "center", // Center the image
-            opacity: 0.5, // Adjust the opacity of the background image
-            // Keep the image behind the content
+            backgroundImage: `url(${wImage})`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            opacity: 0.5,
             zIndex: -1,
           },
         }}
       >
         <Grid2 container spacing={2}>
           <Grid2
-            size={6}
+            size={{ xs: 12, md: 6 }}
             sx={{
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-              paddingLeft: "130px",
+              paddingLeft: { xs: "15px", md: "130px" },
+              paddingRight: { xs: "15px", md: "0px" }, // Mobilde sağa sola padding ekle
             }}
           >
             <div>
               <Typography
                 variant="h2"
                 sx={{
-                  //  fontSize: "70px",
+                  fontSize: { xs: "28px", md: "36px" }, // Mobilde yazı boyutunu küçült
                   color: "white",
                   fontWeight: "bold",
-                  paddingBottom: "60px",
+                  paddingBottom: "40px",
                 }}
               >
                 Winsa Vasistas Öncelikli Çift Açılımla Her Açıdan Güvenlik
               </Typography>
             </div>
             <div>
-              <Typography sx={{ fontSize: "16px", color: "white" }}>
+              <Typography
+                sx={{ fontSize: { xs: "14px", md: "16px" }, color: "white" }}
+              >
                 Kol pozisyonun ilk hareketi ile vasistas açılım, ikinci hareketi
                 ile düz açılım yaptıgı sistemdir. Özellikle yüksek yapılarda
                 çocukların güvenligini saglamak amacıyla oldukça kullanıslıdır.
@@ -146,7 +154,7 @@ export default function DonanımSistemleri() {
             </div>
           </Grid2>
           <Grid2
-            size={6}
+            size={{ xs: 12, md: 6 }}
             sx={{
               display: "flex",
               alignItems: "center",
@@ -157,12 +165,13 @@ export default function DonanımSistemleri() {
               src={acilim2}
               alt="acilim2"
               loading="lazy"
-              style={{ height: "80%" }}
+              style={{ maxWidth: "70%", height: "auto" }}
             />
           </Grid2>
         </Grid2>
       </Box>
-      <ColorPickerPage colors={colors} description={description} />
+
+      <ColorPickerPage />
       <Form />
     </div>
   );

@@ -42,7 +42,7 @@ export default function Form() {
               justifyContent: "center",
               alignItems: "center",
               flexDirection: "column",
-              height: "100vh",
+              minHeight: "50vh",
             }}
           >
             <Typography
@@ -61,7 +61,6 @@ export default function Form() {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                height: "100vh",
               }}
               noValidate
               autoComplete="off"

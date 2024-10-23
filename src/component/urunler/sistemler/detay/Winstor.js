@@ -1,29 +1,33 @@
 import React from "react";
-import Paralax from "../../../home/Paralax";
+
 import logo from "../assets/panjur/winstor1.png";
 import background from "./assets/winstor-bg.jpg";
 import background2 from "./assets/winstor-bg2.jpg";
 import teknik from "./assets/winstor-teknik.png";
-import TanıtımComponent from "./components/TanıtımComponent";
+
 import TeknikComponent from "./components/TeknikComponent";
 import ColorPickerPage from "../ColorPickerComponent";
-import { colors, colors1, description } from "../colorArrays";
+import { Container } from "@mui/material";
 import Form from "../Form";
 export default function Winstor() {
   return (
-    <div>
-      <Paralax logo={logo} background={background} title={title} />
-      <TanıtımComponent background={background2} description={aciklama} />
+    <Container
+      maxWidth="lg"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        paddingBottom: "100px",
+      }}
+    >
       <TeknikComponent
-        technicalData={technicalData}
         logo={logo}
+        technicalData={technicalData}
+        description={aciklama}
+        background={background}
         teknik={teknik}
-        desc={desc}
       />
-      <ColorPickerPage colors={colors1} />
-      <ColorPickerPage colors={colors} description={description} />
-      <Form />
-    </div>
+      <ColorPickerPage />
+    </Container>
   );
 }
 

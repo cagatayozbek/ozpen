@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Box, Grid2, Typography } from "@mui/material";
 import "./sistemComponent.css";
+import { colors, colors1 } from "./colorArrays";
 
-export default function ColorPickerPage({ colors, title }) {
+const ColorPicker = ({ colors, title }) => {
   const [selectedProduct, setSelectedProduct] = useState(
     colors[0].productImage
   );
@@ -10,7 +11,6 @@ export default function ColorPickerPage({ colors, title }) {
   const handleColorSelect = (productImage) => {
     setSelectedProduct(productImage);
   };
-
   return (
     <Box sx={{ height: "100%" }}>
       <Grid2 container spacing={2} sx={{ flexDirection: "column" }}>
@@ -79,6 +79,26 @@ export default function ColorPickerPage({ colors, title }) {
               height: "auto",
             }}
           />
+        </Grid2>
+      </Grid2>
+    </Box>
+  );
+};
+
+export default function ColorPickerPage() {
+  // Büyük harfle başlamalı, böylece JSX'de bileşen olarak tanınır.
+
+  return (
+    <Box sx={{ width: "100%", padding: "20px" }}>
+      <Grid2 container spacing={15}>
+        {/* First Color Picker Page */}
+        <Grid2 item size={{ xs: 12, md: 6 }}>
+          <ColorPicker colors={colors} title="Donanım" />
+        </Grid2>
+
+        {/* Second Color Picker Page */}
+        <Grid2 item size={{ xs: 12, md: 6 }}>
+          <ColorPicker colors={colors1} title="Renkler" />
         </Grid2>
       </Grid2>
     </Box>

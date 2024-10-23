@@ -1,29 +1,32 @@
 import React from "react";
-import Paralax from "../../../home/Paralax";
 import logo from "../assets/revotechgoldpng_27-10-2020_11-26-33.png";
 import background from "../../../../assets/1logo.png";
 import background2 from "./assets/revotechgold-bg.jpg";
 import TeknikComponent from "./components/TeknikComponent";
-import TanıtımComponent from "./components/TanıtımComponent";
 import teknik from "./assets/revotech-gold-teknik.png";
 import ColorPickerPage from "../ColorPickerComponent";
-import { colors, colors1, description } from "../colorArrays";
+import { Container } from "@mui/material";
 import Form from "../Form";
 
 export default function RevotechGold() {
   return (
-    <div>
-      <Paralax logo={logo} background={background} title={title} />
-      <TanıtımComponent background={background2} description={aciklama} />
+    <Container
+      maxWidth="lg"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        paddingBottom: "100px",
+      }}
+    >
       <TeknikComponent
-        technicalData={technicalData}
-        teknik={teknik}
         logo={logo}
+        technicalData={technicalData}
+        description={aciklama}
+        background={background}
+        teknik={teknik}
       />
-      <ColorPickerPage colors={colors1} />
-      <ColorPickerPage colors={colors} description={description} />
-      <Form />
-    </div>
+      <ColorPickerPage />
+    </Container>
   );
 }
 
