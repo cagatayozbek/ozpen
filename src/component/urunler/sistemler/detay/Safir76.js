@@ -29,9 +29,31 @@ export default function Safir76() {
         }}
       />
       <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={8} sx={{ flexDirection: "column-reverse" }}>
+        <Grid container spacing={8}>
+          <Grid size={{ xs: 12, sm: 7 }}>
+            <div>
+              <img src={logo} />
+            </div>
+            {description.map((item, index) => (
+              <div index={index} style={{ paddingBottom: "15px" }}>
+                <h1 style={{ color: "#FE5001" }}>
+                  {item.title}
+                  <br />
+                </h1>
+                <Typography
+                  sx={
+                    {
+                      //   fontWeight: "bold",
+                    }
+                  }
+                >
+                  {item.desc}
+                </Typography>
+              </div>
+            ))}
+          </Grid>
           <Grid size={{ xs: 12, sm: 4 }} sx={{ paddingBottom: "110px" }}>
-            <img src={teknik} alt="teknik-görsel" style={{ maxWidth: "80%" }} />
+            <img src={teknik} alt="teknik-görsel" style={{ maxWidth: "70%" }} />
             <Box
               sx={{
                 paddingTop: "50px",
@@ -61,28 +83,6 @@ export default function Safir76() {
                 </Box>
               ))}
             </Box>
-          </Grid>
-          <Grid size={{ xs: 12, sm: 7 }}>
-            <div>
-              <img src={logo} />
-            </div>
-            {description.map((item, index) => (
-              <div index={index} style={{ paddingBottom: "15px" }}>
-                <h1 style={{ color: "#FE5001" }}>
-                  {item.title}
-                  <br />
-                </h1>
-                <Typography
-                  sx={
-                    {
-                      //   fontWeight: "bold",
-                    }
-                  }
-                >
-                  {item.desc}
-                </Typography>
-              </div>
-            ))}
           </Grid>
         </Grid>
       </Box>
