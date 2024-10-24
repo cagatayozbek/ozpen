@@ -5,90 +5,74 @@ import wImage from "../../../assets/w.png"; // Add the wImage
 import { Container, Typography, Box } from "@mui/material";
 import "./CamBalkon.css";
 import Form from "./Form";
+import SistemComponent from "./SistemComponent";
 
 const CamBalkon = () => {
   return (
     <div>
-      {/* Add wImage as a background layer */}
-      <Box
-        sx={{
-          position: "relative",
-          height: "100vh",
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundImage: `url(${wImage})`, // Use wImage as background
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            opacity: 0.2, // Adjust opacity for a subtle background effect
-            zIndex: 1, // Ensure it's behind all content and parallax
-          },
-        }}
-      >
-        {/* Parallax Section */}
-        <Parallax strength={300}>
-          <Background className="custom-bg">
-            <img
-              src={logo1}
-              alt="Winsa Logo"
-              style={{
-                height: "100vh", // Resmin yüksekliğini tam ekran yapar
-                objectFit: "cover", // Resmi kapsayıcı olarak boyutlandırır (tam ekran kaplar)
-              }}
-            />
-          </Background>
-
-          <Container maxWidth="xl">
-            <div
-              style={{
-                height: "100vh",
-                display: "flex",
-                alignItems: "flex-start",
-                flexDirection: "column",
-                justifyContent: "center",
-                paddingLeft: "10%",
-              }}
-            >
-              <h1 className="text-lines">
-                <span style={{ position: "relative", zIndex: 1 }}>
-                  <span
-                    style={{
-                      position: "absolute",
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      height: "30%",
-                      backgroundColor: "#FE5001",
-                      zIndex: -1,
-                    }}
-                  ></span>
-                  Winsa
-                </span>{" "}
-                Cam
-                <br />
-                Balkon Sistemleri
-              </h1>
-              <div>
-                <Typography
-                  sx={{
-                    color: "white",
-                  }}
-                >
-                  Daha canlı, daha geniş daha aydınlık...
-                </Typography>
-              </div>
-            </div>
-          </Container>
-        </Parallax>
-      </Box>
-      <Form />
+      <SistemComponent menuItem={menuItem} title={title} />;
+      <SistemComponent menuItem={menuItem2} title={title2} />;
+      <SistemComponent menuItem={menuItem3} title={title3} />;
     </div>
   );
 };
 
 export default CamBalkon;
+const title = ["Katlanır", "Cam Balkon Sistemleri"];
+const title2 = ["Sürme", "Cam Balkon Sistemleri"];
+const title3 = ["Küpeşte ve Perde", "Sistemleri"];
+const menuItem = [
+  {
+    name: "Veranda",
+    imgDesc:
+      "Yoğun Ar-Ge çalışmaları sonucunda son teknoloji ile üretilmiştir.",
+  },
+  {
+    name: "Vela Gold",
+    imgDesc:
+      "Manzaradan ödün vermeyen özelliğiyle tüm balkonlara uygulanabilir.",
+  },
+  {
+    name: "Camekan",
+    imgDesc:
+      "Evin salon ve odaları dışında bir oda oluşturarak kullanıcısına yepyeni bir yaşam alanı sunuyor.",
+  },
+  {
+    name: "Camekan Konfor",
+    imgDesc:
+      "Camekan Konfor katlanır cam balkon sistemi, 5 özel renk seçeneğiyle farklı beğenilere ve dekorasyon tercihlerine uygundur.",
+  },
+  {
+    name: "Vela ",
+    imgDesc:
+      "Vela Cam Balkon Sistemleri, evin salon odaları dışında yepyeni bir yaşam alanı sunuyor.",
+  },
+];
+const menuItem2 = [
+  {
+    name: "Teras",
+    imgDesc:
+      "Kolay kullanımı, güvenliği ve estetiği bir arada sunan bir sistem tasarımıdır.",
+  },
+  {
+    name: "Teras Konfor",
+    imgDesc:
+      "Sahip olduğu tutamak tasarımı ile maksimum kullanım konforu sağlar.",
+  },
+  {
+    name: "Teras Kuartet",
+    imgDesc:
+      "Temperli çift cam uygulaması ile  hava, su ve rüzgar yalıtımı sağlayarak balkonlarınızı yaşam alanına dönüştürür",
+  },
+];
+
+const menuItem3 = [
+  {
+    name: "Hareketli Küpeşte Sistemleri",
+    imgDesc: "Daha canlı, daha geniş, daha aydınlık…",
+  },
+  {
+    name: "Dış Mekan Perde Sistemleri",
+    imgDesc: "Estetik ve tasarruf bir arada.",
+  },
+];

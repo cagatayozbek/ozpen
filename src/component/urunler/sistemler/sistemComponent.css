@@ -6,7 +6,7 @@ body {
 }
 
 .container-fullscreen {
-  height: 90vh; /* Tüm ekranı kaplar */
+  height: 65vh; /* Tüm ekranı kaplar */
 }
 
 .grid-item {

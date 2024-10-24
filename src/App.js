@@ -20,6 +20,7 @@ import Panorama from "./component/urunler/sistemler/detay/Panorama";
 import Lotus from "./component/urunler/sistemler/detay/Lotus";
 import Winstor from "./component/urunler/sistemler/detay/Winstor";
 import Winkepenk from "./component/urunler/sistemler/detay/Winkepenk";
+import Urunler from "./component/urunler/Urunler";
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
           <Route path="kurumsal" element={<Kurumsal />} />
           <Route path="iletisim" element={<Contact />} />
           {/* Redirecting from /urunler to /home */}
-          <Route path="urunler" element={<Navigate to="/" />} />
+          <Route path="urunler" element={<Urunler />} />
           {/* //////////////////////pencere///////////////////////*/}
           <Route
             path="urunler/pencere-ve-kapı-sistemleri"
