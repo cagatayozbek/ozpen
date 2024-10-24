@@ -1,0 +1,25 @@
+{
+  "short_name": "Özpen PVC",
+  "name": "Başkent Özpen PVC",
+  "icons": [
+    {
+      "src": "../src/component/header/logo.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "../src/component/header/logo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "../src/component/header/logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
