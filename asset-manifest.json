@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Ozpen/static/css/main.9572536f.css",
-    "main.js": "/Ozpen/static/js/main.a04d3cc5.js",
+    "main.js": "/Ozpen/static/js/main.261fc32d.js",
     "static/js/453.0df64ecb.chunk.js": "/Ozpen/static/js/453.0df64ecb.chunk.js",
     "static/media/1logo.png": "/Ozpen/static/media/1logo.85fae32f9e46ed8f71df.png",
     "static/media/2logo.png": "/Ozpen/static/media/2logo.74729e147856318b12f6.png",
@@ -74,11 +74,11 @@
     "static/media/acilim.jpg": "/Ozpen/static/media/acilim.0a9e74cb61ec1b04b187.jpg",
     "index.html": "/Ozpen/index.html",
     "main.9572536f.css.map": "/Ozpen/static/css/main.9572536f.css.map",
-    "main.a04d3cc5.js.map": "/Ozpen/static/js/main.a04d3cc5.js.map",
+    "main.261fc32d.js.map": "/Ozpen/static/js/main.261fc32d.js.map",
     "453.0df64ecb.chunk.js.map": "/Ozpen/static/js/453.0df64ecb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9572536f.css",
-    "static/js/main.a04d3cc5.js"
+    "static/js/main.261fc32d.js"
   ]
 }
