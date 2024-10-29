@@ -98,3 +98,55 @@ export const colors1 = [
     productImage: require("./assets/pencere/winchester.png"),
   },
 ];
+
+export const kartela = [
+  {
+    name: "Antrasit Gri",
+    src: require("./assets/cambalkon/antrasit-gri.jpg"),
+  },
+  { name: "Vizon", src: require("./assets/cambalkon/vizon.jpg") },
+  {
+    name: "Satine",
+    src: require("./assets/cambalkon/natural-eloksal.jpg"),
+  },
+  { name: "Altın Meşe", src: require("./assets/cambalkon/altinmese.jpg") },
+  { name: "Titan", src: require("./assets/cambalkon/titan.jpg") },
+];
+
+export const kartela2 = [
+  {
+    name: "Sedef Beyaz",
+    src: require("./assets/cambalkon/beyaz.jpg"),
+  },
+  {
+    name: "Natural Eloksal",
+    src: require("./assets/cambalkon/natural-eloksal.jpg"),
+  },
+  { name: "Titan", src: require("./assets/cambalkon/titan.jpg") },
+  { name: "Vizon Mat", src: require("./assets/cambalkon/vizon.jpg") },
+  {
+    name: "Antrasit Gri",
+    src: require("./assets/cambalkon/antrasit-gri.jpg"),
+  },
+
+  {
+    name: "Siyah",
+    src: require("./assets/cambalkon/siyah.jpg"),
+  },
+  { name: "Altın Meşe", src: require("./assets/cambalkon/altinmese.jpg") },
+];
+
+export const kartela3 = [
+  {
+    name: "Antrasit Gri Texture",
+    src: require("./assets/cambalkon/metalik-antrasit-gri.jpg"),
+  },
+  {
+    name: "Siyah Mat Texture",
+    src: require("./assets/cambalkon/siyah.jpg"),
+  },
+  {
+    name: "Kahverengi Texture",
+    src: require("./assets/cambalkon/natural-eloksal.jpg"),
+  },
+];

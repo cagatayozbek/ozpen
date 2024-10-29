@@ -11,11 +11,13 @@ const menuItem = [
     imgDesSource: require("./assets/panjur/winstor1.png"),
     imgDesc: "Üstün Yalıtım Kalitesi",
     title: "winstor",
+    path: "/urunler/panjur-ve-kepenk-sistemleri/winstor",
   },
   {
     imgSource: require("./assets/panjur/winkepenk.png"),
     imgDesSource: require("./assets/panjur/winkepenk1.png"),
     imgDesc: "Görsel Zenginlik",
     title: "winstor",
+    path: "/urunler/panjur-ve-kepenk-sistemleri/winkepenk",
   },
 ];

@@ -1,7 +1,6 @@
-import { Box, Container, Grid2 as Grid, Typography } from "@mui/material";
+import { Box, Grid2 as Grid, Typography } from "@mui/material";
 import React from "react";
-import wImage from "../../../../../assets/w.png";
-//import logo from "../../assets/yeni-dorado-76png-29-01-2021-18-33-55png_12-03-2024_14-39-02.png";
+
 export default function TeknikComponent({
   technicalData,
   logo,
@@ -27,7 +26,6 @@ export default function TeknikComponent({
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={8}>
           <Grid size={{ xs: 12, sm: 6 }}>
-            <div></div>
             {description.map((item, index) => (
               <div index={index} style={{ paddingBottom: "15px" }}>
                 <h1 style={{ color: "#FE5001" }}>

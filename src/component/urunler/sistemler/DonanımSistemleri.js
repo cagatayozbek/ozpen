@@ -12,5 +12,6 @@ const menuItem = [
     imgDesSource: null,
     imgDesc: "Açılım Seçenekleri",
     title: "gold",
+    path: "/urunler/donanım-sistemleri",
   },
 ];

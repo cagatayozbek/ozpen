@@ -1,11 +1,10 @@
 import { Box, Grid2, Typography } from "@mui/material";
 import React from "react";
-import wImage from "../../../assets/w.png";
-import acilim from "./assets/acilim.jpg";
-import acilim2 from "./assets/acilim2.png";
-import "./sistemComponent.css";
-import ColorPickerPage from "./ColorPickerComponent";
-import Form from "./Form";
+import wImage from "../../../../assets/w.png";
+import acilim from "../assets/acilim.jpg";
+import acilim2 from "../assets/acilim2.png";
+import "../sistemComponent.css";
+import ColorPickerPage from "../ColorPickerComponent";
 
 export default function Donanım() {
   return (
@@ -172,7 +171,6 @@ export default function Donanım() {
       </Box>
 
       <ColorPickerPage />
-      <Form />
     </div>
   );
 }

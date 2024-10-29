@@ -1,191 +1,95 @@
-import {
-  AppBar,
-  Box,
-  Button,
-  Container,
-  CssBaseline,
-  Divider,
-  Drawer,
-  Fab,
-  IconButton,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Toolbar,
-  Typography,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import React, { useState } from "react";
-import { Outlet } from "react-router-dom";
-import useScrollTrigger from "@mui/material/useScrollTrigger";
-import Fade from "@mui/material/Fade";
+import { Container, Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
+import { Outlet, useNavigate, Link } from "react-router-dom";
 import logo from "./logo.png"; // Logo dosyanız
 
-const drawerWidth = 200;
-const navItems = ["Home", "About", "Contact"];
-
-function ElevationScroll(props) {
-  const { children, window } = props;
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 0,
-    target: window ? window() : undefined,
-  });
-
-  return children
-    ? React.cloneElement(children, {
-        elevation: trigger ? 4 : 0,
-      })
-    : null;
-}
-
-function ScrollTop(props) {
-  const { children, window } = props;
-  const trigger = useScrollTrigger({
-    target: window ? window() : undefined,
-    disableHysteresis: true,
-    threshold: 100,
-  });
-
-  const handleClick = (event) => {
-    const anchor = (event.target.ownerDocument || document).querySelector(
-      "#back-to-top-anchor"
-    );
-    if (anchor) {
-      anchor.scrollIntoView({
-        block: "start",
-      });
-    }
-  };
-
-  return (
-    <Fade in={trigger}>
-      <Box
-        onClick={handleClick}
-        role="presentation"
-        sx={{ position: "fixed", bottom: 16, right: 16 }}
-      >
-        {children}
-      </Box>
-    </Fade>
-  );
-}
-
-export default function Header(props) {
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const handleDrawerToggle = () => {
-    setMobileOpen((prevState) => !prevState);
-  };
-
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Divider />
-      <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
+// Navbar bağlantılarını tanımlıyoruz
+export default function Header() {
+  const [showDropdown, setShowDropdown] = useState(false);
+  const navigate = useNavigate();
+  /* 
+  const handleMouseEnter = () => setShowDropdown(true);
+  const handleMouseLeave = () => setShowDropdown(false);
+  const handleTitleClick = () => navigate("/urunler"); */
 
   return (
     <>
-      <Box sx={{ display: "flex", mb: "100px" }}>
-        <CssBaseline />
-        <ElevationScroll {...props}>
-          <AppBar
-            component="nav"
-            color="inherit"
-            sx={{
-              boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", // Gölgeli border
-              borderBottom: "1px solid rgba(0, 0, 0, 0.12)", // İnce alt çizgi
-            }}
-          >
-            <Container>
-              <Toolbar
-                sx={{
-                  minHeight: { xs: 80, sm: 64 }, // Mobilde yüksekliği artırdık
-                }}
+      {/* Bootstrap Navbar yapısı */}
+
+      <Navbar
+        collapseOnSelect
+        expand="sm"
+        variant="light"
+        className="shadow"
+        sticky="top"
+        style={{
+          backgroundColor: "rgba(255, 255, 255, 0.8)",
+        }}
+      >
+        <Container fluid="lg">
+          {/* Marka ve logo */}
+          <Navbar.Brand href="/">
+            <img
+              src={logo}
+              alt="logo"
+              style={{ height: "70px" }} // Logo boyutu ayarlanıyor
+            />
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link style={{ marginRight: "30px" }} href="/">
+                Ana Sayfa
+              </Nav.Link>
+              <Nav.Link style={{ marginRight: "30px" }} href="/kurumsal">
+                Kurumsal
+              </Nav.Link>
+              {/*               <Nav.Link style={{ marginRight: "30px" }} href="/urunler">
+                Ürünler
+              </Nav.Link> */}
+              <NavDropdown
+                style={{ marginRight: "30px" }}
+                title="Ürünler"
+                id="collapsible-nav-dropdown"
               >
-                <IconButton
-                  color="inherit"
-                  aria-label="open drawer"
-                  edge="start"
-                  onClick={handleDrawerToggle}
-                  sx={{ mr: 2, display: { sm: "none" } }}
+                <NavDropdown.Item
+                  as={Link}
+                  to="/urunler/pencere-ve-kapi-sistemleri"
                 >
-                  <MenuIcon />
-                </IconButton>
-
-                {/* Mobil ekranlarda logo */}
-                <Box
-                  component="img"
-                  src={logo}
-                  alt="logo"
-                  sx={{
-                    height: 50,
-                    display: { xs: "block", sm: "none" },
-                    marginLeft: "auto",
-                  }}
-                />
-
-                {/* Daha büyük ekranlar için logo */}
-                <Typography
-                  variant="h6"
-                  component="div"
-                  sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+                  Pencere ve Kapı Sistemleri
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/urunler/surme-sistemleri">
+                  Sürme Sistemleri
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  as={Link}
+                  to="/urunler/panjur-ve-kepenk-sistemleri"
                 >
-                  <img src={logo} alt="logo" style={{ height: "80px" }} />
-                </Typography>
-                <Box sx={{ display: { xs: "none", sm: "block" } }}>
-                  {navItems.map((item) => (
-                    <Button key={item} sx={{ color: "#000" }}>
-                      {item}
-                    </Button>
-                  ))}
-                </Box>
-              </Toolbar>
-            </Container>
-          </AppBar>
-        </ElevationScroll>
-        <nav>
-          <Drawer
-            container={container}
-            variant="temporary"
-            open={mobileOpen}
-            onClose={handleDrawerToggle}
-            ModalProps={{
-              keepMounted: true, // Mobilde performans için
-            }}
-            sx={{
-              display: { xs: "block", sm: "none" },
-              "& .MuiDrawer-paper": {
-                boxSizing: "border-box",
-                width: drawerWidth,
-              },
-            }}
-          >
-            {drawer}
-          </Drawer>
-        </nav>
-      </Box>
+                  Kepenk ve Panjur Sistemleri
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/urunler/donanim-sistemleri">
+                  Donanım Sistemleri
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/urunler/cambalkon-sistemleri">
+                  Cambalkon Sistemleri
+                </NavDropdown.Item>
+              </NavDropdown>
+              <Nav.Link style={{ marginRight: "30px" }} href="/iletisim">
+                İletişim
+              </Nav.Link>
+              <Nav.Link style={{ marginRight: "30px" }} href="/referanslar">
+                Referanslar
+              </Nav.Link>
+            </Nav>
+            <Nav>
+              <Nav.Item className="d-none d-md-block">0(312) 395 0696</Nav.Item>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
 
-      <ScrollTop {...props}>
-        <Fab size="small" aria-label="scroll back to top">
-          <KeyboardArrowUpIcon />
-        </Fab>
-      </ScrollTop>
-      <div id="back-to-top-anchor">
+      {/* Outlet içerik bölgesi */}
+      <div>
         <Outlet />
       </div>
     </>

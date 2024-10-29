@@ -8,7 +8,7 @@ import Contact from "./component/contact/Contact";
 import PencereVeKapı from "./component/urunler/sistemler/PencereVeKapı";
 import Surme from "./component/urunler/sistemler/Surme";
 import PanjurVeKepenk from "./component/urunler/sistemler/PanjurVeKepenk";
-import DonanımSistemleri from "./component/urunler/sistemler/DonanımSistemleri";
+
 import CamBalkon from "./component/urunler/sistemler/CamBalkon";
 import Dorado76 from "./component/urunler/sistemler/detay/Dorado76";
 import RevotechGold from "./component/urunler/sistemler/detay/RevotechGold";
@@ -21,6 +21,18 @@ import Lotus from "./component/urunler/sistemler/detay/Lotus";
 import Winstor from "./component/urunler/sistemler/detay/Winstor";
 import Winkepenk from "./component/urunler/sistemler/detay/Winkepenk";
 import Urunler from "./component/urunler/Urunler";
+import Vela from "./component/urunler/sistemler/detay/Vela";
+import VelaGold from "./component/urunler/sistemler/detay/VelaGold";
+
+import CamekanKonfor from "./component/urunler/sistemler/detay/CamekanKonfor";
+import Verenda from "./component/urunler/sistemler/detay/Veranda";
+import Camekan from "./component/urunler/sistemler/detay/Camekan";
+import Teras from "./component/urunler/sistemler/detay/Teras";
+import TerasKonfor from "./component/urunler/sistemler/detay/TerasKonfor";
+import TerasKuartet from "./component/urunler/sistemler/detay/TerasKuartet";
+import Giyotin from "./component/urunler/sistemler/detay/Giyotin";
+import Perde from "./component/urunler/sistemler/detay/Perde";
+import Donanım from "./component/urunler/sistemler/detay/Donanım";
 
 function App() {
   return (
@@ -34,7 +46,7 @@ function App() {
           <Route path="urunler" element={<Urunler />} />
           {/* //////////////////////pencere///////////////////////*/}
           <Route
-            path="urunler/pencere-ve-kapı-sistemleri"
+            path="urunler/pencere-ve-kapi-sistemleri"
             element={<PencereVeKapı />}
           />
           <Route
@@ -86,11 +98,51 @@ function App() {
             path="urunler/panjur-ve-kepenk-sistemleri/winkepenk"
             element={<Winkepenk />}
           />
-          <Route
-            path="urunler/donanım-sistemleri"
-            element={<DonanımSistemleri />}
-          />
+          {/* //////////////////////kepenk///////////////////////*/}
+          <Route path="urunler/donanım-sistemleri" element={<Donanım />} />
+
+          {/* //////////////////////cambalkon///////////////////////*/}
           <Route path="urunler/cam-balkon-sistemleri" element={<CamBalkon />} />
+          <Route path="urunler/cam-balkon-sistemleri/vela" element={<Vela />} />
+          <Route
+            path="urunler/cam-balkon-sistemleri/vela-gold"
+            element={<VelaGold />}
+          />
+          <Route
+            path="urunler/cam-balkon-sistemleri/veranda"
+            element={<Verenda />}
+          />
+          <Route
+            path="urunler/cam-balkon-sistemleri/camekan"
+            element={<Camekan />}
+          />
+          <Route
+            path="urunler/cam-balkon-sistemleri/camekan-konfor"
+            element={<CamekanKonfor />}
+          />
+          <Route
+            path="urunler/cam-balkon-sistemleri/teras"
+            element={<Teras />}
+          />
+          <Route
+            path="urunler/cam-balkon-sistemleri/teras-konfor"
+            element={<TerasKonfor />}
+          />
+          <Route
+            path="urunler/cam-balkon-sistemleri/teras-kuartet"
+            element={<TerasKuartet />}
+          />
+
+          <Route
+            path="urunler/cam-balkon-sistemleri/hareketli-kupeste-sistemleri"
+            element={<Giyotin />}
+          />
+          <Route
+            path="urunler/cam-balkon-sistemleri/dis-mekan-perde-sistemleri"
+            element={<Perde />}
+          />
+
+          {/* //////////////////////cambalkon///////////////////////*/}
         </Route>
       </Routes>
     </BrowserRouter>

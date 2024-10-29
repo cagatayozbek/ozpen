@@ -1,12 +1,16 @@
 import React from "react";
-import { Box, Grid2 as Grid, Typography, Container } from "@mui/material";
-
-import wImage from "../../../assets/w.png";
-import Form from "./Form";
+import { Box, Grid2 as Grid, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function SistemComponent({ title, menuItem }) {
+  const navigate = useNavigate();
+
+  const handleBoxClick = (path) => {
+    navigate(path); // Belirtilen sayfaya yönlendirme yapar
+  };
+
   return (
-    <div>
+    <>
       <Box sx={{ marginTop: "7%", display: "flex" }}>
         <Typography
           variant="h3"
@@ -27,9 +31,11 @@ export default function SistemComponent({ title, menuItem }) {
                 justifyContent: "center",
                 alignItems: "center",
                 flexDirection: "column",
-                animationDelay: `${index * 0.5}s`, // Sırayla animasyon için gecikme
+                cursor: "pointer", // Tıklanabilir işareti göstermek için
+                animationDelay: `${index * 0.5}s`,
               }}
               className="grid-item"
+              onClick={() => handleBoxClick(item.path)} // `path` özelliğine göre yönlendirme yap
             >
               {item.imgSource ? (
                 <img
@@ -80,6 +86,6 @@ export default function SistemComponent({ title, menuItem }) {
       </Box>
 
       {/* Ücretsiz Keşif Formu Tam Ekran */}
-    </div>
+    </>
   );
 }
