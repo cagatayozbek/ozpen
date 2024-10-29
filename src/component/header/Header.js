@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Container, Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 import { Outlet, useNavigate, Link } from "react-router-dom";
 import logo from "./logo.png"; // Logo dosyanız
+import insta from "./instagram.png";
 
 // Navbar bağlantılarını tanımlıyoruz
 export default function Header() {
@@ -82,7 +83,21 @@ export default function Header() {
               </Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Item className="d-none d-md-block">0(312) 395 0696</Nav.Item>
+              <Nav.Item
+                className="d-none d-md-block"
+                style={{ marginRight: "30px" }}
+              >
+                0312 395 56 03
+              </Nav.Item>
+              <Nav.Item className="d-none d-md-block">
+                <a
+                  href="https://www.instagram.com/baskentozpen_winsa/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img src={insta} alt="instagram" />
+                </a>
+              </Nav.Item>
             </Nav>
           </Navbar.Collapse>
         </Container>

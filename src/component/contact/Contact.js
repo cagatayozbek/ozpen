@@ -6,24 +6,13 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "./Contact.css"; // Özel stiller için CSS dosyası
 import { FaEnvelope, FaFax, FaLocationDot, FaPhone } from "react-icons/fa6";
-import { IoMdMail } from "react-icons/io";
+import Hero from "../hero/Hero";
 
 export default function Contact() {
-  const apiKey = process.env.REACT_APP_MAP_API;
   return (
     <>
       {/* Hero Alanı */}
-      <Card
-        className="text-white"
-        style={{ height: "55vh", overflow: "hidden", border: "none" }}
-      >
-        <Card.Img src={hero} alt="Hero image" className="hero-image" />
-        <Card.ImgOverlay className="d-flex flex-column justify-content-center align-items-center text-center">
-          <Card.Title className="display-4" style={{ marginTop: "20vh" }}>
-            Bize Ulaşın
-          </Card.Title>
-        </Card.ImgOverlay>
-      </Card>
+      <Hero hero={hero} title="Bize Ulaşın" />
 
       {/* İçerik Bölümü */}
       <Container fluid="lg" style={{ marginTop: "80px" }}>

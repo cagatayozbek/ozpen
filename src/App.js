@@ -33,6 +33,7 @@ import TerasKuartet from "./component/urunler/sistemler/detay/TerasKuartet";
 import Giyotin from "./component/urunler/sistemler/detay/Giyotin";
 import Perde from "./component/urunler/sistemler/detay/Perde";
 import Donanım from "./component/urunler/sistemler/detay/Donanım";
+import Referanslar from "./component/referanslar/Referanslar";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="kurumsal" element={<Kurumsal />} />
           <Route path="iletisim" element={<Contact />} />
+          <Route path="referanslar" element={<Referanslar />} />
           {/* Redirecting from /urunler to /home */}
           <Route path="urunler" element={<Urunler />} />
           {/* //////////////////////pencere///////////////////////*/}
