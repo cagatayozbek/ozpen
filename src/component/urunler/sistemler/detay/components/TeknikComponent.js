@@ -7,11 +7,14 @@ export default function TeknikComponent({
   teknik,
   background,
   description,
+  title,
 }) {
   return (
     <div>
-      <div>
-        <img src={logo} />
+      <div style={{ textAlign: "center" }}>
+        <h1 style={{ margin: 0, padding: 0, lineHeight: 0 }}>
+          <img src={logo} alt={title} style={{ maxWidth: "100%", height: "auto" }} />
+        </h1>
       </div>
       <img
         src={background}
@@ -28,10 +31,10 @@ export default function TeknikComponent({
           <Grid size={{ xs: 12, sm: 6 }}>
             {description.map((item, index) => (
               <div index={index} style={{ paddingBottom: "15px" }}>
-                <h1 style={{ color: "#FE5001" }}>
+                <h2 style={{ color: "#FE5001", fontSize: "2rem" }}>
                   {item.title}
                   <br />
-                </h1>
+                </h2>
                 <Typography>{item.desc}</Typography>
               </div>
             ))}

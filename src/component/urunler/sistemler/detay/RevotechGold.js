@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "../../../SEO";
 import logo from "../assets/revotechgoldpng_27-10-2020_11-26-33.png";
 import background from "../../../../assets/1logo.png";
 import background2 from "./assets/revotechgold-bg.jpg";
@@ -18,7 +19,12 @@ export default function RevotechGold() {
         paddingBottom: "100px",
       }}
     >
+      <SEO 
+        title="Revotech Gold | Winsa Ankara" 
+        description="Winsa Revotech Gold serisi ile estetik ve performansı bir arada yaşayın. Ankara'nın lider Winsa bayisi Özpen PVC." 
+      />
       <TeknikComponent
+        title="Revotech Gold"
         logo={logo}
         technicalData={technicalData}
         description={aciklama}

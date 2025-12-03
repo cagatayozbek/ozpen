@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "../../../SEO";
 import logo from "../assets/panjur/winkepenk1.png";
 import background from "./assets/winkepenk-bg.jpg";
 import background2 from "./assets/winkepenk-bg2.jpg";
@@ -18,7 +19,12 @@ export default function Winkepenk() {
         paddingBottom: "100px",
       }}
     >
+      <SEO 
+        title="Winkepenk | Winsa Ankara" 
+        description="Winsa Winkepenk kepenk sistemleri ile güvenliğinizi ve estetiği artırın. Ankara Özpen PVC." 
+      />
       <TeknikComponent
+        title="Winkepenk"
         logo={logo}
         technicalData={technicalData}
         description={aciklama}

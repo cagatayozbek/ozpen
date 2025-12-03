@@ -15,7 +15,7 @@ export default function TeknikCamBalkonComponent({
   };
   return (
     <>
-      <Typography variant="h3" sx={{ marginTop: "5%", color: "#070155" }}>
+      <Typography variant="h3" component="h1" sx={{ marginTop: "5%", color: "#070155", fontWeight: "bold" }}>
         {title}
       </Typography>
       <img

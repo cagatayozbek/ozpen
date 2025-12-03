@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "../../../SEO";
 import logo from "../assets/revotechpng_27-10-2020_11-25-29.png";
 import background from "./assets/revotech-bg.jpg";
 import background2 from "./assets/revotech-bg2.jpg";
@@ -18,7 +19,12 @@ export default function Revotech() {
         paddingBottom: "100px",
       }}
     >
+      <SEO 
+        title="Revotech | Winsa Ankara" 
+        description="Winsa Revotech serisi, 84mm genişliği ve 7 odacıklı yapısıyla üstün yalıtım sağlar. Ankara Özpen PVC." 
+      />
       <TeknikComponent
+        title="Revotech"
         logo={logo}
         technicalData={technicalData}
         description={aciklama}

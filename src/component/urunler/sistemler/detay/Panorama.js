@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "../../../SEO";
 
 import logo from "../assets/surme/panorama1.png";
 import background from "./assets/panorama-bg.jpg";
@@ -19,7 +20,12 @@ export default function Panorama() {
         paddingBottom: "100px",
       }}
     >
+      <SEO 
+        title="Panorama HS 76 | Winsa Ankara" 
+        description="Winsa Panorama HS 76 Hebe Schiebe sistemleri ile geniş açıklıklarda kesintisiz manzara. Ankara Özpen PVC." 
+      />
       <TeknikComponent
+        title="Panorama HS 76"
         logo={logo}
         technicalData={technicalData}
         description={aciklama}

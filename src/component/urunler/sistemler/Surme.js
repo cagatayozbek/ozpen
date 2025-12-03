@@ -1,8 +1,18 @@
 import React from "react";
 import SistemComponent from "./SistemComponent";
+import SEO from "../../SEO";
 
 export default function Surme() {
-  return <SistemComponent title={title} menuItem={menuItem} />;
+  return (
+    <>
+      <SEO 
+        title="Sürme Sistemleri | Winsa"
+        description="Winsa sürme sistemleri. Comfort Slide Plus, Comfort Slide, Panorama HS-76, Lotus. Kolay kullanım ve mükemmel sızdırmazlık."
+        keywords="sürme pencere, sürme kapı, comfort slide, panorama, lotus, winsa sürme, sürme sistem"
+      />
+      <SistemComponent title={title} menuItem={menuItem} />
+    </>
+  );
 }
 
 const title = ["Sürme", "Sistemleri"];

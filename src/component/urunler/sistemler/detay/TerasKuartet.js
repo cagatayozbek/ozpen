@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "../../../SEO";
 import TeknikCamBalkonComponent from "./components/TeknikCamBalkonComponent";
 import background from "./assets/teras-quartet-bg.jpg";
 import teknik from "./assets/teraskuartet-teknik.png";
@@ -14,6 +15,10 @@ export default function TerasKuartet() {
         paddingBottom: "100px",
       }}
     >
+      <SEO 
+        title="Teras Kuartet | Winsa Ankara" 
+        description="Winsa Teras Kuartet cam balkon sistemleri ile modern ve estetik çözümler. Ankara Özpen PVC." 
+      />
       <TeknikCamBalkonComponent
         title="Teras Kuartet"
         technicalData={technicalData}

@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "../../../SEO";
 import logo from "../assets/surme/plus1.png";
 import background from "./assets/comfort-plus-bg.jpg";
 import background2 from "./assets/comfort-plus-bg2.jpg";
@@ -17,7 +18,12 @@ export default function ComfortSlidePlus() {
         paddingBottom: "100px",
       }}
     >
+      <SEO 
+        title="Comfort Slide Plus | Winsa Ankara" 
+        description="Winsa Comfort Slide Plus ile maksimum yalıtım ve kolay kullanım. Ankara'nın en büyük Winsa bayisi." 
+      />
       <TeknikComponent
+        title="Comfort Slide Plus"
         logo={logo}
         technicalData={technicalData}
         description={aciklama}

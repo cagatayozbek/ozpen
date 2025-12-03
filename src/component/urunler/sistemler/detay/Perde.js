@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "../../../SEO";
 import TeknikCamBalkonComponent from "./components/TeknikCamBalkonComponent";
 import background from "./assets/perde-bg.jpg";
 import { Container } from "@mui/material";
@@ -13,6 +14,10 @@ export default function Perde() {
         paddingBottom: "100px",
       }}
     >
+      <SEO 
+        title="Dış Mekan Perde Sistemleri | Winsa Ankara" 
+        description="Winsa dış mekan perde sistemleri ile güneş kontrolü ve konfor sağlayın. Ankara Özpen PVC." 
+      />
       <TeknikCamBalkonComponent
         title="Dış Mekan Perde Sistemleri"
         technicalData={technicalData}

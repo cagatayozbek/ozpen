@@ -5,10 +5,16 @@ import logo1 from "./assets/camoda-bg.jpg"; // İlk arka plan resmi
 import "./CamBalkon.css";
 
 import CamBalkonCardComponent from "./detay/components/CamBalkonCardComponent";
+import SEO from "../../SEO";
 
 const CamBalkon = () => {
   return (
     <>
+      <SEO 
+        title="Cam Balkon Sistemleri | Winsa"
+        description="Winsa cam balkon sistemleri. Katlanır, sürme ve küpeşte sistemleri. Veranda, Vela, Camekan, Teras modelleriyle balkonunuzu yaşam alanına dönüştürün."
+        keywords="cam balkon, katlanır cam balkon, sürme cam balkon, vela, veranda, camekan, teras sistem"
+      />
       <CamBalkonCardComponent menuItem={menuItem} title={title} />
       <CamBalkonCardComponent menuItem={menuItem2} title={title2} />
       <CamBalkonCardComponent menuItem={menuItem3} title={title3} />

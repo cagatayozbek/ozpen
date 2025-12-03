@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "../../../SEO";
 
 import logo from "../assets/panjur/winstor1.png";
 import background from "./assets/winstor-bg.jpg";
@@ -19,7 +20,12 @@ export default function Winstor() {
         paddingBottom: "100px",
       }}
     >
+      <SEO 
+        title="Winstor | Winsa Ankara" 
+        description="Winsa Winstor panjur sistemleri ile ısı ve ses yalıtımı sağlayın. Ankara Özpen PVC." 
+      />
       <TeknikComponent
+        title="Winstor"
         logo={logo}
         technicalData={technicalData}
         description={aciklama}

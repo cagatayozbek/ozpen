@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "../../../SEO";
 
 import logo from "../assets/yeni-dorado-76png-29-01-2021-18-33-55png_12-03-2024_14-39-02.png";
 import background from "./assets/dorado-bg.jpg";
@@ -20,7 +21,12 @@ export default function Dorado76() {
         paddingBottom: "100px",
       }}
     >
+      <SEO 
+        title="Dorado 76 | Winsa Ankara" 
+        description="Winsa Dorado 76 serisi ile üstün ısı ve ses yalıtımı. Ankara'nın en büyük Winsa bayisi Özpen PVC güvencesiyle." 
+      />
       <TeknikComponent
+        title="Dorado 76"
         logo={logo}
         technicalData={technicalData}
         description={aciklama}

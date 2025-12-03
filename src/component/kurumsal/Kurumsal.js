@@ -5,11 +5,16 @@ import Container from "@mui/material/Container";
 import logo from "../../assets/ozpen/ozpen-logo.png";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import SEO from "../SEO";
 
 export default function Kurumsal() {
   return (
     <>
-      <Hero hero={hero} title="Kurumsal" />
+      <SEO
+        title="Kurumsal | Hakkımızda"
+        description="2000 yılından beri Ankara'da PVC pencere, kapı ve cam balkon sistemlerinde güvenilir hizmet. Türkiye'nin en büyük Winsa bayisi olarak sektörde öncü firmayız."
+      />
+      <Hero hero={hero} title="Kurumsal" isBright={true} />
       <Container>
         <Box
           sx={{
@@ -21,7 +26,7 @@ export default function Kurumsal() {
         >
           <img
             src={logo}
-            alt="logo"
+            alt="Özpen PVC Logo - Ankara Winsa Bayisi"
             style={{ height: "auto", width: "250px", marginBottom: "30px" }}
           />
 

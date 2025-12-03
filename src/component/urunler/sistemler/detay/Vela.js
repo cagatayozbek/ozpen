@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "../../../SEO";
 import TeknikCamBalkonComponent from "./components/TeknikCamBalkonComponent";
 import background from "./assets/vela-bg.jpg";
 import teknik from "./assets/vela-teknik.png";
@@ -14,6 +15,10 @@ export default function Vela() {
         paddingBottom: "100px",
       }}
     >
+      <SEO 
+        title="Vela Cam Balkon | Winsa Ankara" 
+        description="Winsa Vela cam balkon sistemleri ile balkonunuzu dört mevsim kullanın. Ankara Özpen PVC." 
+      />
       <TeknikCamBalkonComponent
         title="Vela"
         technicalData={technicalData}

@@ -2,7 +2,7 @@
   height: 100%; /* Kart yüksekliğinin tamamını kaplasın */
   width: 100%; /* Kart genişliğinin tamamını kaplasın */
   object-fit: cover; /* Görseli kırpmadan ortalayarak genişlet */
-  filter: brightness(0.3); /* Parlaklık efekti */
+  filter: brightness(1); /* Parlaklık efekti */
 }
 
 @media (max-width: 768px) {

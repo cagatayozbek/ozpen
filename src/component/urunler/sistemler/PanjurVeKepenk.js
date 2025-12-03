@@ -1,8 +1,18 @@
 import React from "react";
 import SistemComponent from "./SistemComponent";
+import SEO from "../../SEO";
 
 export default function PanjurVeKepenk() {
-  return <SistemComponent title={title} menuItem={menuItem} />;
+  return (
+    <>
+      <SEO 
+        title="Panjur ve Kepenk Sistemleri | Winsa"
+        description="Winsa panjur ve kepenk sistemleri. Winstor ve Winkepenk ile üstün yalıtım ve güvenlik. Motorlu ve manuel seçenekler."
+        keywords="pvc panjur, pvc kepenk, winstor, winkepenk, motorlu panjur, güvenlik kepenk"
+      />
+      <SistemComponent title={title} menuItem={menuItem} />
+    </>
+  );
 }
 const title = ["Panjur ve Kepenk", "Sistemleri"];
 const menuItem = [

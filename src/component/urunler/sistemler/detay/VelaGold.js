@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "../../../SEO";
 import TeknikCamBalkonComponent from "./components/TeknikCamBalkonComponent";
 import background from "./assets/vela-gold-bg.jpg";
 import teknik from "./assets/velagold-teknik.png";
@@ -14,6 +15,10 @@ export default function VelaGold() {
         paddingBottom: "100px",
       }}
     >
+      <SEO 
+        title="Vela Gold Cam Balkon | Winsa Ankara" 
+        description="Winsa Vela Gold cam balkon sistemleri ile estetik ve konfor bir arada. Ankara Özpen PVC." 
+      />
       <TeknikCamBalkonComponent
         title="Vela Gold"
         technicalData={technicalData}

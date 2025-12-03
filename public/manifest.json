@@ -1,19 +1,20 @@
 {
   "short_name": "Özpen PVC",
   "name": "Başkent Özpen PVC",
+  "description": "Kaliteli PVC pencere ve kapı üretimi yapan bir firma.",
   "icons": [
     {
-      "src": "../src/component/header/logo.png",
+      "src": "logo.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "../src/component/header/logo.png",
+      "src": "logo.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "../src/component/header/logo.png",
+      "src": "logo.png",
       "type": "image/png",
       "sizes": "512x512"
     }

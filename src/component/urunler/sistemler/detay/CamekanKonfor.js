@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "../../../SEO";
 import TeknikCamBalkonComponent from "./components/TeknikCamBalkonComponent";
 import background from "./assets/camekan-bg.jpg";
 import teknik from "./assets/camekan-teknik.png";
@@ -14,6 +15,10 @@ export default function CamekanKonfor() {
         paddingBottom: "100px",
       }}
     >
+      <SEO 
+        title="Camekan Konfor | Winsa Ankara" 
+        description="Winsa Camekan Konfor ısıcamlı sürme sistemleri ile maksimum yalıtım. Ankara Özpen PVC." 
+      />
       <TeknikCamBalkonComponent
         title="Camekan Konfor"
         technicalData={technicalData}

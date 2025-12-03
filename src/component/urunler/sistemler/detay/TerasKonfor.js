@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "../../../SEO";
 import TeknikCamBalkonComponent from "./components/TeknikCamBalkonComponent";
 import background from "./assets/teras-konfor-bg.jpg";
 import teknik from "./assets/teraskonfor-teknik.png";
@@ -14,6 +15,10 @@ export default function TerasKonfor() {
         paddingBottom: "100px",
       }}
     >
+      <SEO 
+        title="Teras Konfor | Winsa Ankara" 
+        description="Winsa Teras Konfor ısıcamlı cam balkon sistemleri ile kış bahçesi keyfi. Ankara Özpen PVC." 
+      />
       <TeknikCamBalkonComponent
         title="Teras Konfor"
         technicalData={technicalData}

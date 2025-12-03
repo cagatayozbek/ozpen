@@ -1,11 +1,12 @@
-import { Container, Box, Grid2 as Grid, Typography } from "@mui/material";
+import { Container } from "@mui/material";
 import React from "react";
-import background from "./assets/Sürdürülebilir_bir_gelecek.png"; // Boşlukları düzeltmek için dosya adındaki boşlukları alt tire ile değiştirdim.
+import SEO from "../../../SEO";
+import background from "./assets/safir-bg.png"; // Boşlukları düzeltmek için dosya adındaki boşlukları alt tire ile değiştirdim.
 import logo from "../assets/yenisafir-76png-01-06-2022-11-52-13png_12-03-2024_14-38-38.png";
 import teknik from "./assets/safir76-teknik.png";
 import ColorPickerPage from "../ColorPickerComponent";
 import TeknikComponent from "./components/TeknikComponent";
-export default function Safir76({}) {
+export default function Safir76() {
   return (
     <Container
       maxWidth="lg"
@@ -15,7 +16,12 @@ export default function Safir76({}) {
         paddingBottom: "100px",
       }}
     >
+      <SEO 
+        title="Safir 76 | Winsa Ankara" 
+        description="Winsa Safir 76 serisi, ekonomik ve yüksek performanslı pencere çözümü. Ankara Özpen PVC." 
+      />
       <TeknikComponent
+        title="Safir 76"
         logo={logo}
         technicalData={technicalData}
         teknik={teknik}

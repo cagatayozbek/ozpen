@@ -1,0 +1,14 @@
+/* Footer.css */
+.footer-link {
+  color: #fff; /* Link rengi */
+  text-decoration: none; /* Alt çizgiyi kaldır */
+  transition: text-decoration 0.2s; /* Geçiş efekti */
+}
+
+ul li {
+  margin: 10px 0; /* Liste elemanları arasındaki mesafe */
+}
+
+ul li:hover .footer-link {
+  text-decoration: underline; /* Hover durumunda alt çizgi */
+}

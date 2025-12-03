@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "../../../SEO";
 
 import logo from "../assets/surme/slide1.png";
 import background2 from "./assets/comfort-plus-bg.jpg";
@@ -18,7 +19,12 @@ export default function ComfortSlide() {
         paddingBottom: "100px",
       }}
     >
+      <SEO 
+        title="Comfort Slide | Winsa Ankara" 
+        description="Winsa Comfort Slide sürme sistemleri ile mekanlarınıza ferahlık katın. Ankara Özpen PVC." 
+      />
       <TeknikComponent
+        title="Comfort Slide"
         logo={logo}
         technicalData={technicalData}
         description={aciklama}

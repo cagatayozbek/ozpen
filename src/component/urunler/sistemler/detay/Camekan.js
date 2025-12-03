@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "../../../SEO";
 import TeknikCamBalkonComponent from "./components/TeknikCamBalkonComponent";
 import background from "./assets/camekan-bg.jpg";
 import teknik from "./assets/camekan-teknik.png";
@@ -14,6 +15,10 @@ export default function Camekan() {
         paddingBottom: "100px",
       }}
     >
+      <SEO 
+        title="Camekan Sürme Cam | Winsa Ankara" 
+        description="Winsa Camekan sürme cam sistemleri ile vitrin ve balkonlarınızda şıklık. Ankara Özpen PVC." 
+      />
       <TeknikCamBalkonComponent
         title="Camekan"
         technicalData={technicalData}

@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "../../../SEO";
 import logo from "../assets/surme/lotus1.png";
 import background from "./assets/lotus-bg.jpg";
 import background2 from "./assets/lotus-bg2.jpg";
@@ -18,7 +19,12 @@ export default function Lotus() {
         paddingBottom: "100px",
       }}
     >
+      <SEO 
+        title="Lotus | Winsa Ankara" 
+        description="Winsa Lotus sürme serisi, estetik ve fonksiyonelliği birleştirir. Ankara Özpen PVC." 
+      />
       <TeknikComponent
+        title="Lotus"
         logo={logo}
         technicalData={technicalData}
         description={aciklama}

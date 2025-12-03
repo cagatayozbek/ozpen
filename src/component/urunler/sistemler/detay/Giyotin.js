@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "../../../SEO";
 import TeknikCamBalkonComponent from "./components/TeknikCamBalkonComponent";
 import background from "./assets/giyotin-bg.jpg";
 
@@ -14,6 +15,10 @@ export default function Giyotin() {
         paddingBottom: "100px",
       }}
     >
+      <SEO 
+        title="Giyotin Cam Sistemleri | Winsa Ankara" 
+        description="Winsa Giyotin hareketli küpeşte sistemleri ile mekanlarınıza değer katın. Ankara Özpen PVC." 
+      />
       <TeknikCamBalkonComponent
         title="Giyotin Cam Balkon"
         technicalData={technicalData}

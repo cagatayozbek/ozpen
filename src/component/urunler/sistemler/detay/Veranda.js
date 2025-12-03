@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "../../../SEO";
 import TeknikCamBalkonComponent from "./components/TeknikCamBalkonComponent";
 import background from "./assets/veranda-bg.jpg";
 import teknik from "./assets/veranda-teknik.png";
@@ -14,6 +15,10 @@ export default function Verenda() {
         paddingBottom: "100px",
       }}
     >
+      <SEO 
+        title="Veranda Cam Balkon | Winsa Ankara" 
+        description="Winsa Veranda cam balkon sistemleri ile bahçe keyfini her mevsim yaşayın. Ankara Özpen PVC." 
+      />
       <TeknikCamBalkonComponent
         title="Veranda"
         technicalData={technicalData}

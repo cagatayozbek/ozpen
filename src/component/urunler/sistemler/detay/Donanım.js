@@ -1,5 +1,6 @@
 import { Box, Grid2, Typography } from "@mui/material";
 import React from "react";
+import SEO from "../../../SEO";
 import wImage from "../../../../assets/w.png";
 import acilim from "../assets/acilim.jpg";
 import acilim2 from "../assets/acilim2.png";
@@ -9,6 +10,10 @@ import ColorPickerPage from "../ColorPickerComponent";
 export default function Donanım() {
   return (
     <div>
+      <SEO 
+        title="Donanım Sistemleri | Winsa Ankara" 
+        description="Winsa donanım sistemleri ile pencerelerinizde güvenlik ve konforu artırın. Ankara Özpen PVC." 
+      />
       {/** -----------------ilk sayfa------------------------ */}
       <Box
         sx={{
