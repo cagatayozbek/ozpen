@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Özpen Admin</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background: #f5f5f5; }
+        .login-screen { display: flex; justify-content: center; align-items: center; height: 100vh; background: #667eea; }
+        .dashboard-screen { display: none; }
+        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        input, textarea, select { width: 100%; padding: 10px; margin-bottom: 15px; border: 2px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+        button { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; color: white; }
+        .btn-primary { background: #667eea; }
+        .btn-success { background: #00C851; }
+        .btn-danger { background: #ff4444; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+
+    <!-- Login Ekranı -->
+    <div id="loginScreen" class="login-screen">
+        <div class="card" style="width: 300px;">
+            <h2 style="text-align: center;">🔐 Admin Girişi</h2>
+            <input type="password" id="password" placeholder="Şifre">
+            <button onclick="login()" class="btn-primary" style="width: 100%;">Giriş Yap</button>
+        </div>
+    </div>
+
+    <!-- Dashboard Ekranı -->
+    <div id="dashboardScreen" class="dashboard-screen">
+        <div style="background: #667eea; color: white; padding: 20px; display: flex; justify-content: space-between;">
+            <h1>📊 Referans Yönetimi</h1>
+            <button onclick="logout()" class="btn-danger">Çıkış</button>
+        </div>
+        <div style="max-width: 1200px; margin: 30px auto; padding: 20px;">
+            <div class="card">
+                <button onclick="document.getElementById('modal').style.display='block'" class="btn-success">➕ Yeni Referans Ekle</button>
+            </div>
+            <div class="card">
+                <table id="refTable">
+                    <thead>
+                        <tr><th>Başlık</th><th>Konum</th><th>Yıl</th><th>İşlemler</th></tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5)">
+        <div class="card" style="width:90%;max-width:600px;margin:50px auto;">
+            <h2>Yeni Referans Ekle</h2>
+            <input type="text" id="title" placeholder="Başlık">
+            <textarea id="description" placeholder="Açıklama"></textarea>
+            <input type="text" id="location" placeholder="Konum">
+            <input type="number" id="year" placeholder="Yıl">
+            <select id="category">
+                <option>PVC Pencere</option>
+                <option>PVC Kapı</option>
+                <option>Cam Balkon</option>
+            </select>
+            
+            <!-- Sürükle Bırak Alanı -->
+            <div id="dropZone" style="border: 2px dashed #ccc; padding: 20px; text-align: center; margin-bottom: 15px; cursor: pointer;">
+                <p>Resmi buraya sürükleyin veya tıklayın</p>
+                <input type="file" id="fileInput" style="display: none;" accept="image/*">
+                <img id="preview" style="max-width: 100%; max-height: 200px; display: none; margin-top: 10px;">
+            </div>
+            <input type="hidden" id="imageUrl">
+
+            <button onclick="saveRef()" class="btn-success">Kaydet</button>
+            <button onclick="document.getElementById('modal').style.display='none'" class="btn-danger">İptal</button>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = '../api/references.php';
+        const UPLOAD_URL = '../api/upload.php';
+
+        // Sürükle Bırak İşlemleri
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const preview = document.getElementById('preview');
+
+        dropZone.onclick = () => fileInput.click();
+
+        dropZone.ondragover = (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = '#667eea';
+            dropZone.style.background = '#f0f4ff';
+        };
+
+        dropZone.ondragleave = () => {
+            dropZone.style.borderColor = '#ccc';
+            dropZone.style.background = 'white';
+        };
+
+        dropZone.ondrop = (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = '#ccc';
+            dropZone.style.background = 'white';
+            handleFile(e.dataTransfer.files[0]);
+        };
+
+        fileInput.onchange = (e) => handleFile(e.target.files[0]);
+
+        async function handleFile(file) {
+            if (!file) return;
+
+            // Önizleme
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+
+            // Yükleme
+            const formData = new FormData();
+            formData.append('file', file);
+
+            dropZone.innerHTML += '<p>Yükleniyor...</p>';
+
+            try {
+                const res = await fetch(UPLOAD_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await res.json();
+                
+                if (data.success) {
+                    document.getElementById('imageUrl').value = data.url;
+                    alert('Resim yüklendi! ✅');
+                } else {
+                    alert('Hata: ' + data.message);
+                }
+            } catch (err) {
+                alert('Yükleme hatası!');
+            }
+        }
+
+        // Sayfa yüklendiğinde
+        if (localStorage.getItem('admin_logged_in')) {
+            showDashboard();
+        }
+
+        function login() {
+            if (document.getElementById('password').value === 'ozpenwinsa') {
+                localStorage.setItem('admin_logged_in', true);
+                showDashboard();
+            } else {
+                alert('Hatalı şifre!');
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('admin_logged_in');
+            location.reload();
+        }
+
+        function showDashboard() {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('dashboardScreen').style.display = 'block';
+            loadReferences();
+        }
+
+        async function loadReferences() {
+            const res = await fetch(API_URL);
+            const data = await res.json();
+            const tbody = document.querySelector('#refTable tbody');
+            tbody.innerHTML = '';
+            
+            if (data.data && data.data.length > 0) {
+                data.data.forEach(row => {
+                    tbody.innerHTML += `
+                        <tr>
+                            <td>
+                                <img src="${row.image}" style="width:50px;height:50px;object-fit:cover;border-radius:5px;vertical-align:middle;margin-right:10px">
+                                ${row.title}
+                            </td>
+                            <td>${row.location}</td>
+                            <td>${row.YEAR}</td>
+                            <td><button onclick="deleteRef(${row.id})" class="btn-danger">Sil</button></td>
+                        </tr>
+                    `;
+                });
+            } else {
+                tbody.innerHTML = '<tr><td colspan="4">Kayıt yok</td></tr>';
+            }
+        }
+
+        async function saveRef() {
+            const data = {
+                title: document.getElementById('title').value,
+                description: document.getElementById('description').value,
+                location: document.getElementById('location').value,
+                year: document.getElementById('year').value,
+                category: document.getElementById('category').value,
+                image: document.getElementById('imageUrl').value // Yüklenen resim URL'i
+            };
+
+            await fetch(API_URL, {
+                method: 'POST',
+                body: JSON.stringify(data)
+            });
+            
+            document.getElementById('modal').style.display = 'none';
+            // Formu temizle
+            document.getElementById('title').value = '';
+            document.getElementById('description').value = '';
+            document.getElementById('location').value = '';
+            document.getElementById('year').value = '';
+            document.getElementById('imageUrl').value = '';
+            preview.style.display = 'none';
+            
+            loadReferences();
+        }
+
+        async function deleteRef(id) {
+            if(confirm('Silinsin mi?')) {
+                await fetch(API_URL, {
+                    method: 'DELETE',
+                    body: JSON.stringify({id})
+                });
+                loadReferences();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Hero from "../hero/Hero";
 import hero from "../../assets/ozpen-on.jpeg";
 import { motion } from "framer-motion";
@@ -13,71 +13,96 @@ import {
 } from "@mui/material";
 import SEO from "../SEO";
 
-// Referans verileri
-const referanslar = [
+// Eski (Sabit) Referans verileri
+const sabitReferanslar = [
   {
-    id: 1,
+    id: "static-1",
     title: "Salihoğulları İnşaat",
     logo: require("./assets/salihogulları.png"),
   },
   {
-    id: 2,
+    id: "static-2",
     title: "YDA",
     logo: require("./assets/yda.png"),
   },
   {
-    id: 3,
+    id: "static-3",
     title: "Özoğuz İnşaat",
     logo: require("./assets/ozoguz-ins.png"),
   },
   {
-    id: 4,
+    id: "static-4",
     title: "MK Çetin Yapı",
     logo: require("./assets/mk_cetin.png"),
   },
   {
-    id: 5,
+    id: "static-5",
     title: "Gintek İnşaat",
     logo: require("./assets/gintek.png"),
   },
   {
-    id: 6,
+    id: "static-6",
     title: "Demka Grup",
     logo: require("./assets/demka-ins.png"),
   },
   {
-    id: 7,
+    id: "static-7",
     title: "Bulutbey İnşaat",
     logo: require("./assets/BulutBey.png"),
   },
   {
-    id: 8,
+    id: "static-8",
     title: "Başpınar İnşaat",
     logo: require("./assets/baspınar.png"),
   },
   {
-    id: 9,
+    id: "static-9",
     title: "Arissa İnşaat",
     logo: require("./assets/arissa-logo.png"),
   },
   {
-    id: 10,
+    id: "static-10",
     title: "Akay İnşaat",
     logo: require("./assets/akay-ins.jpg"),
   },
   {
-    id: 11,
+    id: "static-11",
     title: "Astim İnşaat",
     logo: require("./assets/astim.png"),
   },
   {
-    id: 12,
+    id: "static-12",
     title: "Baytim Mimarlık",
     logo: require("./assets/baytim-mimarlik.png"),
   },
 ];
 
 export default function Referanslar() {
+  const [referanslar, setReferanslar] = useState(sabitReferanslar);
+
+  useEffect(() => {
+    // API'den yeni referansları çek
+    fetch("https://ozpenpvc.com.tr/php-backend/api/references.php")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && data.data) {
+          // API verilerini formatla
+          const yeniReferanslar = data.data.map((item) => ({
+            id: item.id,
+            title: item.title,
+            logo: item.image, // API'deki image alanını logo olarak kullan
+            description: item.description,
+            location: item.location,
+            year: item.YEAR,
+          }));
+
+          // Sabit ve yeni referansları birleştir (Yeniler üstte olsun istersen sırayı değiştir)
+          setReferanslar([...yeniReferanslar, ...sabitReferanslar]);
+        }
+      })
+      .catch((err) => console.error("Referans yükleme hatası:", err));
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -171,32 +196,54 @@ export default function Referanslar() {
                       sx={{
                         p: 4,
                         backgroundColor:
-                          referans.id === 7 || referans.id === 8
+                          referans.id === "static-7" || referans.id === "static-8"
                             ? "#333"
                             : "#f8f9fa",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         minHeight: "180px",
+                        position: "relative",
                       }}
                     >
                       <CardMedia
                         component="img"
-                        image={referans.logo}
+                        image={referans.logo || "https://via.placeholder.com/300x200?text=Resim+Yok"}
                         alt={`${referans.title} logo`}
                         sx={{
                           objectFit: "contain",
                           width: "auto",
-                          maxWidth: "80%",
-                          maxHeight: "120px",
+                          maxWidth: "100%",
+                          maxHeight: "140px",
                         }}
                       />
+                      {/* Eğer yeni eklenen bir referans ise ve yıl bilgisi varsa göster */}
+                      {referans.year && (
+                        <Box
+                          sx={{
+                            position: "absolute",
+                            top: 10,
+                            right: 10,
+                            background: "rgba(0,0,0,0.6)",
+                            color: "white",
+                            padding: "2px 8px",
+                            borderRadius: "4px",
+                            fontSize: "0.8rem",
+                          }}
+                        >
+                          {referans.year}
+                        </Box>
+                      )}
                     </Box>
                     <CardContent
                       sx={{
                         textAlign: "center",
                         p: 2.5,
                         "&:last-child": { pb: 2.5 },
+                        flexGrow: 1,
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
                       }}
                     >
                       <Typography
@@ -205,10 +252,17 @@ export default function Referanslar() {
                           fontWeight: 600,
                           color: "#1a1a1a",
                           fontSize: "1.1rem",
+                          mb: referans.location ? 1 : 0,
                         }}
                       >
                         {referans.title}
                       </Typography>
+                      
+                      {referans.location && (
+                        <Typography variant="body2" color="text.secondary">
+                          📍 {referans.location}
+                        </Typography>
+                      )}
                     </CardContent>
                   </Card>
                 </motion.div>
