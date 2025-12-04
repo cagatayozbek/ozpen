@@ -9,6 +9,11 @@ import {
   CardMedia,
   CardActionArea,
   IconButton,
+  Chip,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
 } from "@mui/material";
 import React from "react";
 
@@ -23,6 +28,15 @@ import { IoExtensionPuzzleOutline } from "react-icons/io5";
 import { PiWindowsLogoThin } from "react-icons/pi";
 import { GiGreekTemple } from "react-icons/gi";
 import { AiOutlineFieldTime } from "react-icons/ai";
+import {
+  CheckCircle,
+  Home as HomeIcon,
+  WindowOutlined,
+  Balcony,
+  Phone,
+  CurrencyLira,
+  WhatsApp,
+} from "@mui/icons-material";
 
 // Resim importları
 import pencereKapi from "./assets/pencerevekapisistemleri.jpg";
@@ -168,9 +182,8 @@ export default function Grids({ deneyimYili }) {
                 scrollSnapType: "x mandatory",
                 "&::-webkit-scrollbar": { display: "none" },
                 scrollbarWidth: "none",
-                "-ms-overflow-style": "none",
                 position: "relative",
-                justifyContent: { xs: "center", md: "flex-start" },
+                justifyContent: "flex-start",
               }}
             >
               {cardsData.map((card) => (
@@ -254,6 +267,238 @@ export default function Grids({ deneyimYili }) {
                 </Box>
               ))}
             </Box>
+          </Box>
+
+          {/* PERAKENDE'ye Özel Bölüm - Kış Kampanyası */}
+          <Box
+            sx={{
+              py: 6,
+              mb: 8,
+              background: "#f5f5f5",
+              color: "#1a1a1a",
+              borderRadius: "20px",
+              position: "relative",
+              overflow: "hidden",
+            }}
+          >
+            <Container maxWidth="lg">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                <Grid container spacing={4} alignItems="center">
+                  <Grid size={{ xs: 12, md: 6 }}>
+                    <Chip
+                      label="❄️ KIŞ KAMPANYASI 2025 - 2026"
+                      sx={{
+                        bgcolor: "#e63946",
+                        color: "white",
+                        fontWeight: 600,
+                        mb: 2,
+                      }}
+                    />
+                    <Typography
+                      variant="h3"
+                      sx={{
+                        fontWeight: 700,
+                        mb: 2,
+                        fontSize: { xs: "2rem", md: "2.5rem" },
+                      }}
+                    >
+                      Ev ve Daireler İçin
+                      <br />
+                      <Box component="span" sx={{ color: "#e63946" }}>
+                        Özel Kış Kampanyası Fiyatları
+                      </Box>
+                    </Typography>
+                    <Typography variant="h6" sx={{ mb: 3, color: "#555" }}>
+                      Kış sezonunda uygun fiyatlarla pencerenizi, kapınızı ve cam
+                      balkonunuzu yenileyin!
+                    </Typography>
+                    <List sx={{ mb: 3 }}>
+                      {[
+                        "Ücretsiz ölçüm ve keşif",
+                        "2 yıl Winsa garantisi",
+                        "Taksit imkanları",
+                      ].map((item, index) => (
+                        <ListItem key={index} sx={{ py: 0.5, px: 0 }}>
+                          <ListItemIcon sx={{ minWidth: 35 }}>
+                            <CheckCircle sx={{ color: "#e63946" }} />
+                          </ListItemIcon>
+                          <ListItemText
+                            primary={item}
+                            sx={{ "& .MuiTypography-root": { fontWeight: 500 } }}
+                          />
+                        </ListItem>
+                      ))}
+                    </List>
+                    <Box sx={{ display: "flex", gap: 2, flexDirection: { xs: "column", md: "row" }, flexWrap: "wrap" }}>
+                      <Button
+                        href="https://wa.me/905439035617"
+                        target="_blank"
+                        variant="contained"
+                        size="large"
+                        startIcon={<WhatsApp />}
+                        fullWidth
+                        sx={{
+                          bgcolor: "#25D366",
+                          color: "#fff",
+                          fontWeight: 600,
+                          px: 3,
+                          py: 1.5,
+                          whiteSpace: "nowrap",
+                          "&:hover": {
+                            bgcolor: "#128C7E",
+                          },
+                        }}
+                      >
+                        WhatsApp ile Keşif İste
+                      </Button>
+                      <Button
+                        href="tel:+903123955603"
+                        variant="outlined"
+                        size="large"
+                        fullWidth
+                        sx={{
+                          borderColor: "#1a1a1a",
+                          color: "#1a1a1a",
+                          fontWeight: 600,
+                          px: 3,
+                          py: 1.5,
+                          whiteSpace: "nowrap",
+                          "&:hover": {
+                            borderColor: "#1a1a1a",
+                            bgcolor: "rgba(26,26,26,0.05)",
+                          },
+                        }}
+                      >
+                        0312 395 56 03
+                      </Button>
+                      <Button
+                        component={Link}
+                        to="/perakende"
+                        variant="text"
+                        size="large"
+                        fullWidth
+                        sx={{
+                          color: "#1a1a1a",
+                          fontWeight: 600,
+                          textDecoration: "underline",
+                          whiteSpace: "nowrap",
+                          "&:hover": {
+                            bgcolor: "transparent",
+                            color: "#ff6b35",
+                          },
+                        }}
+                      >
+                        Detaylı Bilgi &rarr;
+                      </Button>
+                    </Box>
+                  </Grid>
+
+                  <Grid size={{ xs: 12, md: 6 }}>
+                    <Box
+                      sx={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(2, 1fr)",
+                        gap: 2,
+                      }}
+                    >
+                      {[
+                        {
+                          icon: WindowOutlined,
+                          title: "PVC Pencere",
+                          desc: "Enerji tasarrufu sağlayan yalıtım",
+                          link: "/urunler/pencere-ve-kapi-sistemleri",
+                        },
+                        {
+                          icon: HomeIcon,
+                          title: "PVC Kapı",
+                          desc: "Güvenli ve dayanıklı",
+                          link: "/urunler/pencere-ve-kapi-sistemleri",
+                        },
+                        {
+                          icon: Balcony,
+                          title: "Cam Balkon",
+                          desc: "Balkonunuzu yaşam alanına çevirin",
+                          link: "/urunler/cam-balkon-sistemleri",
+                        },
+                        {
+                          icon: CurrencyLira,
+                          title: "Uygun Fiyat",
+                          desc: "Taksit imkanları",
+                          link: "/iletisim",
+                        },
+                      ].map((item, index) => (
+                        <Card
+                          key={index}
+                          component={motion.div}
+                          whileHover={{ scale: 1.05 }}
+                          elevation={0}
+                          sx={{
+                            bgcolor: "#fff",
+                            borderRadius: 3,
+                            boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
+                            cursor: "pointer",
+                            height: "100%",
+                            minHeight: "180px",
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "center",
+                            border: "1px solid rgba(0,0,0,0.05)",
+                            transition: "all 0.3s ease",
+                            "&:hover": {
+                              boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+                              borderColor: "#ff6b35",
+                            },
+                          }}
+                          onClick={() => (window.location.href = item.link)}
+                        >
+                          <CardContent
+                            sx={{
+                              textAlign: "center",
+                              p: 3,
+                              flex: 1,
+                              display: "flex",
+                              flexDirection: "column",
+                              alignItems: "center",
+                              justifyContent: "center",
+                            }}
+                          >
+                            <item.icon
+                              sx={{ fontSize: 36, color: "#ff6b35", mb: 1.5 }}
+                            />
+                            <Typography
+                              variant="h6"
+                              sx={{
+                                fontWeight: 700,
+                                color: "#263238",
+                                mb: 1,
+                                fontSize: "1.1rem",
+                              }}
+                            >
+                              {item.title}
+                            </Typography>
+                            <Typography
+                              variant="body2"
+                              sx={{
+                                color: "#666",
+                                fontSize: "0.9rem",
+                                lineHeight: 1.4,
+                              }}
+                            >
+                              {item.desc}
+                            </Typography>
+                          </CardContent>
+                        </Card>
+                      ))}
+                    </Box>
+                  </Grid>
+                </Grid>
+              </motion.div>
+            </Container>
           </Box>
 
           {/* Özellikler */}

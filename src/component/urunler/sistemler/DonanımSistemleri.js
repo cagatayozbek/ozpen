@@ -5,7 +5,7 @@ import SEO from "../../SEO";
 export default function DonanımSistemleri() {
   return (
     <>
-      <SEO 
+      <SEO
         title="Donanım Sistemleri | Açılım Seçenekleri"
         description="Winsa pencere ve kapı açılım seçenekleri. Çeşitli donanım sistemleri ile ihtiyacınıza uygun çözümler."
         keywords="pencere donanım, kapı donanım, açılım seçenekleri, winsa donanım, pvc aksesuar"
@@ -15,13 +15,34 @@ export default function DonanımSistemleri() {
   );
 }
 
-const title = ["Winsa", "Açılım Seçenekleri"];
+const title = ["Donanım", "Sistemleri"];
 const menuItem = [
   {
     imgSource: require("./assets/acilim.jpg"),
     imgDesSource: null,
-    imgDesc: "Açılım Seçenekleri",
-    title: "gold",
-    path: "/urunler/donanım-sistemleri",
+    imgDesc: "Pencere ve Kapı Açılım Seçenekleri",
+    title: "acilim",
+    path: "/urunler/donanım-sistemleri/donanım",
+  },
+  {
+    imgSource: require("./assets/kol/beyaz-kol.png"),
+    imgDesSource: null,
+    imgDesc: "Beyaz Kol Sistemi",
+    title: "beyaz-kol",
+    path: "/urunler/donanım-sistemleri/donanım",
+  },
+  {
+    imgSource: require("./assets/kol/gumus-kol.png"),
+    imgDesSource: null,
+    imgDesc: "Gümüş Kol Sistemi",
+    title: "gumus-kol",
+    path: "/urunler/donanım-sistemleri/donanım",
+  },
+  {
+    imgSource: require("./assets/kol/metalikantrasit-kol.png"),
+    imgDesSource: null,
+    imgDesc: "Metalik Antrasit Kol Sistemi",
+    title: "metalik-antrasit",
+    path: "/urunler/donanım-sistemleri/donanım",
   },
 ];

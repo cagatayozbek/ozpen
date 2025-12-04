@@ -5,7 +5,7 @@ import SEO from "../../SEO";
 export default function PencereVeKapı() {
   return (
     <>
-      <SEO 
+      <SEO
         title="Pencere ve Kapı Sistemleri | Winsa"
         description="Winsa pencere ve kapı sistemleri. Dorado 76, Revotech Gold, Revotech, Safir 76. Yüksek yalıtım ve estetik tasarım."
         keywords="pvc pencere, pvc kapı, dorado 76, revotech, safir 76, winsa pencere, ankara pencere"

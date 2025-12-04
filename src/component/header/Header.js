@@ -108,12 +108,11 @@ export default function Header() {
         sx={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
+          justifyContent: "flex-end",
           p: 2,
           borderBottom: "1px solid #eee",
         }}
       >
-        <img src={logo} alt="Özpen PVC Logo" style={{ height: "50px" }} />
         <IconButton onClick={handleDrawerToggle}>
           <Close />
         </IconButton>
@@ -326,7 +325,8 @@ export default function Header() {
                       key={item.label}
                       onClick={() => handleNavigation(item.path)}
                       sx={{
-                        color: location.pathname === item.path ? "#ff6b35" : "#333",
+                        color:
+                          location.pathname === item.path ? "#ff6b35" : "#333",
                         fontWeight: location.pathname === item.path ? 600 : 500,
                         fontSize: "0.95rem",
                         px: 2,
@@ -359,7 +359,21 @@ export default function Header() {
               </Box>
 
               {/* Desktop Contact Info */}
-              <Box sx={{ display: { xs: "none", md: "flex" }, gap: 1 }}>
+              <Box sx={{ display: { xs: "none", md: "flex" }, gap: 1, alignItems: "center" }}>
+                <Button
+                  component={Link}
+                  to="/perakende"
+                  variant="contained"
+                  sx={{
+                    bgcolor: "#ff6b35",
+                    color: "#fff",
+                    fontWeight: 600,
+                    "&:hover": { bgcolor: "#ff5722" },
+                    mr: 1,
+                  }}
+                >
+                  Ücretsiz Keşif
+                </Button>
                 <Button
                   startIcon={<Phone />}
                   href="tel:+903123955603"
@@ -384,11 +398,30 @@ export default function Header() {
                 </IconButton>
               </Box>
 
+              {/* Mobile Free Discovery Button */}
+              <Button
+                component={Link}
+                to="/perakende"
+                variant="contained"
+                size="small"
+                sx={{
+                  display: { xs: "flex", md: "none" },
+                  ml: "auto",
+                  mr: 1,
+                  bgcolor: "#ff6b35",
+                  color: "#fff",
+                  fontSize: "0.75rem",
+                  fontWeight: 600,
+                  "&:hover": { bgcolor: "#ff5722" },
+                }}
+              >
+                Ücretsiz Keşif
+              </Button>
+
               {/* Mobile Menu Button */}
               <IconButton
                 sx={{
                   display: { xs: "flex", md: "none" },
-                  ml: "auto",
                   color: "#333",
                 }}
                 onClick={handleDrawerToggle}

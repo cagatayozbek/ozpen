@@ -102,7 +102,7 @@ export default function Referanslar() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <SEO 
+      <SEO
         title="Referanslarımız"
         description="Özpen PVC referansları. Salihoğulları İnşaat, YDA, Özoğuz İnşaat, MK Çetin Yapı, Gintek ve daha fazlası ile çalıştık."
         keywords="özpen referanslar, ankara pvc referanslar, winsa projeleri, özpen projeler"

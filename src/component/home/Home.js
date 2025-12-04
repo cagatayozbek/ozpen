@@ -9,12 +9,14 @@ import {
   Button,
   Grid2 as Grid,
   IconButton,
+  Card,
+  CardContent,
 } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import CountUp from "react-countup";
 import { BsBuilding } from "react-icons/bs";
-import { FaUsers, FaRegSmileBeam } from "react-icons/fa";
+import { FaUsers, FaRegSmileBeam, FaHome, FaWarehouse } from "react-icons/fa";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
@@ -72,9 +74,10 @@ export default function Home() {
 
   return (
     <>
-      <SEO 
-        title="Ankara Winsa Bayi | Özpen PVC"
-        description="Ankara'nın en büyük Winsa bayisi Özpen PVC. Türkiye'nin en kaliteli PVC markası Winsa ile pencere, kapı ve cam balkon sistemlerinde uzman çözümler."
+      <SEO
+        title="PVC Pencere, Kapı ve Cam Balkon | Ankara Winsa Bayi"
+        description="Ankara'da ev ve daireler için PVC pencere, kapı ve cam balkon sistemleri. Ücretsiz keşif, hızlı montaj, 2 yıl garanti. Kış kampanyası fiyatları! ☎️ 0312 395 56 03"
+        keywords="ankara pvc pencere, ankara pimapen, ankara cam balkon, pvc fiyatları, cam balkon fiyatları, ev penceresi, daire penceresi, cam balkon ankara, winsa pencere fiyat, uygun pvc pencere"
       />
       <AnimatePresence>
         {showIntro && (
@@ -154,7 +157,11 @@ export default function Home() {
       >
         <Box className="simple-hero">
           <div className="hero-background">
-            <img src={bg} alt="Özpen PVC Showroom - Ankara Winsa Bayisi" className="hero-image" />
+            <img
+              src={bg}
+              alt="Özpen PVC Showroom - Ankara Winsa Bayisi"
+              className="hero-image"
+            />
           </div>
           <Container
             maxWidth="lg"
@@ -212,6 +219,8 @@ export default function Home() {
         </Box>
 
         <Grids deneyimYili={deneyimYili} />
+
+
 
         {/* İstatistikler Bölümü */}
         <Box sx={{ py: 6, backgroundColor: "#f5f5f5" }} ref={statsRef}>

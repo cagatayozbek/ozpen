@@ -5,7 +5,7 @@ import SEO from "../../SEO";
 export default function Surme() {
   return (
     <>
-      <SEO 
+      <SEO
         title="Sürme Sistemleri | Winsa"
         description="Winsa sürme sistemleri. Comfort Slide Plus, Comfort Slide, Panorama HS-76, Lotus. Kolay kullanım ve mükemmel sızdırmazlık."
         keywords="sürme pencere, sürme kapı, comfort slide, panorama, lotus, winsa sürme, sürme sistem"

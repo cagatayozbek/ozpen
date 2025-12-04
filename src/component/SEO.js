@@ -2,13 +2,20 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 
-export default function SEO({ title, description, name, type, keywords, image }) {
+export default function SEO({
+  title,
+  description,
+  name,
+  type,
+  keywords,
+  image,
+}) {
   const location = useLocation();
   const siteTitle = "Özpen PVC | Ankara Winsa Bayi";
   const defaultDescription =
     "Ankara'nın en büyük Winsa bayisi Özpen PVC. Pencere, kapı ve cam balkon sistemlerinde uzman çözümler. İnşaat sektörünün güvenilir adresi.";
   const defaultKeywords =
-    "özpen, özpen pvc, winsa, winsa ankara, pvc pencere, pvc kapı, cam balkon, ankara pvc, pvc sistemleri";
+    "özpen, özpen pvc, winsa, winsa ankara, pvc pencere, pvc kapı, cam balkon, ankara pvc, pvc sistemleri, ankara pimapen, ankara cam balkon, ankara pencere";
   const defaultImage = "https://ozpenpvc.com.tr/ozpen-logo.png";
   const canonicalUrl = `https://ozpenpvc.com.tr${location.pathname}`;
 
@@ -48,9 +55,7 @@ export default function SEO({ title, description, name, type, keywords, image })
         closes: "17:00",
       },
     ],
-    sameAs: [
-      "https://www.instagram.com/baskentozpen_winsa/",
-    ],
+    sameAs: ["https://www.instagram.com/baskentozpen_winsa/"],
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.8",

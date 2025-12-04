@@ -5,7 +5,7 @@ import SEO from "../../SEO";
 export default function PanjurVeKepenk() {
   return (
     <>
-      <SEO 
+      <SEO
         title="Panjur ve Kepenk Sistemleri | Winsa"
         description="Winsa panjur ve kepenk sistemleri. Winstor ve Winkepenk ile üstün yalıtım ve güvenlik. Motorlu ve manuel seçenekler."
         keywords="pvc panjur, pvc kepenk, winstor, winkepenk, motorlu panjur, güvenlik kepenk"

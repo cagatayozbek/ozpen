@@ -10,7 +10,7 @@ import SEO from "../../SEO";
 const CamBalkon = () => {
   return (
     <>
-      <SEO 
+      <SEO
         title="Cam Balkon Sistemleri | Winsa"
         description="Winsa cam balkon sistemleri. Katlanır, sürme ve küpeşte sistemleri. Veranda, Vela, Camekan, Teras modelleriyle balkonunuzu yaşam alanına dönüştürün."
         keywords="cam balkon, katlanır cam balkon, sürme cam balkon, vela, veranda, camekan, teras sistem"

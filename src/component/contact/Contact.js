@@ -76,7 +76,7 @@ export default function Contact() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <SEO 
+      <SEO
         title="İletişim | Bize Ulaşın"
         description="Özpen PVC iletişim bilgileri. Ankara'da pencere, kapı ve cam balkon sistemleri için bize ulaşın. Telefon: 0312 395 56 03"
         keywords="özpen iletişim, ankara pvc iletişim, winsa ankara iletişim, özpen adres, özpen telefon"
