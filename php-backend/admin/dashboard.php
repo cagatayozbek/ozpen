@@ -173,7 +173,15 @@ $result = $conn->query($sql);
                     <option value="Cam Balkon">Cam Balkon</option>
                     <option value="Panjur">Panjur</option>
                 </select>
-                <input type="text" name="image" placeholder="Fotoğraf URL (opsiyonel)">
+                
+                <!-- Sürükle Bırak Alanı -->
+                <div id="dropZone" style="border: 2px dashed #ccc; padding: 20px; text-align: center; margin-bottom: 15px; cursor: pointer;">
+                    <p>Resmi buraya sürükleyin veya tıklayın</p>
+                    <input type="file" id="fileInput" style="display: none;" accept="image/*">
+                    <img id="preview" style="max-width: 100%; max-height: 200px; display: none; margin-top: 10px;">
+                </div>
+                
+                <input type="hidden" name="image" placeholder="Fotoğraf URL (Otomatik dolar)">
                 <button type="submit" class="btn btn-success">Kaydet</button>
                 <button type="button" class="btn btn-danger" onclick="closeModal()">İptal</button>
             </form>
@@ -181,6 +189,9 @@ $result = $conn->query($sql);
     </div>
 
     <script>
+        const API_URL = '../api/references.php';
+        const UPLOAD_URL = '../api/upload.php';
+
         function openModal() {
             document.getElementById('modal').style.display = 'block';
         }
@@ -188,7 +199,81 @@ $result = $conn->query($sql);
         function closeModal() {
             document.getElementById('modal').style.display = 'none';
             document.getElementById('referenceForm').reset();
+            document.getElementById('preview').style.display = 'none';
+            document.getElementById('dropZone').innerHTML = `
+                <p>Resmi buraya sürükleyin veya tıklayın</p>
+                <input type="file" id="fileInput" style="display: none;" accept="image/*">
+                <img id="preview" style="max-width: 100%; max-height: 200px; display: none; margin-top: 10px;">
+            `;
+            setupFileUpload(); // Re-attach listeners
         }
+
+        // Dosya Yükleme İşlemleri
+        function setupFileUpload() {
+            const dropZone = document.getElementById('dropZone');
+            const fileInput = document.getElementById('fileInput');
+            const preview = document.getElementById('preview');
+
+            dropZone.onclick = () => fileInput.click();
+
+            dropZone.ondragover = (e) => {
+                e.preventDefault();
+                dropZone.style.borderColor = '#667eea';
+                dropZone.style.background = '#f0f4ff';
+            };
+
+            dropZone.ondragleave = () => {
+                dropZone.style.borderColor = '#ccc';
+                dropZone.style.background = 'white';
+            };
+
+            dropZone.ondrop = (e) => {
+                e.preventDefault();
+                dropZone.style.borderColor = '#ccc';
+                dropZone.style.background = 'white';
+                handleFile(e.dataTransfer.files[0]);
+            };
+
+            fileInput.onchange = (e) => handleFile(e.target.files[0]);
+
+            async function handleFile(file) {
+                if (!file) return;
+
+                // Önizleme
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+
+                // Yükleme
+                const formData = new FormData();
+                formData.append('file', file);
+
+                dropZone.innerHTML += '<p>Yükleniyor...</p>';
+
+                try {
+                    const res = await fetch(UPLOAD_URL, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const data = await res.json();
+                    
+                    if (data.success) {
+                        document.querySelector('input[name="image"]').value = data.url;
+                        alert('Resim yüklendi! ✅');
+                    } else {
+                        alert('Hata: ' + data.message);
+                    }
+                } catch (err) {
+                    alert('Yükleme hatası!');
+                }
+            }
+        }
+
+        // Sayfa yüklendiğinde event listener'ları ata
+        document.addEventListener('DOMContentLoaded', setupFileUpload);
 
         document.getElementById('referenceForm').addEventListener('submit', async (e) => {
             e.preventDefault();

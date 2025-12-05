@@ -1,5 +1,5 @@
 <?php
-require_once('../config.php');
+require_once('api_bootstrap.php');
 
 $method = $_SERVER['REQUEST_METHOD'];
 
