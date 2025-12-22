@@ -19,6 +19,7 @@ export default function TeknikComponent({
       <img
         src={background}
         alt="Sürdürülebilir Bir Gelecek Arka Planı" // Daha açıklayıcı alt metin
+        loading="lazy"
         style={{
           maxWidth: "100%", // Genişliği konteynıra sığacak şekilde sınırlar
           height: "auto", // Orantılı şekilde boyutlandırır
@@ -44,6 +45,7 @@ export default function TeknikComponent({
               <img
                 src={teknik}
                 alt="teknik-görsel"
+                loading="lazy"
                 style={{ maxWidth: "70%" }}
               />
             ) : (

@@ -19,6 +19,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://ozpenpvc.com.tr/perakende</loc>
+    <lastmod>2024-12-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ozpenpvc.com.tr/ev-pencere-kapi</loc>
+    <lastmod>2024-12-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://ozpenpvc.com.tr/urunler</loc>
     <lastmod>2024-12-03</lastmod>
     <changefreq>weekly</changefreq>

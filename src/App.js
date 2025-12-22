@@ -37,6 +37,7 @@ import Perde from "./component/urunler/sistemler/detay/Perde";
 import Donanım from "./component/urunler/sistemler/detay/Donanım";
 import Referanslar from "./component/referanslar/Referanslar";
 import Perakende from "./component/perakende/Perakende";
+import Tesekkurler from "./component/tesekkurler/Tesekkurler";
 import Footer from "./component/footer/Footer";
 import { Box, IconButton, Tooltip, Zoom } from "@mui/material";
 import { FaWhatsapp } from "react-icons/fa";
@@ -62,6 +63,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/perakende" element={<Perakende />} />
             <Route path="/ev-pencere-kapi" element={<Perakende />} />
+            <Route path="/tesekkurler" element={<Tesekkurler />} />
             <Route path="/kurumsal" element={<Kurumsal />} />
             <Route path="/iletisim" element={<Contact />} />
             <Route path="/referanslar" element={<Referanslar />} />

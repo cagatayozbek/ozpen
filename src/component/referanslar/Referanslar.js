@@ -93,7 +93,6 @@ export default function Referanslar() {
             logo: item.image, // API'deki image alanını logo olarak kullan
             description: item.description,
             location: item.location,
-            year: item.YEAR,
           }));
 
           // Sabit ve yeni referansları birleştir (Yeniler üstte olsun istersen sırayı değiştir)
@@ -210,6 +209,7 @@ export default function Referanslar() {
                         component="img"
                         image={referans.logo || "https://via.placeholder.com/300x200?text=Resim+Yok"}
                         alt={`${referans.title} logo`}
+                        loading="lazy"
                         sx={{
                           objectFit: "contain",
                           width: "auto",
@@ -217,23 +217,7 @@ export default function Referanslar() {
                           maxHeight: "140px",
                         }}
                       />
-                      {/* Eğer yeni eklenen bir referans ise ve yıl bilgisi varsa göster */}
-                      {referans.year && (
-                        <Box
-                          sx={{
-                            position: "absolute",
-                            top: 10,
-                            right: 10,
-                            background: "rgba(0,0,0,0.6)",
-                            color: "white",
-                            padding: "2px 8px",
-                            borderRadius: "4px",
-                            fontSize: "0.8rem",
-                          }}
-                        >
-                          {referans.year}
-                        </Box>
-                      )}
+                      {/* Yıl bilgisi kaldırıldı */}
                     </Box>
                     <CardContent
                       sx={{

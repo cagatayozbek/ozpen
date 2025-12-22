@@ -26,10 +26,12 @@ import {
 
   Home as HomeIcon,
 } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SEO from "../SEO";
 
 export default function Perakende() {
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // Form gönderimi
@@ -41,7 +43,12 @@ export default function Perakende() {
     const whatsappUrl = `https://wa.me/905439035617?text=${encodeURIComponent(
       message
     )}`;
+    
+    // Önce WhatsApp'ı yeni sekmede aç
     window.open(whatsappUrl, "_blank");
+
+    // Sonra bu sekmeyi teşekkürler sayfasına yönlendir
+    navigate("/tesekkurler");
   };
 
   const primaryColor = "#ff6b35"; // Header ile uyumlu turuncu

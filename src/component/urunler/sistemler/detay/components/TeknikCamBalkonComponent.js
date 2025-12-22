@@ -21,6 +21,7 @@ export default function TeknikCamBalkonComponent({
       <img
         src={background}
         alt="Sürdürülebilir Bir Gelecek Arka Planı" // Daha açıklayıcı alt metin
+        loading="lazy"
         style={{
           maxWidth: "100%", // Genişliği konteynıra sığacak şekilde sınırlar
           //  height: "60vh", // Orantılı şekilde boyutlandırır
@@ -87,6 +88,7 @@ export default function TeknikCamBalkonComponent({
                         component="img"
                         src={color.src}
                         alt={`${color.name} Rengi`}
+                        loading="lazy"
                         sx={{
                           flexDirection: "row",
                           width: { xs: "30px", sm: "35px", md: "40px" },
@@ -112,6 +114,7 @@ export default function TeknikCamBalkonComponent({
               <img
                 src={teknik}
                 alt="teknik-görsel"
+                loading="lazy"
                 style={{ maxWidth: "100%" }}
               />
             ) : (

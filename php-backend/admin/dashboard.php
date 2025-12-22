@@ -129,7 +129,6 @@ $result = $conn->query($sql);
                     <tr>
                         <th>Başlık</th>
                         <th>Konum</th>
-                        <th>Yıl</th>
                         <th>Kategori</th>
                         <th>İşlemler</th>
                     </tr>
@@ -140,7 +139,6 @@ $result = $conn->query($sql);
                             <tr>
                                 <td><?= htmlspecialchars($row['title']) ?></td>
                                 <td><?= htmlspecialchars($row['location']) ?></td>
-                                <td><?= $row['YEAR'] ?></td>
                                 <td><?= htmlspecialchars($row['category']) ?></td>
                                 <td>
                                     <button class="btn btn-danger" onclick="deleteReference(<?= $row['id'] ?>)">Sil</button>
@@ -149,7 +147,7 @@ $result = $conn->query($sql);
                         <?php endwhile; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="5" style="text-align: center;">Henüz referans eklenmemiş</td>
+                            <td colspan="4" style="text-align: center;">Henüz referans eklenmemiş</td>
                         </tr>
                     <?php endif; ?>
                 </tbody>
@@ -165,7 +163,6 @@ $result = $conn->query($sql);
                 <input type="text" name="title" placeholder="Proje Başlığı" required>
                 <textarea name="description" placeholder="Açıklama"></textarea>
                 <input type="text" name="location" placeholder="Konum (örn: Ankara)">
-                <input type="number" name="year" placeholder="Yıl" min="2000" max="2030">
                 <select name="category">
                     <option value="">Kategori Seçin</option>
                     <option value="PVC Pencere">PVC Pencere</option>
@@ -199,6 +196,7 @@ $result = $conn->query($sql);
         function closeModal() {
             document.getElementById('modal').style.display = 'none';
             document.getElementById('referenceForm').reset();
+            document.getElementById('location').value = '';
             document.getElementById('preview').style.display = 'none';
             document.getElementById('dropZone').innerHTML = `
                 <p>Resmi buraya sürükleyin veya tıklayın</p>
@@ -238,6 +236,13 @@ $result = $conn->query($sql);
 
             async function handleFile(file) {
                 if (!file) return;
+
+                // Format kontrolü
+                const validTypes = ['image/jpeg', 'image/png', 'image/webp'];
+                if (!validTypes.includes(file.type)) {
+                    alert('Hata: Sadece JPG, PNG veya WEBP formatında resim yükleyebilirsiniz.');
+                    return;
+                }
 
                 // Önizleme
                 const reader = new FileReader();
