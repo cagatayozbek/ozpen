@@ -13,9 +13,9 @@ import {
   ListItemText,
   Menu,
   MenuItem,
-  useScrollTrigger,
-  Slide,
   Collapse,
+  Typography,
+  Divider,
 } from "@mui/material";
 import {
   Menu as MenuIcon,
@@ -29,15 +29,6 @@ import {
 import { motion } from "framer-motion";
 import logo from "./logo.png";
 import "./Header.css";
-
-function HideOnScroll({ children }) {
-  const trigger = useScrollTrigger();
-  return (
-    <Slide appear={false} direction="down" in={!trigger}>
-      {children}
-    </Slide>
-  );
-}
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -75,6 +66,21 @@ export default function Header() {
     handleMenuClose();
   };
 
+  const isActivePath = (item) => {
+    if (item.path === "/") {
+      return location.pathname === "/";
+    }
+
+    if (item.submenu) {
+      return (
+        location.pathname === item.path ||
+        item.submenu.some((subItem) => location.pathname.startsWith(subItem.path))
+      );
+    }
+
+    return location.pathname.startsWith(item.path);
+  };
+
   const menuItems = [
     { label: "Ana Sayfa", path: "/" },
     { label: "Kurumsal", path: "/kurumsal" },
@@ -103,21 +109,39 @@ export default function Header() {
   ];
 
   const drawer = (
-    <Box sx={{ width: 280, height: "100%", bgcolor: "#fff" }}>
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "flex-end",
-          p: 2,
-          borderBottom: "1px solid #eee",
-        }}
-      >
-        <IconButton onClick={handleDrawerToggle}>
+    <Box className="mobile-drawer-panel">
+      <Box className="mobile-drawer-header">
+        <Box
+          component="img"
+          src={logo}
+          alt="Özpen PVC - Ankara Winsa Bayi Logo"
+          className="mobile-drawer-logo"
+          onClick={() => handleNavigation("/")}
+        />
+        <IconButton onClick={handleDrawerToggle} aria-label="Menüyü kapat">
           <Close />
         </IconButton>
       </Box>
-      <List sx={{ px: 1 }}>
+
+      <Box className="mobile-drawer-cta">
+        <Button
+          fullWidth
+          component={Link}
+          to="/perakende"
+          variant="contained"
+          className="primary-cta"
+          onClick={() => setMobileOpen(false)}
+        >
+          Ücretsiz Keşif
+        </Button>
+        <Typography variant="body2" className="drawer-helper-text">
+          Ankara içi keşif ve teklif için hızlı başvuru.
+        </Typography>
+      </Box>
+
+      <Divider />
+
+      <List className="mobile-menu-list">
         {menuItems.map((item) => (
           <React.Fragment key={item.label}>
             <ListItemButton
@@ -129,20 +153,26 @@ export default function Header() {
                 }
               }}
               sx={{
-                borderRadius: "8px",
+                minHeight: 48,
+                borderRadius: "10px",
                 mb: 0.5,
-                "&:hover": { bgcolor: "#f5f5f5" },
+                bgcolor: isActivePath(item) ? "#fff3ee" : "transparent",
+                "&:hover": { bgcolor: "#f6f7f9" },
               }}
             >
               <ListItemText
                 primary={item.label}
                 primaryTypographyProps={{
-                  fontWeight: location.pathname === item.path ? 600 : 400,
-                  color: location.pathname === item.path ? "#ff6b35" : "#333",
+                  fontWeight: isActivePath(item) ? 700 : 500,
+                  color: isActivePath(item) ? "#e85c2a" : "#20242c",
                 }}
               />
               {item.submenu &&
-                (mobileSubmenuOpen ? <ExpandLess /> : <ExpandMore />)}
+                (mobileSubmenuOpen ? (
+                  <ExpandLess sx={{ color: "#e85c2a" }} />
+                ) : (
+                  <ExpandMore />
+                ))}
             </ListItemButton>
             {item.submenu && (
               <Collapse in={mobileSubmenuOpen} timeout="auto" unmountOnExit>
@@ -153,16 +183,25 @@ export default function Header() {
                       onClick={() => handleNavigation(subItem.path)}
                       sx={{
                         pl: 4,
-                        borderRadius: "8px",
+                        minHeight: 44,
+                        borderRadius: "10px",
                         mb: 0.5,
-                        "&:hover": { bgcolor: "#f5f5f5" },
+                        bgcolor: location.pathname.startsWith(subItem.path)
+                          ? "#fff7f3"
+                          : "transparent",
+                        "&:hover": { bgcolor: "#f6f7f9" },
                       }}
                     >
                       <ListItemText
                         primary={subItem.label}
                         primaryTypographyProps={{
                           fontSize: "0.9rem",
-                          color: "#666",
+                          fontWeight: location.pathname.startsWith(subItem.path)
+                            ? 700
+                            : 500,
+                          color: location.pathname.startsWith(subItem.path)
+                            ? "#e85c2a"
+                            : "#5f6673",
                         }}
                       />
                     </ListItemButton>
@@ -173,27 +212,14 @@ export default function Header() {
           </React.Fragment>
         ))}
       </List>
-      <Box
-        sx={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          p: 2,
-          borderTop: "1px solid #eee",
-        }}
-      >
+
+      <Box className="mobile-drawer-actions">
         <Button
           fullWidth
           variant="outlined"
           startIcon={<Phone />}
           href="tel:+903123955603"
-          sx={{
-            mb: 1,
-            borderColor: "#ff6b35",
-            color: "#ff6b35",
-            "&:hover": { borderColor: "#ff6b35", bgcolor: "#fff5f2" },
-          }}
+          className="phone-action"
         >
           0312 395 56 03
         </Button>
@@ -204,10 +230,7 @@ export default function Header() {
           href="https://www.instagram.com/baskentozpen_winsa/"
           target="_blank"
           rel="noopener noreferrer"
-          sx={{
-            bgcolor: "#E4405F",
-            "&:hover": { bgcolor: "#d32f50" },
-          }}
+          className="instagram-action"
         >
           Instagram
         </Button>
@@ -217,238 +240,149 @@ export default function Header() {
 
   return (
     <>
-      <HideOnScroll>
-        <AppBar
-          position="sticky"
-          elevation={scrolled ? 4 : 0}
-          sx={{
-            bgcolor: scrolled ? "rgba(255, 255, 255, 0.98)" : "#fff",
-            backdropFilter: scrolled ? "blur(10px)" : "none",
-            transition: "all 0.3s ease",
-            borderBottom: scrolled ? "none" : "1px solid rgba(0,0,0,0.08)",
-          }}
-        >
-          <Container maxWidth="lg">
-            <Toolbar
-              sx={{
-                minHeight: { xs: 72, md: 84 },
-                py: { xs: 0.5, md: 1 },
-                px: { xs: 0, sm: 2 },
-              }}
+      <AppBar
+        position="sticky"
+        elevation={0}
+        className={scrolled ? "site-header site-header-scrolled" : "site-header"}
+      >
+        <Container maxWidth="xl">
+          <Toolbar
+            disableGutters
+            className={scrolled ? "site-toolbar site-toolbar-compact" : "site-toolbar"}
+          >
+            {/* Logo */}
+            <Box
+              component={motion.button}
+              type="button"
+              whileHover={{ y: -1 }}
+              whileTap={{ scale: 0.98 }}
+              className="brand-button"
+              onClick={() => navigate("/")}
+              aria-label="Özpen ana sayfa"
             >
-              {/* Logo */}
               <Box
-                component={motion.div}
-                whileHover={{ scale: 1.05 }}
-                sx={{ flexGrow: 0, cursor: "pointer" }}
-                onClick={() => navigate("/")}
-              >
-                <Box
-                  component="img"
-                  src={logo}
-                  alt="Özpen PVC - Ankara Winsa Bayi Logo"
-                  sx={{
-                    display: "block",
-                    height: {
-                      xs: scrolled ? 50 : 56,
-                      sm: scrolled ? 54 : 60,
-                      md: scrolled ? 55 : 65,
-                    },
-                    transition: "height 0.3s ease",
-                  }}
-                />
+                component="img"
+                src={logo}
+                alt="Özpen PVC - Ankara Winsa Bayi Logo"
+                className="brand-logo"
+              />
+              <Box className="brand-copy">
+                <Typography component="span" className="brand-kicker">
+                  Ankara Winsa Bayi
+                </Typography>
+                <Typography component="span" className="brand-title">
+                  Başkent Özpen PVC
+                </Typography>
               </Box>
+            </Box>
 
-              {/* Desktop Menu */}
-              <Box
-                sx={{
-                  flexGrow: 1,
-                  display: { xs: "none", md: "flex" },
-                  justifyContent: "center",
-                  gap: 1,
-                }}
-              >
-                {menuItems.map((item) =>
-                  item.submenu ? (
-                    <Box key={item.label}>
-                      <Button
-                        onClick={handleMenuOpen}
-                        endIcon={<KeyboardArrowDown />}
-                        sx={{
-                          color: "#333",
-                          fontWeight: 500,
-                          fontSize: "0.95rem",
-                          px: 2,
-                          py: 1,
-                          position: "relative",
-                          "&:hover": {
-                            bgcolor: "transparent",
-                            color: "#ff6b35",
-                          },
-                          "&::after": {
-                            content: '""',
-                            position: "absolute",
-                            bottom: 0,
-                            left: "50%",
-                            transform: "translateX(-50%)",
-                            width: anchorEl ? "70%" : "0%",
-                            height: "3px",
-                            bgcolor: "#ff6b35",
-                            transition: "width 0.3s ease",
-                          },
-                        }}
-                      >
-                        {item.label}
-                      </Button>
-                      <Menu
-                        anchorEl={anchorEl}
-                        open={Boolean(anchorEl)}
-                        onClose={handleMenuClose}
-                        PaperProps={{
-                          sx: {
-                            mt: 1,
-                            borderRadius: "12px",
-                            minWidth: 280,
-                            boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
-                          },
-                        }}
-                      >
-                        {item.submenu.map((subItem) => (
-                          <MenuItem
-                            key={subItem.label}
-                            onClick={() => handleNavigation(subItem.path)}
-                            sx={{
-                              py: 1.5,
-                              px: 2.5,
-                              "&:hover": {
-                                bgcolor: "#fff5f2",
-                                color: "#ff6b35",
-                              },
-                            }}
-                          >
-                            {subItem.label}
-                          </MenuItem>
-                        ))}
-                      </Menu>
-                    </Box>
-                  ) : (
+            {/* Desktop Menu */}
+            <Box className="desktop-nav">
+              {menuItems.map((item) => {
+                const active = isActivePath(item);
+
+                return item.submenu ? (
+                  <Box key={item.label}>
                     <Button
-                      key={item.label}
-                      onClick={() => handleNavigation(item.path)}
-                      sx={{
-                        color:
-                          location.pathname === item.path ? "#ff6b35" : "#333",
-                        fontWeight: location.pathname === item.path ? 600 : 500,
-                        fontSize: "0.95rem",
-                        px: 2,
-                        py: 1,
-                        position: "relative",
-                        "&:hover": {
-                          bgcolor: "transparent",
-                          color: "#ff6b35",
-                        },
-                        "&::after": {
-                          content: '""',
-                          position: "absolute",
-                          bottom: 0,
-                          left: "50%",
-                          transform: "translateX(-50%)",
-                          width: location.pathname === item.path ? "70%" : "0%",
-                          height: "3px",
-                          bgcolor: "#ff6b35",
-                          transition: "width 0.3s ease",
-                        },
-                        "&:hover::after": {
-                          width: "70%",
-                        },
-                      }}
+                      id="products-menu-button"
+                      onClick={handleMenuOpen}
+                      endIcon={<KeyboardArrowDown />}
+                      className={active ? "nav-link nav-link-active" : "nav-link"}
+                      aria-controls={anchorEl ? "products-menu" : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={anchorEl ? "true" : undefined}
                     >
                       {item.label}
                     </Button>
-                  )
-                )}
-              </Box>
+                    <Menu
+                      id="products-menu"
+                      anchorEl={anchorEl}
+                      open={Boolean(anchorEl)}
+                      onClose={handleMenuClose}
+                      MenuListProps={{ "aria-labelledby": "products-menu-button" }}
+                      PaperProps={{
+                        className: "products-menu-paper",
+                      }}
+                      transformOrigin={{ horizontal: "center", vertical: "top" }}
+                      anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
+                    >
+                      {item.submenu.map((subItem) => (
+                        <MenuItem
+                          key={subItem.label}
+                          onClick={() => handleNavigation(subItem.path)}
+                          className={
+                            location.pathname.startsWith(subItem.path)
+                              ? "products-menu-item products-menu-item-active"
+                              : "products-menu-item"
+                          }
+                        >
+                          {subItem.label}
+                        </MenuItem>
+                      ))}
+                    </Menu>
+                  </Box>
+                ) : (
+                  <Button
+                    key={item.label}
+                    onClick={() => handleNavigation(item.path)}
+                    className={active ? "nav-link nav-link-active" : "nav-link"}
+                  >
+                    {item.label}
+                  </Button>
+                );
+              })}
+            </Box>
 
-              {/* Desktop Contact Info */}
-              <Box sx={{ display: { xs: "none", md: "flex" }, gap: 1, alignItems: "center" }}>
-                <Button
-                  component={Link}
-                  to="/perakende"
-                  variant="contained"
-                  sx={{
-                    bgcolor: "#ff6b35",
-                    color: "#fff",
-                    fontWeight: 600,
-                    "&:hover": { bgcolor: "#ff5722" },
-                    mr: 1,
-                  }}
-                >
-                  Ücretsiz Keşif
-                </Button>
-                <Button
-                  startIcon={<Phone />}
-                  href="tel:+903123955603"
-                  sx={{
-                    color: "#333",
-                    fontWeight: 500,
-                    "&:hover": { bgcolor: "#f5f5f5" },
-                  }}
-                >
-                  0312 395 56 03
-                </Button>
-                <IconButton
-                  href="https://www.instagram.com/baskentozpen_winsa/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  sx={{
-                    color: "#E4405F",
-                    "&:hover": { bgcolor: "#fff5f2" },
-                  }}
-                  aria-label="Özpen PVC Instagram Hesabı"
-                >
-                  <Instagram />
-                </IconButton>
-              </Box>
-
-              {/* Mobile Free Discovery Button */}
+            {/* Desktop Contact Info */}
+            <Box className="desktop-actions">
               <Button
                 component={Link}
                 to="/perakende"
                 variant="contained"
-                size="small"
-                sx={{
-                  display: { xs: "flex", md: "none" },
-                  ml: "auto",
-                  mr: 0.75,
-                  bgcolor: "#ff6b35",
-                  color: "#fff",
-                  fontSize: { xs: "0.68rem", sm: "0.75rem" },
-                  fontWeight: 700,
-                  minWidth: 0,
-                  px: { xs: 1.25, sm: 1.75 },
-                  py: 0.85,
-                  "&:hover": { bgcolor: "#ff5722" },
-                }}
+                className="primary-cta"
               >
                 Ücretsiz Keşif
               </Button>
-
-              {/* Mobile Menu Button */}
-              <IconButton
-                sx={{
-                  display: { xs: "flex", md: "none" },
-                  color: "#333",
-                  width: 40,
-                  height: 40,
-                }}
-                onClick={handleDrawerToggle}
+              <Button
+                startIcon={<Phone />}
+                href="tel:+903123955603"
+                className="phone-link"
               >
-                <MenuIcon />
+                0312 395 56 03
+              </Button>
+              <IconButton
+                href="https://www.instagram.com/baskentozpen_winsa/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="instagram-icon"
+                aria-label="Özpen PVC Instagram Hesabı"
+              >
+                <Instagram />
               </IconButton>
-            </Toolbar>
-          </Container>
-        </AppBar>
-      </HideOnScroll>
+            </Box>
+
+            {/* Mobile Free Discovery Button */}
+            <Button
+              component={Link}
+              to="/perakende"
+              variant="contained"
+              size="small"
+              className="mobile-cta"
+            >
+              Ücretsiz Keşif
+            </Button>
+
+            {/* Mobile Menu Button */}
+            <IconButton
+              className="mobile-menu-button"
+              onClick={handleDrawerToggle}
+              aria-label="Menüyü aç"
+            >
+              <MenuIcon />
+            </IconButton>
+          </Toolbar>
+        </Container>
+      </AppBar>
 
       {/* Mobile Drawer */}
       <Drawer
@@ -458,7 +392,7 @@ export default function Header() {
         ModalProps={{ keepMounted: true }}
         sx={{
           display: { xs: "block", md: "none" },
-          "& .MuiDrawer-paper": { width: 280 },
+          "& .MuiDrawer-paper": { width: { xs: "86vw", sm: 360 }, maxWidth: 380 },
         }}
       >
         {drawer}
