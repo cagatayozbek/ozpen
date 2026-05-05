@@ -37,7 +37,7 @@ export default function Home() {
     <>
       <SEO
         title="PVC Pencere, Kapı ve Cam Balkon | Ankara Winsa Bayi"
-        description="Ankara'da ev ve daireler için PVC pencere, kapı ve cam balkon sistemleri. Ücretsiz keşif, hızlı montaj, 2 yıl garanti. Kış kampanyası fiyatları! ☎️ 0312 395 56 03"
+        description="Ankara'da ev ve daireler için PVC pencere, kapı ve cam balkon sistemleri. Ücretsiz keşif, hızlı montaj, 2 yıl garanti. ☎️ 0312 395 56 03"
         keywords="ankara pvc pencere, ankara pimapen, ankara cam balkon, pvc fiyatları, cam balkon fiyatları, ev penceresi, daire penceresi, cam balkon ankara, winsa pencere fiyat, uygun pvc pencere"
       />
       <motion.div

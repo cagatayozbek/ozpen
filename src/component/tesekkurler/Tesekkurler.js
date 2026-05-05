@@ -18,14 +18,14 @@ export default function Tesekkurler() {
         angle: 60,
         spread: 55,
         origin: { x: 0 },
-        colors: ["#ff6b35", "#263238", "#ffffff"],
+        colors: ["#d71920", "#263238", "#ffffff"],
       });
       confetti({
         particleCount: 3,
         angle: 120,
         spread: 55,
         origin: { x: 1 },
-        colors: ["#ff6b35", "#263238", "#ffffff"],
+        colors: ["#d71920", "#263238", "#ffffff"],
       });
 
       if (Date.now() < end) {
@@ -79,7 +79,7 @@ export default function Tesekkurler() {
               <Typography
                 variant="h5"
                 gutterBottom
-                sx={{ color: "#ff6b35", mb: 3, fontWeight: 600 }}
+                sx={{ color: "#d71920", mb: 3, fontWeight: 600 }}
               >
                 WhatsApp Yönlendirmesi Başlatıldı
               </Typography>

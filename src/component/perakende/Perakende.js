@@ -51,14 +51,14 @@ export default function Perakende() {
     navigate("/tesekkurler");
   };
 
-  const primaryColor = "#ff6b35"; // Header ile uyumlu turuncu
+  const primaryColor = "#d71920"; // Özpen marka kırmızısı
   const secondaryColor = "#263238"; // Premium Dark Slate
   const lightBg = "#F5F7FA"; // Soğuk açık gri
 
   return (
     <>
       <SEO
-        title="Ev ve Daire İçin PVC Pencere, Kapı, Cam Balkon | Kış Kampanyası"
+        title="Ev ve Daire İçin PVC Pencere, Kapı, Cam Balkon | Ücretsiz Keşif"
         description="Ankara'da ev ve daireler için özel perakende fiyatlarla PVC pencere, kapı ve cam balkon. Ücretsiz keşif ve ölçüm. Hızlı montaj garantisi. Taksit imkanı. 2 yıl Winsa garantisi."
         keywords="ankara ev penceresi, daire penceresi ankara, perakende cam balkon, uygun pvc pencere, taksitli pencere, cam balkon fiyat, ankara pencere tamiri"
       />
@@ -83,7 +83,7 @@ export default function Perakende() {
             width: 400,
             height: 400,
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(255,107,53,0.05) 0%, rgba(255,255,255,0) 70%)",
+            background: "radial-gradient(circle, rgba(215,25,32,0.05) 0%, rgba(255,255,255,0) 70%)",
             zIndex: 0,
           }}
         />
@@ -106,7 +106,7 @@ export default function Perakende() {
                       fontSize: "0.9rem",
                     }}
                   >
-                    KIŞ KAMPANYASI 2025 - 2026
+                    EV VE DAİRELER İÇİN ÜCRETSİZ KEŞİF
                   </Typography>
                 </Box>
                 <Typography
@@ -122,7 +122,7 @@ export default function Perakende() {
                   Eviniz İçin
                   <br />
                   <Box component="span" sx={{ color: primaryColor }}>
-                    Özel Fiyatlar
+                    Net Teklif
                   </Box>
                 </Typography>
                 <Typography
@@ -174,10 +174,10 @@ export default function Perakende() {
                       px: 4,
                       py: 1.8,
                       fontSize: "1rem",
-                      boxShadow: "0 8px 20px rgba(255, 107, 53, 0.3)",
+                      boxShadow: "0 8px 20px rgba(215, 25, 32, 0.25)",
                       "&:hover": {
-                        bgcolor: "#e65100",
-                        boxShadow: "0 12px 25px rgba(255, 107, 53, 0.4)",
+                        bgcolor: "#b9141b",
+                        boxShadow: "0 12px 25px rgba(215, 25, 32, 0.32)",
                       },
                     }}
                   >
@@ -375,7 +375,7 @@ export default function Perakende() {
                     width: 70,
                     height: 70,
                     borderRadius: 3,
-                    bgcolor: "rgba(255, 107, 53, 0.1)",
+                    bgcolor: "rgba(215, 25, 32, 0.1)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -460,7 +460,7 @@ export default function Perakende() {
               {
                 icon: CurrencyLira,
                 title: "Esnek Ödeme",
-                desc: "Kredi kartına taksit, nakit indirimi ve özel kampanyalar",
+                desc: "Kredi kartına taksit, nakit indirimi ve net teklif seçenekleri",
               },
               {
                 icon: VerifiedUser,
@@ -544,7 +544,7 @@ export default function Perakende() {
                 py: 2,
                 fontSize: "1.2rem",
                 "&:hover": {
-                  bgcolor: "#e65100",
+                  bgcolor: "#b9141b",
                 },
               }}
             >

@@ -267,7 +267,7 @@ export default function Grids({ deneyimYili }) {
             </Box>
           </Box>
 
-          {/* PERAKENDE'ye Özel Bölüm - Kış Kampanyası */}
+          {/* PERAKENDE'ye Özel Bölüm */}
           <Box
             sx={{
               py: 6,
@@ -289,9 +289,9 @@ export default function Grids({ deneyimYili }) {
                 <Grid container spacing={4} alignItems="center">
                   <Grid size={{ xs: 12, md: 6 }}>
                     <Chip
-                      label="❄️ KIŞ KAMPANYASI 2025 - 2026"
+                      label="EV VE DAİRELER İÇİN ÜCRETSİZ KEŞİF"
                       sx={{
-                        bgcolor: "#e63946",
+                        bgcolor: "#d71920",
                         color: "white",
                         fontWeight: 600,
                         mb: 2,
@@ -307,13 +307,13 @@ export default function Grids({ deneyimYili }) {
                     >
                       Ev ve Daireler İçin
                       <br />
-                      <Box component="span" sx={{ color: "#e63946" }}>
-                        Özel Kış Kampanyası Fiyatları
+                      <Box component="span" sx={{ color: "#d71920" }}>
+                        Özel Teklif
                       </Box>
                     </Typography>
                     <Typography variant="h6" sx={{ mb: 3, color: "#555" }}>
-                      Kış sezonunda uygun fiyatlarla pencerenizi, kapınızı ve cam
-                      balkonunuzu yenileyin!
+                      Pencerenizi, kapınızı ve cam balkonunuzu yenilemek için
+                      ücretsiz keşif ve net teklif alın.
                     </Typography>
                     <List sx={{ mb: 3 }}>
                       {[
@@ -323,7 +323,7 @@ export default function Grids({ deneyimYili }) {
                       ].map((item, index) => (
                         <ListItem key={index} sx={{ py: 0.5, px: 0 }}>
                           <ListItemIcon sx={{ minWidth: 35 }}>
-                            <CheckCircle sx={{ color: "#e63946" }} />
+                            <CheckCircle sx={{ color: "#d71920" }} />
                           </ListItemIcon>
                           <ListItemText
                             primary={item}
@@ -388,7 +388,7 @@ export default function Grids({ deneyimYili }) {
                           whiteSpace: "nowrap",
                           "&:hover": {
                             bgcolor: "transparent",
-                            color: "#ff6b35",
+                            color: "#d71920",
                           },
                         }}
                       >
@@ -450,7 +450,7 @@ export default function Grids({ deneyimYili }) {
                             transition: "all 0.3s ease",
                             "&:hover": {
                               boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
-                              borderColor: "#ff6b35",
+                              borderColor: "#d71920",
                             },
                           }}
                           onClick={() => (window.location.href = item.link)}
@@ -467,7 +467,7 @@ export default function Grids({ deneyimYili }) {
                             }}
                           >
                             <item.icon
-                              sx={{ fontSize: 36, color: "#ff6b35", mb: 1.5 }}
+                              sx={{ fontSize: 36, color: "#d71920", mb: 1.5 }}
                             />
                             <Typography
                               variant="h6"

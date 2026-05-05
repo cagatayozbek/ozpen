@@ -61,7 +61,7 @@
 }
 
 .brand-kicker {
-  color: #e85c2a;
+  color: #d71920;
   font-size: 0.72rem !important;
   font-weight: 800 !important;
   letter-spacing: 0 !important;
@@ -97,12 +97,12 @@
 
 .nav-link:hover {
   background: #f6f7f9 !important;
-  color: #e85c2a !important;
+  color: #d71920 !important;
 }
 
 .nav-link-active {
-  background: #fff3ee !important;
-  color: #e85c2a !important;
+  background: #fff1f2 !important;
+  color: #d71920 !important;
 }
 
 .products-menu-paper {
@@ -125,8 +125,8 @@
 
 .products-menu-item:hover,
 .products-menu-item-active {
-  background: #fff3ee !important;
-  color: #e85c2a !important;
+  background: #fff1f2 !important;
+  color: #d71920 !important;
 }
 
 .desktop-actions {
@@ -137,9 +137,9 @@
 }
 
 .primary-cta {
-  background: #f0642f !important;
+  background: #d71920 !important;
   border-radius: 999px !important;
-  box-shadow: 0 10px 22px rgba(240, 100, 47, 0.22) !important;
+  box-shadow: 0 10px 22px rgba(215, 25, 32, 0.22) !important;
   color: #fff !important;
   font-weight: 800 !important;
   min-height: 42px;
@@ -149,8 +149,8 @@
 }
 
 .primary-cta:hover {
-  background: #dd5522 !important;
-  box-shadow: 0 12px 26px rgba(240, 100, 47, 0.3) !important;
+  background: #b9141b !important;
+  box-shadow: 0 12px 26px rgba(215, 25, 32, 0.3) !important;
 }
 
 .phone-link {
@@ -165,7 +165,7 @@
 
 .phone-link:hover {
   background: #f6f7f9 !important;
-  color: #e85c2a !important;
+  color: #d71920 !important;
 }
 
 .instagram-icon {
@@ -229,17 +229,17 @@
 }
 
 .phone-action {
-  border-color: rgba(240, 100, 47, 0.45) !important;
+  border-color: rgba(215, 25, 32, 0.45) !important;
   border-radius: 999px !important;
-  color: #e85c2a !important;
+  color: #d71920 !important;
   font-weight: 800 !important;
   min-height: 44px;
   text-transform: none !important;
 }
 
 .phone-action:hover {
-  background: #fff3ee !important;
-  border-color: #e85c2a !important;
+  background: #fff1f2 !important;
+  border-color: #d71920 !important;
 }
 
 .instagram-action {
@@ -257,7 +257,7 @@
 
 button:focus-visible,
 a:focus-visible {
-  outline: 2px solid #f0642f;
+  outline: 2px solid #d71920;
   outline-offset: 3px;
 }
 
@@ -299,12 +299,20 @@ a:focus-visible {
     display: none;
   }
 
-  .mobile-cta {
+.mobile-cta {
+    background: #d71920 !important;
+    box-shadow: 0 8px 18px rgba(215, 25, 32, 0.2) !important;
+    color: #fff !important;
     display: inline-flex !important;
     font-size: 0.72rem !important;
     margin-left: auto !important;
     min-height: 38px;
     padding: 7px 12px !important;
+  }
+
+  .mobile-cta:hover {
+    background: #b9141b !important;
+    box-shadow: 0 10px 22px rgba(215, 25, 32, 0.28) !important;
   }
 
   .mobile-menu-button {

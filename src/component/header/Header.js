@@ -156,7 +156,7 @@ export default function Header() {
                 minHeight: 48,
                 borderRadius: "10px",
                 mb: 0.5,
-                bgcolor: isActivePath(item) ? "#fff3ee" : "transparent",
+                bgcolor: isActivePath(item) ? "#fff1f2" : "transparent",
                 "&:hover": { bgcolor: "#f6f7f9" },
               }}
             >
@@ -164,12 +164,12 @@ export default function Header() {
                 primary={item.label}
                 primaryTypographyProps={{
                   fontWeight: isActivePath(item) ? 700 : 500,
-                  color: isActivePath(item) ? "#e85c2a" : "#20242c",
+                  color: isActivePath(item) ? "#d71920" : "#20242c",
                 }}
               />
               {item.submenu &&
                 (mobileSubmenuOpen ? (
-                  <ExpandLess sx={{ color: "#e85c2a" }} />
+                  <ExpandLess sx={{ color: "#d71920" }} />
                 ) : (
                   <ExpandMore />
                 ))}
@@ -187,7 +187,7 @@ export default function Header() {
                         borderRadius: "10px",
                         mb: 0.5,
                         bgcolor: location.pathname.startsWith(subItem.path)
-                          ? "#fff7f3"
+                          ? "#fff1f2"
                           : "transparent",
                         "&:hover": { bgcolor: "#f6f7f9" },
                       }}
@@ -200,7 +200,7 @@ export default function Header() {
                             ? 700
                             : 500,
                           color: location.pathname.startsWith(subItem.path)
-                            ? "#e85c2a"
+                            ? "#d71920"
                             : "#5f6673",
                         }}
                       />

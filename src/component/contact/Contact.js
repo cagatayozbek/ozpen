@@ -30,7 +30,7 @@ export default function Contact() {
       content:
         "İvedik Organize Sanayi Bölgesi 1332.Sokak No:84/86 Ostim / ANKARA",
       link: "https://maps.app.goo.gl/HWU1RcuSgUBs6RAt5",
-      color: "#ff6b00",
+      color: "#d71920",
     },
     {
       icon: FaPhone,

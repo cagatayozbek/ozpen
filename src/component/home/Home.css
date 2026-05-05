@@ -355,7 +355,7 @@
 }
 
 .brand-film-kicker {
-  color: #ff8c42 !important;
+  color: #d71920 !important;
   font-size: 0.95rem !important;
   font-weight: 700 !important;
   margin-bottom: 14px !important;
@@ -379,7 +379,7 @@
 }
 
 .brand-film-button {
-  background-color: #ff6b35 !important;
+  background-color: #d71920 !important;
   border-radius: 4px !important;
   box-shadow: none !important;
   font-weight: 700 !important;
@@ -388,7 +388,7 @@
 }
 
 .brand-film-button:hover {
-  background-color: #ff5722 !important;
+  background-color: #b9141b !important;
 }
 
 .brand-film-frame {
