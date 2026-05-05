@@ -8,7 +8,6 @@ import {
   CardContent,
   CardMedia,
   CardActionArea,
-  IconButton,
   Chip,
   List,
   ListItem,
@@ -20,7 +19,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 import "./Grids.css";
 import { RiHome2Line } from "react-icons/ri";
@@ -36,11 +34,12 @@ import {
   WhatsApp,
 } from "@mui/icons-material";
 
-// Resim importları
-import pencereKapi from "./assets/pencerevekapisistemleri.jpg";
-import pvcKapi from "./assets/pvc-kapi.jpg";
-import pvcPanjur from "./assets/pvc-panjur.jpg";
-import camBalkon from "./assets/cambalkon.jpg";
+// Ürün vitrini için yüksek çözünürlüklü görseller
+import pencereKapi from "../urunler/sistemler/detay/assets/dorado-bg.jpg";
+import surmeSistemleri from "../urunler/sistemler/detay/assets/comfort-plus-bg.jpg";
+import pvcPanjur from "../urunler/sistemler/detay/assets/winkepenk-bg.jpg";
+import camBalkon from "../urunler/sistemler/detay/assets/camekan-bg.jpg";
+import donanimSistemleri from "../urunler/sistemler/assets/acilim2.png";
 
 export default function Grids({ deneyimYili }) {
   const [ref, inView] = useInView({
@@ -66,20 +65,8 @@ export default function Grids({ deneyimYili }) {
     },
   };
 
-  // Kaydırma işlemi için ref
-  const scrollContainerRef = React.useRef(null);
-
-  // Kaydırma fonksiyonları
-  const scroll = (direction) => {
-    const container = scrollContainerRef.current;
-    if (container) {
-      const scrollAmount = direction === "left" ? -320 : 320;
-      container.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    }
-  };
-
   return (
-    <Box sx={{ backgroundColor: "#ffffff", py: 8 }} ref={ref}>
+    <Box sx={{ backgroundColor: "#ffffff", py: { xs: 7, md: 10 } }} ref={ref}>
       <Container maxWidth="lg">
         <motion.div
           variants={containerVariants}
@@ -87,13 +74,77 @@ export default function Grids({ deneyimYili }) {
           animate={inView ? "visible" : "hidden"}
         >
           {/* Ürün Kartları */}
-          <Typography
-            variant="h3"
-            component="h2"
-            sx={{ textAlign: "center", mb: 6, color: "#333" }}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: { xs: "flex-start", md: "flex-end" },
+              justifyContent: "space-between",
+              gap: 3,
+              mb: { xs: 4, md: 5 },
+              flexDirection: { xs: "column", md: "row" },
+            }}
           >
-            Ürünlerimiz
-          </Typography>
+            <Box sx={{ maxWidth: 680 }}>
+              <Typography
+                variant="overline"
+                sx={{
+                  color: "#d71920",
+                  fontWeight: 800,
+                  letterSpacing: 0.8,
+                }}
+              >
+                Özpen ürün ailesi
+              </Typography>
+              <Typography
+                variant="h3"
+                component="h2"
+                sx={{
+                  color: "#20242c",
+                  fontWeight: 800,
+                  lineHeight: 1.08,
+                  mt: 1,
+                  mb: 2,
+                  fontSize: { xs: "2rem", md: "2.75rem" },
+                }}
+              >
+                Yaşam alanınız için doğru sistemi seçin
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: "#5f6673",
+                  fontSize: { xs: "1rem", md: "1.08rem" },
+                  lineHeight: 1.75,
+                }}
+              >
+                Pencere, kapı, sürme, panjur ve cam balkon çözümlerini aynı
+                kalite standardıyla keşif, üretim ve montaj sürecine bağlıyoruz.
+              </Typography>
+            </Box>
+            <Button
+              component={Link}
+              to="/urunler"
+              variant="outlined"
+              sx={{
+                borderColor: "#20242c",
+                borderRadius: "999px",
+                color: "#20242c",
+                fontWeight: 800,
+                px: 3,
+                py: 1.25,
+                textTransform: "none",
+                whiteSpace: "nowrap",
+                "&:hover": {
+                  borderColor: "#d71920",
+                  bgcolor: "#fff1f2",
+                  color: "#d71920",
+                },
+              }}
+            >
+              Tüm Ürünler
+            </Button>
+          </Box>
+
           <Box
             sx={{
               width: "100%",
@@ -101,97 +152,11 @@ export default function Grids({ deneyimYili }) {
               mb: 8,
             }}
           >
-            {/* Kaydırma Butonları */}
-            <IconButton
-              onClick={() => scroll("left")}
-              sx={{
-                position: "absolute",
-                left: { xs: 0, md: -20 },
-                top: "50%",
-                transform: "translateY(-50%)",
-                zIndex: 3,
-                backgroundColor: "white",
-                boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-                "&:hover": {
-                  backgroundColor: "#f5f5f5",
-                },
-                display: { xs: "none", md: "flex" },
-              }}
-            >
-              <IoIosArrowBack size={24} />
-            </IconButton>
-            <IconButton
-              onClick={() => scroll("right")}
-              sx={{
-                position: "absolute",
-                right: { xs: 0, md: -20 },
-                top: "50%",
-                transform: "translateY(-50%)",
-                zIndex: 3,
-                backgroundColor: "white",
-                boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-                "&:hover": {
-                  backgroundColor: "#f5f5f5",
-                },
-                display: { xs: "none", md: "flex" },
-              }}
-            >
-              <IoIosArrowForward size={24} />
-            </IconButton>
-
-            {/* Gradient Overlay'ler */}
-            <Box
-              sx={{
-                position: "absolute",
-                left: 0,
-                top: 0,
-                bottom: 0,
-                width: "50px",
-                background:
-                  "linear-gradient(to right, #ffffff 0%, transparent 100%)",
-                zIndex: 2,
-                pointerEvents: "none",
-                display: { xs: "none", md: "block" },
-              }}
-            />
-            <Box
-              sx={{
-                position: "absolute",
-                right: 0,
-                top: 0,
-                bottom: 0,
-                width: "50px",
-                background:
-                  "linear-gradient(to left, #ffffff 0%, transparent 100%)",
-                zIndex: 2,
-                pointerEvents: "none",
-                display: { xs: "none", md: "block" },
-              }}
-            />
-
-            {/* Kaydırmalı Container */}
-            <Box
-              ref={scrollContainerRef}
-              sx={{
-                display: "flex",
-                overflowX: "auto",
-                gap: "24px",
-                px: { xs: "12px", md: "24px" },
-                scrollSnapType: "x mandatory",
-                "&::-webkit-scrollbar": { display: "none" },
-                scrollbarWidth: "none",
-                position: "relative",
-                justifyContent: "flex-start",
-              }}
-            >
+            <Grid container spacing={{ xs: 2.5, md: 3 }}>
               {cardsData.map((card) => (
-                <Box
+                <Grid
                   key={card.id}
-                  sx={{
-                    flex: "0 0 auto",
-                    width: { xs: "280px", sm: "320px" },
-                    scrollSnapAlign: "center",
-                  }}
+                  size={{ xs: 12, sm: 6, md: card.wide ? 6 : 4 }}
                 >
                   <motion.div variants={itemVariants}>
                     <Card
@@ -200,44 +165,84 @@ export default function Grids({ deneyimYili }) {
                         display: "flex",
                         flexDirection: "column",
                         backgroundColor: "#ffffff",
-                        border: "1px solid #eaeaea",
-                        borderRadius: "8px",
+                        border: "1px solid rgba(24,31,42,0.08)",
+                        borderRadius: 2,
+                        boxShadow: "0 16px 38px rgba(20,27,38,0.07)",
                         overflow: "hidden",
-                        transition: "transform 0.3s ease-in-out",
+                        transition:
+                          "transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease",
                         "&:hover": {
-                          transform: "translateY(-4px)",
+                          transform: "translateY(-6px)",
+                          borderColor: "rgba(215,25,32,0.28)",
+                          boxShadow: "0 22px 48px rgba(20,27,38,0.12)",
                         },
                       }}
                     >
-                      <CardActionArea component={Link} to={card.link}>
-                        <Box sx={{ position: "relative", pt: "75%" }}>
+                      <CardActionArea
+                        component={Link}
+                        to={card.link}
+                        sx={{ height: "100%", display: "flex", flexDirection: "column" }}
+                      >
+                        <Box
+                          sx={{
+                            position: "relative",
+                            width: "100%",
+                            aspectRatio: card.wide ? "16 / 8.8" : "16 / 10.5",
+                            bgcolor: "#f5f6f8",
+                            overflow: "hidden",
+                          }}
+                        >
                           <CardMedia
                             component="img"
                             image={card.img}
                             alt={card.title}
                             sx={{
-                              position: "absolute",
-                              top: 0,
-                              left: 0,
                               width: "100%",
                               height: "100%",
-                              objectFit: "cover",
+                              objectFit: card.imageFit || "cover",
+                              objectPosition: card.imagePosition || "center",
+                              p: card.imagePadding || 0,
+                              transition: "transform 0.35s ease",
+                              ".MuiCard-root:hover &": {
+                                transform: "scale(1.04)",
+                              },
+                            }}
+                          />
+                          <Box
+                            sx={{
+                              position: "absolute",
+                              inset: 0,
+                              background:
+                                "linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.48) 100%)",
+                            }}
+                          />
+                          <Chip
+                            label={card.eyebrow}
+                            size="small"
+                            sx={{
+                              position: "absolute",
+                              left: 16,
+                              bottom: 14,
+                              bgcolor: "rgba(255,255,255,0.92)",
+                              color: "#20242c",
+                              fontWeight: 800,
+                              height: 28,
                             }}
                           />
                         </Box>
-                        <CardContent sx={{ p: 2.5 }}>
+                        <CardContent
+                          sx={{
+                            p: { xs: 2.5, md: card.wide ? 3 : 2.5 },
+                            flexGrow: 1,
+                            width: "100%",
+                          }}
+                        >
                           <Typography
-                            variant="h6"
+                            variant={card.wide ? "h5" : "h6"}
                             sx={{
-                              fontSize: "1.1rem",
-                              fontWeight: 500,
+                              fontWeight: 800,
                               mb: 1,
-                              color: "#333",
-                              overflow: "hidden",
-                              textOverflow: "ellipsis",
-                              display: "-webkit-box",
-                              WebkitLineClamp: 1,
-                              WebkitBoxOrient: "vertical",
+                              color: "#20242c",
                               lineHeight: 1.2,
                             }}
                           >
@@ -246,8 +251,8 @@ export default function Grids({ deneyimYili }) {
                           <Typography
                             variant="body2"
                             sx={{
-                              color: "#666",
-                              fontSize: "0.9rem",
+                              color: "#5f6673",
+                              fontSize: card.wide ? "1rem" : "0.92rem",
                               overflow: "hidden",
                               textOverflow: "ellipsis",
                               display: "-webkit-box",
@@ -258,13 +263,25 @@ export default function Grids({ deneyimYili }) {
                           >
                             {card.text}
                           </Typography>
+                          <Typography
+                            component="span"
+                            sx={{
+                              color: "#d71920",
+                              display: "inline-flex",
+                              fontSize: "0.9rem",
+                              fontWeight: 800,
+                              mt: 2,
+                            }}
+                          >
+                            İncele &rarr;
+                          </Typography>
                         </CardContent>
                       </CardActionArea>
                     </Card>
                   </motion.div>
-                </Box>
+                </Grid>
               ))}
-            </Box>
+            </Grid>
           </Box>
 
           {/* PERAKENDE'ye Özel Bölüm */}
@@ -654,13 +671,15 @@ const cardsData = [
     text: "Modern yaşam alanları için yenilikçi pencere ve kapı çözümleri",
     img: pencereKapi,
     link: "/urunler/pencere-ve-kapi-sistemleri",
+    eyebrow: "Isı ve ses yalıtımı",
   },
   {
     id: 2,
     title: "Sürme Sistemleri",
     text: "Maksimum konfor için tasarlanmış sürme kapı sistemleri",
-    img: pvcKapi,
+    img: surmeSistemleri,
     link: "/urunler/surme-sistemleri",
+    eyebrow: "Geniş açıklıklar",
   },
   {
     id: 3,
@@ -668,13 +687,18 @@ const cardsData = [
     text: "Güvenlik ve ısı yalıtımı için özel tasarlanmış sistemler",
     img: pvcPanjur,
     link: "/urunler/panjur-ve-kepenk-sistemleri",
+    eyebrow: "Güvenlik ve konfor",
   },
   {
     id: 4,
     title: "Donanım Sistemleri",
     text: "Yüksek kaliteli ve dayanıklı donanım çözümleri",
-    img: pvcKapi,
+    img: donanimSistemleri,
     link: "/urunler/donanim-sistemleri",
+    eyebrow: "Tamamlayıcı çözümler",
+    imageFit: "contain",
+    imagePadding: 3,
+    wide: true,
   },
   {
     id: 5,
@@ -682,5 +706,7 @@ const cardsData = [
     text: "Yaşam alanlarınızı genişleten modern cam balkon sistemleri",
     img: camBalkon,
     link: "/urunler/cam-balkon-sistemleri",
+    eyebrow: "Dört mevsim kullanım",
+    wide: true,
   },
 ];

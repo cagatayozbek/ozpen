@@ -134,9 +134,8 @@ export default function Home() {
                   Kaliteyi Atölyeden Montaja Kadar Görün
                 </Typography>
                 <Typography className="brand-film-copy">
-                  Üretim, showroom ve montaj süreçlerimizi tek bir filmde
-                  izleyin. Yeni tanıtım filmi hazır olduğunda bu bölümden
-                  yayınlanacak.
+                  Başkent Özpen'i, çalışma alanlarımızı ve şirket içi
+                  atmosferimizi yakından tanıyın.
                 </Typography>
                 <Button
                   variant="contained"
