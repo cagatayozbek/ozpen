@@ -2,12 +2,10 @@ import React from "react";
 import SEO from "../../../SEO";
 
 import logo from "../assets/surme/slide1.png";
-import background2 from "./assets/comfort-plus-bg.jpg";
 import background from "./assets/comfort-plus-bg2.jpg";
 
 import TeknikComponent from "./components/TeknikComponent";
 import ColorPickerPage from "../ColorPickerComponent";
-import Form from "../Form";
 import { Container } from "@mui/material";
 export default function ComfortSlide() {
   return (
@@ -35,7 +33,6 @@ export default function ComfortSlide() {
   );
 }
 
-const title = ["Kolay Kullanımı İle", "Kontrol Sizin Elinizde"];
 const aciklama = [
   {
     title: "Yalıtım",

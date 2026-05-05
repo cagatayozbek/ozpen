@@ -3,13 +3,11 @@ import SEO from "../../../SEO";
 
 import logo from "../assets/surme/panorama1.png";
 import background from "./assets/panorama-bg.jpg";
-import background2 from "./assets/panorama-bg2.jpg";
 import teknik from "./assets/panorama-teknik.png";
 
 import TeknikComponent from "./components/TeknikComponent";
 import ColorPickerPage from "../ColorPickerComponent";
 import { Container } from "@mui/material";
-import Form from "../Form";
 export default function Panorama() {
   return (
     <Container
@@ -37,7 +35,6 @@ export default function Panorama() {
   );
 }
 
-const title = ["Minimum Eşik, Maksimum Genişlik", "Kontrol Sizin Elinizde"];
 const aciklama = [
   {
     title: "Yalıtım",

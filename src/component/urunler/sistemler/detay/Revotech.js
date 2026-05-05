@@ -2,13 +2,11 @@ import React from "react";
 import SEO from "../../../SEO";
 import logo from "../assets/revotechpng_27-10-2020_11-25-29.png";
 import background from "./assets/revotech-bg.jpg";
-import background2 from "./assets/revotech-bg2.jpg";
 import teknik from "./assets/revotech-teknik.png";
 
 import TeknikComponent from "./components/TeknikComponent";
 import ColorPickerPage from "../ColorPickerComponent";
 import { Container } from "@mui/material";
-import Form from "../Form";
 export default function Revotech() {
   return (
     <Container
@@ -36,7 +34,6 @@ export default function Revotech() {
   );
 }
 
-const title = ["Yalıtımın", "En estetik hali"];
 const aciklama = [
   {
     title: "Yalıtım",

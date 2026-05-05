@@ -24,25 +24,31 @@ switch ($method) {
         
     case 'POST':
         // Yeni referans ekle (Admin panelden)
-        session_start();
-        if (!isset($_SESSION['admin_logged_in'])) {
-            echo json_encode(['success' => false, 'message' => 'Yetkisiz erişim']);
-            exit();
-        }
+        require_admin();
+        require_csrf();
         
         $data = json_decode(file_get_contents('php://input'), true);
+        if (!is_array($data)) {
+            json_response(['success' => false, 'message' => 'Geçersiz veri'], 400);
+        }
         
-        $title = $conn->real_escape_string($data['title']);
-        $description = $conn->real_escape_string($data['description']);
-        $location = $conn->real_escape_string($data['location']);
-        $year = intval($data['year']);
-        $category = $conn->real_escape_string($data['category']);
-        $image = $conn->real_escape_string($data['image']);
+        $title = trim($data['title'] ?? '');
+        $description = trim($data['description'] ?? '');
+        $location = trim($data['location'] ?? '');
+        $year = intval($data['year'] ?? date('Y'));
+        $category = trim($data['category'] ?? '');
+        $image = trim($data['image'] ?? '');
+
+        if ($title === '') {
+            json_response(['success' => false, 'message' => 'Başlık zorunludur'], 400);
+        }
         
-        $sql = "INSERT INTO reference (title, description, location, year, category, image) 
-                VALUES ('$title', '$description', '$location', $year, '$category', '$image')";
+        $stmt = $conn->prepare(
+            "INSERT INTO reference (title, description, location, year, category, image) VALUES (?, ?, ?, ?, ?, ?)"
+        );
+        $stmt->bind_param('sssiss', $title, $description, $location, $year, $category, $image);
         
-        if ($conn->query($sql)) {
+        if ($stmt->execute()) {
             echo json_encode([
                 'success' => true,
                 'message' => 'Referans başarıyla eklendi',
@@ -51,26 +57,33 @@ switch ($method) {
         } else {
             echo json_encode(['success' => false, 'message' => 'Hata: ' . $conn->error]);
         }
+        $stmt->close();
         break;
         
     case 'DELETE':
         // Referans sil
-        session_start();
-        if (!isset($_SESSION['admin_logged_in'])) {
-            echo json_encode(['success' => false, 'message' => 'Yetkisiz erişim']);
-            exit();
-        }
+        require_admin();
+        require_csrf();
         
         $data = json_decode(file_get_contents('php://input'), true);
-        $id = intval($data['id']);
+        if (!is_array($data)) {
+            json_response(['success' => false, 'message' => 'Geçersiz veri'], 400);
+        }
+
+        $id = intval($data['id'] ?? 0);
+        if ($id <= 0) {
+            json_response(['success' => false, 'message' => 'Geçersiz referans'], 400);
+        }
         
-        $sql = "DELETE FROM reference WHERE id = $id";
+        $stmt = $conn->prepare("DELETE FROM reference WHERE id = ?");
+        $stmt->bind_param('i', $id);
         
-        if ($conn->query($sql)) {
+        if ($stmt->execute()) {
             echo json_encode(['success' => true, 'message' => 'Referans silindi']);
         } else {
             echo json_encode(['success' => false, 'message' => 'Hata: ' . $conn->error]);
         }
+        $stmt->close();
         break;
         
     default:

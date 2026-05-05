@@ -3,13 +3,11 @@ import SEO from "../../../SEO";
 
 import logo from "../assets/panjur/winstor1.png";
 import background from "./assets/winstor-bg.jpg";
-import background2 from "./assets/winstor-bg2.jpg";
 import teknik from "./assets/winstor-teknik.png";
 
 import TeknikComponent from "./components/TeknikComponent";
 import ColorPickerPage from "../ColorPickerComponent";
 import { Container } from "@mui/material";
-import Form from "../Form";
 export default function Winstor() {
   return (
     <Container
@@ -37,7 +35,6 @@ export default function Winstor() {
   );
 }
 
-const title = ["Mevsim Kontrolü Sağlayan", "Şık Tasarım"];
 const aciklama = [
   {
     title: "Yalıtım",
@@ -59,5 +56,3 @@ const technicalData = [
   { label: "220*225 Yalıtımlı Kutu", value: null },
   { label: "Stor Sineklik Uygulanabilmektedir", value: null },
 ];
-const desc =
-  "Dışarıda hava koşulları ne olursa olsun mevsimlerin kontrolünü sağlayan tüm PVC pencere ve kapı sistemleri ile uyumlu, şık tasarımı ve üstün yalıtım kalitesi ile benzersizdir.";

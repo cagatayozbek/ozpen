@@ -2,12 +2,10 @@ import React from "react";
 import SEO from "../../../SEO";
 import logo from "../assets/revotechgoldpng_27-10-2020_11-26-33.png";
 import background from "../../../../assets/1logo.png";
-import background2 from "./assets/revotechgold-bg.jpg";
 import TeknikComponent from "./components/TeknikComponent";
 import teknik from "./assets/revotech-gold-teknik.png";
 import ColorPickerPage from "../ColorPickerComponent";
 import { Container } from "@mui/material";
-import Form from "../Form";
 
 export default function RevotechGold() {
   return (
@@ -36,7 +34,6 @@ export default function RevotechGold() {
   );
 }
 
-const title = ["Devrimsel Bir", "Isı Yalıtımı"];
 const aciklama = [
   {
     title: "Yalıtım",

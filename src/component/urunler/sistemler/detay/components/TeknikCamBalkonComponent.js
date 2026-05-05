@@ -9,10 +9,6 @@ export default function TeknikCamBalkonComponent({
   video,
   kartela,
 }) {
-  const onReady = (event) => {
-    // Oyun başlatıldığında durdurma işlemi
-    event.target.pauseVideo();
-  };
   return (
     <>
       <Typography variant="h3" component="h1" sx={{ marginTop: "5%", color: "#070155", fontWeight: "bold" }}>
@@ -82,9 +78,8 @@ export default function TeknikCamBalkonComponent({
                 </Grid>
                 <Grid size={8}>
                   {kartela.map((color, index) => (
-                    <Tooltip title={color.name}>
+                    <Tooltip key={color.name || index} title={color.name}>
                       <Box
-                        key={index}
                         component="img"
                         src={color.src}
                         alt={`${color.name} Rengi`}

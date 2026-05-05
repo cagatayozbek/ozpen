@@ -208,6 +208,7 @@ export default function Contact() {
                       variant="contained"
                       href={item.link}
                       target="_blank"
+                      rel="noopener noreferrer"
                       startIcon={<item.icon />}
                       fullWidth
                       sx={{

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import bg from "../../assets/ozpen-on.jpeg";
+import introVideo from "./assets/intro.mp4";
 import "./Home.css";
 import Grids from "./Grids";
 import {
@@ -8,18 +9,14 @@ import {
   Container,
   Button,
   Grid2 as Grid,
-  IconButton,
-  Card,
-  CardContent,
 } from "@mui/material";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import CountUp from "react-countup";
 import { BsBuilding } from "react-icons/bs";
-import { FaUsers, FaRegSmileBeam, FaHome, FaWarehouse } from "react-icons/fa";
+import { FaUsers, FaRegSmileBeam } from "react-icons/fa";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { IoClose } from "react-icons/io5";
 import SEO from "../SEO";
 
 export default function Home() {
@@ -33,44 +30,8 @@ export default function Home() {
     threshold: 0.2,
   });
 
-  const [showIntro, setShowIntro] = useState(false);
-
   const kurulusYili = 2000;
   const deneyimYili = new Date().getFullYear() - kurulusYili;
-
-  useEffect(() => {
-    // Tarayıcı açıldığında video göster
-    const isVideoShown = sessionStorage.getItem("isVideoShown");
-
-    if (!isVideoShown) {
-      setShowIntro(true);
-      sessionStorage.setItem("isVideoShown", "true");
-    }
-
-    const timer = setTimeout(() => {
-      setShowIntro(false);
-    }, 30000);
-
-    return () => clearTimeout(timer);
-  }, []); // Boş bağımlılık dizisi ile sadece bir kez çalışır
-
-  const handleCloseVideo = () => {
-    setShowIntro(false);
-  };
-
-  // Anasayfaya döndüğünde video gösterimini kontrol et
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === "visible") {
-        setShowIntro(false); // Tarayıcı görünür olduğunda video gösterme
-      }
-    };
-
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-    return () => {
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
-  }, []);
 
   return (
     <>
@@ -79,90 +40,19 @@ export default function Home() {
         description="Ankara'da ev ve daireler için PVC pencere, kapı ve cam balkon sistemleri. Ücretsiz keşif, hızlı montaj, 2 yıl garanti. Kış kampanyası fiyatları! ☎️ 0312 395 56 03"
         keywords="ankara pvc pencere, ankara pimapen, ankara cam balkon, pvc fiyatları, cam balkon fiyatları, ev penceresi, daire penceresi, cam balkon ankara, winsa pencere fiyat, uygun pvc pencere"
       />
-      <AnimatePresence>
-        {showIntro && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            style={{
-              position: "fixed",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              width: "80%",
-              maxWidth: "1000px",
-              aspectRatio: "16/9",
-              backgroundColor: "black",
-              zIndex: 9999,
-              borderRadius: "12px",
-              overflow: "hidden",
-              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.2)",
-            }}
-          >
-            <IconButton
-              onClick={handleCloseVideo}
-              sx={{
-                position: "absolute",
-                top: 16,
-                right: 16,
-                color: "white",
-                backgroundColor: "rgba(0,0,0,0.5)",
-                zIndex: 10000,
-                "&:hover": {
-                  backgroundColor: "rgba(0,0,0,0.7)",
-                },
-              }}
-            >
-              <IoClose size={24} />
-            </IconButton>
-            <Box
-              component="video"
-              autoPlay
-              muted
-              controls
-              sx={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-              }}
-            >
-              <source src={require("./assets/intro.mp4")} type="video/mp4" />
-              Tarayıcınız video oynatmayı desteklemiyor.
-            </Box>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Video açıkken arka planı karartma */}
-      {showIntro && (
-        <Box
-          sx={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(0,0,0,0.7)",
-            zIndex: 9998,
-          }}
-          onClick={handleCloseVideo}
-        />
-      )}
-
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
         <Box className="simple-hero">
-          <div className="hero-background">
-            <img
-              src={bg}
-              alt="Özpen PVC Showroom - Ankara Winsa Bayisi"
-              className="hero-image"
-            />
-          </div>
+              <div className="hero-background">
+                <img
+                  src={bg}
+                  alt="Özpen PVC Showroom - Ankara Winsa Bayisi"
+                  className="home-hero-image"
+                />
+              </div>
           <Container
             maxWidth="lg"
             sx={{ position: "relative", height: "100%" }}
@@ -179,14 +69,13 @@ export default function Home() {
                 <Typography variant="h2" className="sub-title">
                   Kalite ve güvenin adresi
                 </Typography>
-                <Box sx={{ mt: 4 }}>
+                <Box className="hero-actions">
                   <Button
                     variant="contained"
                     component={Link}
                     to="/urunler"
                     className="main-button"
                     sx={{
-                      mr: 2,
                       backgroundColor: "#fff",
                       color: "#000",
                       "&:hover": {
@@ -195,6 +84,22 @@ export default function Home() {
                     }}
                   >
                     Ürünlerimiz
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    component="a"
+                    href="#tanitim-filmi"
+                    className="main-button"
+                    sx={{
+                      borderColor: "#fff",
+                      color: "#fff",
+                      "&:hover": {
+                        borderColor: "#fff",
+                        backgroundColor: "rgba(255,255,255,0.1)",
+                      },
+                    }}
+                  >
+                    Tanıtım Videosu
                   </Button>
                   <Button
                     variant="outlined"
@@ -215,6 +120,47 @@ export default function Home() {
                 </Box>
               </motion.div>
             </Box>
+          </Container>
+        </Box>
+
+        <Box id="tanitim-filmi" className="brand-film-section">
+          <Container maxWidth="lg">
+            <Grid container spacing={{ xs: 3, md: 5 }} alignItems="center">
+              <Grid size={{ xs: 12, md: 5 }}>
+                <Typography className="brand-film-kicker">
+                  Başkent Özpen PVC
+                </Typography>
+                <Typography variant="h3" className="brand-film-title">
+                  Kaliteyi Atölyeden Montaja Kadar Görün
+                </Typography>
+                <Typography className="brand-film-copy">
+                  Üretim, showroom ve montaj süreçlerimizi tek bir filmde
+                  izleyin. Yeni tanıtım filmi hazır olduğunda bu bölümden
+                  yayınlanacak.
+                </Typography>
+                <Button
+                  variant="contained"
+                  component={Link}
+                  to="/iletisim"
+                  className="brand-film-button"
+                >
+                  Keşif İçin İletişime Geç
+                </Button>
+              </Grid>
+              <Grid size={{ xs: 12, md: 7 }}>
+                <Box className="brand-film-frame">
+                  <video
+                    className="brand-film-video"
+                    controls
+                    preload="metadata"
+                    poster={bg}
+                  >
+                    <source src={introVideo} type="video/mp4" />
+                    Tarayıcınız video oynatmayı desteklemiyor.
+                  </video>
+                </Box>
+              </Grid>
+            </Grid>
           </Container>
         </Box>
 
@@ -256,7 +202,7 @@ export default function Home() {
                     icon: FaRegSmileBeam,
                   },
                 ].map((stat, index) => (
-                  <Grid item size={{ xs: 6, md: 3 }} key={index}>
+                  <Grid size={{ xs: 6, md: 3 }} key={index}>
                     <Box sx={{ textAlign: "center", p: 2 }}>
                       <stat.icon
                         size={40}

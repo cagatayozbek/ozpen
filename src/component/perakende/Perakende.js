@@ -45,7 +45,7 @@ export default function Perakende() {
     )}`;
     
     // Önce WhatsApp'ı yeni sekmede aç
-    window.open(whatsappUrl, "_blank");
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
 
     // Sonra bu sekmeyi teşekkürler sayfasına yönlendir
     navigate("/tesekkurler");
@@ -186,6 +186,7 @@ export default function Perakende() {
                   <Button
                     href="https://wa.me/905439035617"
                     target="_blank"
+                    rel="noopener noreferrer"
                     variant="outlined"
                     size="large"
                     startIcon={<WhatsApp />}
@@ -552,6 +553,7 @@ export default function Perakende() {
             <Button
               href="https://wa.me/905439035617"
               target="_blank"
+              rel="noopener noreferrer"
               variant="outlined"
               size="large"
               startIcon={<WhatsApp />}
@@ -578,4 +580,3 @@ export default function Perakende() {
     </>
   );
 }
-

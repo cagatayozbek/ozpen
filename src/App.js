@@ -2,7 +2,13 @@ import "./App.css";
 import { useEffect } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import Header from "./component/header/Header";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+  Navigate,
+} from "react-router-dom";
 import Home from "./component/home/Home";
 import Kurumsal from "./component/kurumsal/Kurumsal";
 import Contact from "./component/contact/Contact";
@@ -114,7 +120,15 @@ function App() {
               path="urunler/panjur-ve-kepenk-sistemleri/winkepenk"
               element={<Winkepenk />}
             />
-            <Route path="urunler/donanım-sistemleri" element={<Donanım />} />
+            <Route path="urunler/donanim-sistemleri" element={<Donanım />} />
+            <Route
+              path="urunler/donanım-sistemleri"
+              element={<Navigate to="/urunler/donanim-sistemleri" replace />}
+            />
+            <Route
+              path="urunler/donanım-sistemleri/donanım"
+              element={<Navigate to="/urunler/donanim-sistemleri" replace />}
+            />
             <Route
               path="urunler/cam-balkon-sistemleri"
               element={<CamBalkon />}
@@ -172,11 +186,11 @@ function App() {
             <IconButton
               sx={{
                 position: "fixed",
-                bottom: { xs: 20, md: 40 },
-                right: { xs: 20, md: 40 },
+                bottom: { xs: 14, md: 40 },
+                right: { xs: 14, md: 40 },
                 backgroundColor: "#25D366",
-                width: { xs: 50, md: 60 },
-                height: { xs: 50, md: 60 },
+                width: { xs: 44, md: 60 },
+                height: { xs: 44, md: 60 },
                 "&:hover": {
                   backgroundColor: "#20bd5a",
                   transform: "scale(1.1)",
@@ -184,13 +198,21 @@ function App() {
                 transition: "all 0.3s ease",
                 zIndex: 1000,
                 boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                "& svg": {
+                  fontSize: { xs: "1.45rem", md: "1.8rem" },
+                },
               }}
-              onClick={() => window.open(`https://wa.me/${wpNumber}`, "_blank")}
+              onClick={() =>
+                window.open(
+                  `https://wa.me/${wpNumber}`,
+                  "_blank",
+                  "noopener,noreferrer"
+                )
+              }
             >
               <FaWhatsapp
                 style={{
                   color: "white",
-                  fontSize: "1.8rem",
                   filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))",
                 }}
               />

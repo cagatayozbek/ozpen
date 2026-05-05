@@ -35,7 +35,6 @@ export default function Form() {
       >
         <Grid container>
           <Grid
-            item
             size={{ xs: 12, md: 6 }}
             sx={{
               display: "flex",
@@ -52,7 +51,7 @@ export default function Form() {
               Ücretsiz Keşif Formu
             </Typography>
           </Grid>
-          <Grid item size={{ xs: 12, md: 6 }}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <Box
               component="form"
               sx={{

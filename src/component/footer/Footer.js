@@ -24,8 +24,8 @@ const Footer = () => (
 
         <hr className="clearfix w-100 d-md-none pb-0" />
 
-        {urunler.map((kategori, index) => (
-          <Col md={3} className="mb-md-0 mb-3">
+        {urunler.map((kategori) => (
+          <Col key={kategori.title} md={3} className="mb-md-0 mb-3">
             <strong>{kategori.title}</strong>
 
             <ul>

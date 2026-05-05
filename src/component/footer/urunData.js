@@ -105,7 +105,7 @@ const urunler = [
     links: [
       {
         name: "Donanım Sistemleri",
-        path: "urunler/donanım-sistemleri",
+        path: "urunler/donanim-sistemleri",
       },
     ],
   },

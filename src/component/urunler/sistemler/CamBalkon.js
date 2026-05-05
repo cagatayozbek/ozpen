@@ -1,7 +1,5 @@
 import React from "react";
 
-import logo1 from "./assets/camoda-bg.jpg"; // İlk arka plan resmi
-
 import "./CamBalkon.css";
 
 import CamBalkonCardComponent from "./detay/components/CamBalkonCardComponent";

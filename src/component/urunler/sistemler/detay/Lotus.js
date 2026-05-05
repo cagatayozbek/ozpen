@@ -2,12 +2,10 @@ import React from "react";
 import SEO from "../../../SEO";
 import logo from "../assets/surme/lotus1.png";
 import background from "./assets/lotus-bg.jpg";
-import background2 from "./assets/lotus-bg2.jpg";
 import teknik from "./assets/lotus-teknik.png";
 import TeknikComponent from "./components/TeknikComponent";
 import ColorPickerPage from "../ColorPickerComponent";
 
-import Form from "../Form";
 import { Container } from "@mui/material";
 export default function Lotus() {
   return (
@@ -36,7 +34,6 @@ export default function Lotus() {
   );
 }
 
-const title = ["Minimal Tasarım Hatları İle", "Winsa Özel Eksenel Sistemi"];
 const aciklama = [
   {
     title: "Yalıtım",

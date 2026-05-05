@@ -27,13 +27,11 @@ import { RiHome2Line } from "react-icons/ri";
 import { IoExtensionPuzzleOutline } from "react-icons/io5";
 import { PiWindowsLogoThin } from "react-icons/pi";
 import { GiGreekTemple } from "react-icons/gi";
-import { AiOutlineFieldTime } from "react-icons/ai";
 import {
   CheckCircle,
   Home as HomeIcon,
   WindowOutlined,
   Balcony,
-  Phone,
   CurrencyLira,
   WhatsApp,
 } from "@mui/icons-material";
@@ -338,6 +336,7 @@ export default function Grids({ deneyimYili }) {
                       <Button
                         href="https://wa.me/905439035617"
                         target="_blank"
+                        rel="noopener noreferrer"
                         variant="contained"
                         size="large"
                         startIcon={<WhatsApp />}
@@ -528,7 +527,7 @@ export default function Grids({ deneyimYili }) {
                     description: "Çevre dostu üretim ve montaj süreçleri",
                   },
                 ].map((item, index) => (
-                  <Grid key={index} item size={{ xs: 12, md: 3, sm: 6 }}>
+                  <Grid key={index} size={{ xs: 12, md: 3, sm: 6 }}>
                     <motion.div variants={itemVariants}>
                       <Box
                         sx={{
@@ -675,7 +674,7 @@ const cardsData = [
     title: "Donanım Sistemleri",
     text: "Yüksek kaliteli ve dayanıklı donanım çözümleri",
     img: pvcKapi,
-    link: "/urunler/donanım-sistemleri",
+    link: "/urunler/donanim-sistemleri",
   },
   {
     id: 5,

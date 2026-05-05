@@ -15,7 +15,7 @@ const ColorPicker = ({ colors, title }) => {
     <Box sx={{ height: "100%" }}>
       <Grid2 container spacing={2} sx={{ flexDirection: "column" }}>
         {/* Color Picker Section */}
-        <Grid2 item size={{ xs: 12 }}>
+        <Grid2 size={{ xs: 12 }}>
           <Box sx={{ padding: "0 20px" }}>
             <Typography variant="h4" className="header-text">
               {title}
@@ -24,11 +24,10 @@ const ColorPicker = ({ colors, title }) => {
         </Grid2>
 
         {/* Color Options */}
-        <Grid2 container item xs={12}>
+        <Grid2 container size={{ xs: 12 }}>
           {colors.map((color, index) => (
             <Grid2
               key={index}
-              item
               size={{ xs: 6, sm: 6, md: 4 }}
               sx={{
                 display: "flex",
@@ -66,7 +65,7 @@ const ColorPicker = ({ colors, title }) => {
         </Grid2>
 
         {/* Selected Product Image Section */}
-        <Grid2 item size={{ xs: 12 }}>
+        <Grid2 size={{ xs: 12 }}>
           <Box
             component="img"
             src={selectedProduct}
@@ -92,12 +91,12 @@ export default function ColorPickerPage() {
     <Box sx={{ width: "100%", padding: "20px" }}>
       <Grid2 container spacing={15}>
         {/* First Color Picker Page */}
-        <Grid2 item size={{ xs: 12, md: 6 }}>
+        <Grid2 size={{ xs: 12, md: 6 }}>
           <ColorPicker colors={colors} title="Donanım" />
         </Grid2>
 
         {/* Second Color Picker Page */}
-        <Grid2 item size={{ xs: 12, md: 6 }}>
+        <Grid2 size={{ xs: 12, md: 6 }}>
           <ColorPicker colors={colors1} title="Renkler" />
         </Grid2>
       </Grid2>

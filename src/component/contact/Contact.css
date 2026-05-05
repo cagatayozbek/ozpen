@@ -1,4 +1,4 @@
-.hero-image {
+.contact-hero-image {
   height: 100%; /* Kart yüksekliğinin tamamını kaplasın */
   width: 100%; /* Kart genişliğinin tamamını kaplasın */
   object-fit: cover; /* Görseli kırpmadan ortalayarak genişlet */

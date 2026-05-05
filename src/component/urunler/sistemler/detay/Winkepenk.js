@@ -2,13 +2,11 @@ import React from "react";
 import SEO from "../../../SEO";
 import logo from "../assets/panjur/winkepenk1.png";
 import background from "./assets/winkepenk-bg.jpg";
-import background2 from "./assets/winkepenk-bg2.jpg";
 import teknik from "./assets/winkepenk-teknik.png";
 
 import TeknikComponent from "./components/TeknikComponent";
 import ColorPickerPage from "../ColorPickerComponent";
 import { Container } from "@mui/material";
-import Form from "../Form";
 export default function Winkepenk() {
   return (
     <Container
@@ -36,7 +34,6 @@ export default function Winkepenk() {
   );
 }
 
-const title = ["Her Coğrafyada", "Akdeniz Havası"];
 const aciklama = [
   {
     title: "Yalıtım",
@@ -52,5 +49,3 @@ const aciklama = [
   },
 ];
 const technicalData = [];
-const desc =
-  "Cepheye açılan kanatları tek kanat veya sağa ve sola katlanır tipte çift ya da dört kanat uygulanabilmektedir. İsteğe bağlı kanat içi kanat uygulaması da bulunmaktadır.";

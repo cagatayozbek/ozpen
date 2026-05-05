@@ -8,6 +8,10 @@ if (!isset($_SESSION['admin_logged_in'])) {
     exit();
 }
 
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
 // Referansları çek
 $sql = "SELECT * FROM reference ORDER BY created_at DESC";
 $result = $conn->query($sql);
@@ -162,7 +166,7 @@ $result = $conn->query($sql);
             <form id="referenceForm">
                 <input type="text" name="title" placeholder="Proje Başlığı" required>
                 <textarea name="description" placeholder="Açıklama"></textarea>
-                <input type="text" name="location" placeholder="Konum (örn: Ankara)">
+                <input type="text" id="location" name="location" placeholder="Konum (örn: Ankara)">
                 <select name="category">
                     <option value="">Kategori Seçin</option>
                     <option value="PVC Pencere">PVC Pencere</option>
@@ -188,6 +192,7 @@ $result = $conn->query($sql);
     <script>
         const API_URL = '../api/references.php';
         const UPLOAD_URL = '../api/upload.php';
+        const CSRF_TOKEN = <?= json_encode($_SESSION['csrf_token']) ?>;
 
         function openModal() {
             document.getElementById('modal').style.display = 'block';
@@ -261,6 +266,9 @@ $result = $conn->query($sql);
                 try {
                     const res = await fetch(UPLOAD_URL, {
                         method: 'POST',
+                        headers: {
+                            'X-CSRF-Token': CSRF_TOKEN
+                        },
                         body: formData
                     });
                     const data = await res.json();
@@ -287,7 +295,10 @@ $result = $conn->query($sql);
 
             const response = await fetch('../api/references.php', {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': CSRF_TOKEN
+                },
                 body: JSON.stringify(data)
             });
 
@@ -305,7 +316,10 @@ $result = $conn->query($sql);
 
             const response = await fetch('../api/references.php', {
                 method: 'DELETE',
-                headers: {'Content-Type': 'application/json'},
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': CSRF_TOKEN
+                },
                 body: JSON.stringify({id})
             });
 

@@ -9,7 +9,7 @@ import {
   IconButton,
   Drawer,
   List,
-  ListItem,
+  ListItemButton,
   ListItemText,
   Menu,
   MenuItem,
@@ -26,7 +26,7 @@ import {
   ExpandMore,
   ExpandLess,
 } from "@mui/icons-material";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import logo from "./logo.png";
 import "./Header.css";
 
@@ -120,8 +120,7 @@ export default function Header() {
       <List sx={{ px: 1 }}>
         {menuItems.map((item) => (
           <React.Fragment key={item.label}>
-            <ListItem
-              button
+            <ListItemButton
               onClick={() => {
                 if (item.submenu) {
                   setMobileSubmenuOpen(!mobileSubmenuOpen);
@@ -144,14 +143,13 @@ export default function Header() {
               />
               {item.submenu &&
                 (mobileSubmenuOpen ? <ExpandLess /> : <ExpandMore />)}
-            </ListItem>
+            </ListItemButton>
             {item.submenu && (
               <Collapse in={mobileSubmenuOpen} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
                   {item.submenu.map((subItem) => (
-                    <ListItem
+                    <ListItemButton
                       key={subItem.label}
-                      button
                       onClick={() => handleNavigation(subItem.path)}
                       sx={{
                         pl: 4,
@@ -167,7 +165,7 @@ export default function Header() {
                           color: "#666",
                         }}
                       />
-                    </ListItem>
+                    </ListItemButton>
                   ))}
                 </List>
               </Collapse>
@@ -205,6 +203,7 @@ export default function Header() {
           startIcon={<Instagram />}
           href="https://www.instagram.com/baskentozpen_winsa/"
           target="_blank"
+          rel="noopener noreferrer"
           sx={{
             bgcolor: "#E4405F",
             "&:hover": { bgcolor: "#d32f50" },
@@ -230,7 +229,13 @@ export default function Header() {
           }}
         >
           <Container maxWidth="lg">
-            <Toolbar sx={{ py: 1, px: { xs: 0, sm: 2 } }}>
+            <Toolbar
+              sx={{
+                minHeight: { xs: 72, md: 84 },
+                py: { xs: 0.5, md: 1 },
+                px: { xs: 0, sm: 2 },
+              }}
+            >
               {/* Logo */}
               <Box
                 component={motion.div}
@@ -238,11 +243,17 @@ export default function Header() {
                 sx={{ flexGrow: 0, cursor: "pointer" }}
                 onClick={() => navigate("/")}
               >
-                <img
+                <Box
+                  component="img"
                   src={logo}
                   alt="Özpen PVC - Ankara Winsa Bayi Logo"
-                  style={{
-                    height: scrolled ? "55px" : "65px",
+                  sx={{
+                    display: "block",
+                    height: {
+                      xs: scrolled ? 50 : 56,
+                      sm: scrolled ? 54 : 60,
+                      md: scrolled ? 55 : 65,
+                    },
                     transition: "height 0.3s ease",
                   }}
                 />
@@ -388,6 +399,7 @@ export default function Header() {
                 <IconButton
                   href="https://www.instagram.com/baskentozpen_winsa/"
                   target="_blank"
+                  rel="noopener noreferrer"
                   sx={{
                     color: "#E4405F",
                     "&:hover": { bgcolor: "#fff5f2" },
@@ -407,11 +419,14 @@ export default function Header() {
                 sx={{
                   display: { xs: "flex", md: "none" },
                   ml: "auto",
-                  mr: 1,
+                  mr: 0.75,
                   bgcolor: "#ff6b35",
                   color: "#fff",
-                  fontSize: "0.75rem",
-                  fontWeight: 600,
+                  fontSize: { xs: "0.68rem", sm: "0.75rem" },
+                  fontWeight: 700,
+                  minWidth: 0,
+                  px: { xs: 1.25, sm: 1.75 },
+                  py: 0.85,
                   "&:hover": { bgcolor: "#ff5722" },
                 }}
               >
@@ -423,6 +438,8 @@ export default function Header() {
                 sx={{
                   display: { xs: "flex", md: "none" },
                   color: "#333",
+                  width: 40,
+                  height: 40,
                 }}
                 onClick={handleDrawerToggle}
               >

@@ -296,7 +296,7 @@
   z-index: 1;
 }
 
-.hero-image {
+.home-hero-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -316,7 +316,7 @@
   font-size: clamp(2.5rem, 5vw, 4rem) !important;
   font-weight: 800 !important;
   margin-bottom: 1rem !important;
-  letter-spacing: -0.5px !important;
+  letter-spacing: 0 !important;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
   color: #ffffff !important;
 }
@@ -330,19 +330,88 @@
   color: #ffffff !important;
 }
 
+.hero-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 32px;
+}
+
 .main-button {
   padding: 12px 28px !important;
   font-size: 1rem !important;
   text-transform: none !important;
   border-radius: 4px !important;
   font-weight: 600 !important;
-  letter-spacing: 0.3px !important;
+  letter-spacing: 0 !important;
+  min-height: 48px !important;
+}
+
+.brand-film-section {
+  background: #111827;
+  color: #fff;
+  padding: 80px 0;
+}
+
+.brand-film-kicker {
+  color: #ff8c42 !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 14px !important;
+  text-transform: uppercase;
+}
+
+.brand-film-title {
+  color: #fff !important;
+  font-size: clamp(2rem, 4vw, 3.2rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.1 !important;
+  margin-bottom: 20px !important;
+}
+
+.brand-film-copy {
+  color: rgba(255, 255, 255, 0.78) !important;
+  font-size: 1.05rem !important;
+  line-height: 1.7 !important;
+  margin-bottom: 28px !important;
+}
+
+.brand-film-button {
+  background-color: #ff6b35 !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+  font-weight: 700 !important;
+  padding: 12px 22px !important;
+  text-transform: none !important;
+}
+
+.brand-film-button:hover {
+  background-color: #ff5722 !important;
+}
+
+.brand-film-frame {
+  aspect-ratio: 16 / 9;
+  background: #05070b;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+  width: 100%;
+}
+
+.brand-film-video {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
   .simple-hero {
-    height: 50vh;
-    min-height: 400px;
+    height: clamp(590px, 84svh, 650px);
+    min-height: 590px;
   }
 
   .hero-background::after {
@@ -356,27 +425,35 @@
   .hero-content {
     text-align: center;
     width: 100%;
-    padding: 0 30px;
+    max-width: 420px;
+    padding: 0 24px;
     left: 50%;
     transform: translate(-50%, -50%);
   }
 
+  .hero-actions {
+    justify-content: center;
+    margin-top: 26px;
+  }
+
   .main-button {
-    padding: 10px 20px !important;
-    margin: 5px !important;
-    width: 100% !important;
+    margin: 0 !important;
     max-width: 300px !important;
+  }
+
+  .brand-film-section {
+    padding: 48px 0 56px;
   }
 }
 
 @media (max-width: 480px) {
   .simple-hero {
-    height: 50vh;
-    min-height: unset;
+    height: clamp(590px, 84svh, 650px);
+    min-height: 590px;
   }
 
   .main-title {
-    font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
+    font-size: clamp(1.9rem, 8vw, 2.35rem) !important;
     line-height: 1.2 !important;
     margin-bottom: 0.5rem !important;
   }
@@ -388,13 +465,61 @@
   }
 
   .hero-content {
-    padding: 0 20px;
+    max-width: 340px;
+    padding: 0 16px;
+  }
+
+  .hero-actions {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    margin: 22px auto 0;
+    max-width: 320px;
+    width: 100%;
+  }
+
+  .hero-actions .main-button:first-child {
+    grid-column: 1 / -1;
   }
 
   .main-button {
-    padding: 8px 16px !important;
-    font-size: 0.9rem !important;
+    font-size: 0.86rem !important;
+    min-height: 46px !important;
+    padding: 0 12px !important;
     width: 100% !important;
-    max-width: 280px !important;
+    max-width: none !important;
+  }
+
+  .brand-film-section {
+    padding: 34px 0 46px;
+  }
+
+  .brand-film-kicker {
+    font-size: 0.78rem !important;
+    margin-bottom: 10px !important;
+  }
+
+  .brand-film-title {
+    font-size: 1.7rem !important;
+    line-height: 1.14 !important;
+    margin-bottom: 14px !important;
+    padding-right: 42px;
+  }
+
+  .brand-film-copy {
+    font-size: 0.95rem !important;
+    line-height: 1.58 !important;
+    margin-bottom: 20px !important;
+    padding-right: 42px;
+  }
+
+  .brand-film-button {
+    justify-content: center !important;
+    min-height: 46px !important;
+    width: 100%;
+  }
+
+  .brand-film-frame {
+    border-radius: 6px;
   }
 }

@@ -3,14 +3,12 @@ import SEO from "../../../SEO";
 
 import logo from "../assets/yeni-dorado-76png-29-01-2021-18-33-55png_12-03-2024_14-39-02.png";
 import background from "./assets/dorado-bg.jpg";
-import background2 from "./assets/dorado-bg2.jpg";
 
 import teknik from "./assets/dorado-teknik.png";
 import { Container } from "@mui/material";
 import TeknikComponent from "./components/TeknikComponent";
 import ColorPickerPage from "../ColorPickerComponent";
 
-import Form from "../Form";
 export default function Dorado76() {
   return (
     <Container
@@ -38,7 +36,6 @@ export default function Dorado76() {
   );
 }
 
-const title = ["Yalıtımın", "En estetik hali"];
 const aciklama = [
   {
     title: "Yalıtım",
